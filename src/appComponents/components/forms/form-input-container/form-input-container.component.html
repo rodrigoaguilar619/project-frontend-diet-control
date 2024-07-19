@@ -1,13 +1,3 @@
-<!-- <div class="container" [ngStyle]="{'width': inputContainer.containerWidth}">
-    <div class="row" *ngFor="let rowInputColumnList of rowInputColumns; let i = index">
-        <div class="col-md-auto" *ngFor="let inputColumn of rowInputColumnList; let ic = index"
-            [ngStyle]="{'width': inputColumn.columnWidth}">
-            <app-form-input-column [inputColumnProps]="inputColumn" [valueFormControl]="castFormControl(formGroup.controls[inputColumn.inputProps.id])"></app-form-input-column>
-        </div>
-        <br>
-    </div>
-</div> -->
-
 <div class="container" [ngStyle]="{'width': inputContainer.containerWidth}">
     <div class="container-column" *ngFor="let inputColumn of inputContainer.inputColumns; let ic = index"
         [ngStyle]="{'width': inputColumn.columnWidth}">

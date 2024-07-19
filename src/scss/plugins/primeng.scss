@@ -32,6 +32,7 @@
   
   .p-datepicker .p-datepicker-header {
     padding: unset;
+    height: 20px;
   }
   
   .p-datepicker table td {
@@ -41,10 +42,6 @@
   .p-datepicker table td > span {
     width: 1.5rem;
     height: 1.5rem;
-  }
-  
-  .p-datepicker .p-datepicker-header {
-    height: 20px;
   }
   
   .p-inputtext {

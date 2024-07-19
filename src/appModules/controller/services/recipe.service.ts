@@ -1,4 +1,4 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpMethodEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { HttpManagerInstance } from '@app/appComponents/instances/webInstances/httpManagerInstance';
 import { generateDebugClassService } from '@app/appComponents/utils/webUtils/debugUtil';

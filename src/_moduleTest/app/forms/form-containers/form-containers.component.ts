@@ -120,7 +120,7 @@ export class FormContainersComponent extends GenericParentComponent {
                 maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
             },
             validations: {
-                validatorRules: [Validators.required, /*"numeric"*/]
+                validatorRules: [Validators.required]
             }
         }
     ],

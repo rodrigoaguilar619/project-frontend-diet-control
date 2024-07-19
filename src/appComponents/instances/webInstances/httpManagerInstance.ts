@@ -39,6 +39,11 @@ export class HttpManagerInstance {
         return Promise.resolve(data);
       })
       .catch((error: any) => {
+
+        if (!(error instanceof Error)) {
+          error = new Error(error);
+        }
+        
         return Promise.reject(error);
       });
   }

@@ -212,6 +212,7 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
       });
 
       this.updateDietFoodsTotals();
+      
       return;
     });
   }

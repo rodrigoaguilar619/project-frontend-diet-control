@@ -1,10 +1,7 @@
-import { CommonModule } from "@angular/common";
-import { _APP_ENVIRONMENT_ } from "../catalogs/constantCatalog";
-import { StoreDevtoolsModule } from "@ngrx/store-devtools";
-import { setLayoutReducer } from "../../appComponents/controller/reducers/layout.reducer";
-import { ActionReducer, StoreModule } from "@ngrx/store";
+import { ActionReducer } from "@ngrx/store";
 import { storeLogger } from "ngrx-store-logger";
-import { ComponentsModule } from "../../appComponents/components/components.module";
+import { setLayoutReducer } from "../../appComponents/controller/reducers/layout.reducer";
+import { _APP_ENVIRONMENT_ } from "../catalogs/constantCatalog";
 
 export const libReducers = {
     layout: setLayoutReducer

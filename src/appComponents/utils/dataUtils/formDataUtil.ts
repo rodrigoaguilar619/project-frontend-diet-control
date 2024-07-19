@@ -5,7 +5,7 @@ import { ElementRef } from "@angular/core";
 const formBuilder = new FormBuilder();
 
 export function scrollToFirstInvalidControl(form: FormGroup | FormArray, el: ElementRef) {
-    if (form && form.invalid) {
+    if (form?.invalid) {
         const invalidControl = el.nativeElement.querySelector('.ng-invalid');
         if (invalidControl) {
             invalidControl.scrollIntoView({ behavior: 'smooth', block: 'center' });

@@ -4,7 +4,7 @@ import { AdminService } from '../../../controller/services/admin.service';
 import { ADMIN_NUTRITIONAL_GOALS_COLUMNS } from '../admin.constants';
 import { PATH_API_DOCUMENTATION } from '../../../catalogs/uriCatalog';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
 import ModalClass from '@app/appComponents/classes/modalClass';
 import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';

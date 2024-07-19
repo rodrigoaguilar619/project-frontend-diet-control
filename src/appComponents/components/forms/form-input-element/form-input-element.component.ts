@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { InputElementCalendarPropsI, InputElementMaskPropsI, InputElementPropsListI, InputElementSelectPropsI, InputElementTextPropsI } from '../../../../appComponents/@types/components/inputs/inputElement';
+import { FormControl } from '@angular/forms';
+import { InputElementCalendarPropsI, InputElementMaskPropsI, InputElementPropsListI, InputElementSelectPropsI } from '../../../../appComponents/@types/components/inputs/inputElement';
 import { InputElementEnum, InputMaskEnum } from '../../../catalogs/enumCatalog';
 
 @Component({
@@ -11,16 +11,12 @@ export class FormInputElementComponent implements OnInit {
 
   public inputElementEnum = InputElementEnum;
   public inputMaskEnum =InputMaskEnum;
+  public date: Date | null = null;
   @Input() inputProperties!: InputElementPropsListI;
   @Input() valueFormControl!: FormControl;
 
-  public date: Date | null = null;
-
-  //@Input() formGroup: FormGroup;
 
   constructor() {
-
-    //this.formGroup = new FormGroup({});
   }
 
   ngOnInit(): void {

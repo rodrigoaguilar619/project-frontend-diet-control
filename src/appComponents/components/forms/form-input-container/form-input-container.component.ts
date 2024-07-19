@@ -1,15 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 
-import { FormInputColumnPropsI, FormInputContainerPropsI } from '../../../../appComponents/@types/components/formInputs/formInputs';
-
-/*function splitColumnInputs(arr: FormInputColumnPropsI[], chunkSize: number): FormInputColumnPropsI[][] {
-  const result: FormInputColumnPropsI[][] = [];
-  for (let i = 0; i < arr.length; i += chunkSize) {
-    result.push(arr.slice(i, i + chunkSize));
-  }
-  return result;
-}*/
+import { FormInputContainerPropsI } from '../../../../appComponents/@types/components/formInputs/formInputs';
 
 @Component({
   selector: 'app-form-input-container, [app-form-input-container]',
@@ -20,8 +12,6 @@ export class FormInputContainerComponent implements OnInit {
   @Input() inputContainer!: FormInputContainerPropsI;
   @Input() formGroup!: FormGroup;
 
-  //public rowInputColumns!: FormInputColumnPropsI[][];
-
   ngOnInit(): void {
 
     if (this.formGroup === undefined) {
@@ -31,8 +21,6 @@ export class FormInputContainerComponent implements OnInit {
     if (this.inputContainer === undefined) {
       throw new Error('inputContainer is required');
     }
-
-    //this.rowInputColumns = splitColumnInputs(this.inputContainer.inputColumns, this.inputContainer.columnstotal);
   }
 
   castFormControl(formControl: AbstractControl) {

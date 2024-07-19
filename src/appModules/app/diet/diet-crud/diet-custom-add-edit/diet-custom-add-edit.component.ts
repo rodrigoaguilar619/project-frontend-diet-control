@@ -3,7 +3,7 @@ import { DietGenericAddEditComponent } from '../diet-generic-add-edit/diet-gener
 import { FormGroup } from '@angular/forms';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { buildFormGroupFromContainers, validateForm } from '@app/appComponents/utils/dataUtils/formDataUtil';
-import { DIET_CUSTOM_FOOD_TOTALS_RESUME_COLUMNS_IDS, DIET_CUSTOM_RECIPE_DATA_IDS, DIET_CUSTOM_TOTALS_RESUME_COLUMNS, DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS } from '../../diet.contants';
+import { DIET_CUSTOM_FOOD_TOTALS_RESUME_COLUMNS_IDS, DIET_CUSTOM_RECIPE_DATA_IDS, DIET_CUSTOM_TOTALS_RESUME_COLUMNS } from '../../diet.contants';
 import { dataTablePropertiesEnum } from '@app/appModules/catalogs/enumCatalog';
 import axios from 'axios';
 import { FormInputColumnPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';

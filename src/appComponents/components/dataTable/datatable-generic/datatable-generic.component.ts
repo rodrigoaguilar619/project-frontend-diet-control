@@ -1,4 +1,4 @@
-import { Component, Input, IterableDiffers, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, IterableDiffers } from '@angular/core';
 import { IButtonOptions } from '../../../../appComponents/@types/components/buttons/buttons';
 import { maskData } from '../../../utils/dataUtils/maskDataUtil';
 
@@ -6,7 +6,7 @@ import { maskData } from '../../../utils/dataUtils/maskDataUtil';
   selector: 'app-datatable-generic',
   templateUrl: './datatable-generic.component.html'
 })
-export class DatatableGenericComponent implements OnInit {
+export class DatatableGenericComponent {
 
   @Input() columns: any;
   @Input() values: any;
@@ -32,9 +32,6 @@ export class DatatableGenericComponent implements OnInit {
     this.buttonsOptionsWidth = "50px";
 
     this.iterableDiffer = iterableDiffers.find([]).create(undefined);
-  }
-
-  ngOnInit(): void {
   }
 
   ngDoCheck(): void {

@@ -23,7 +23,6 @@ export const API_RECIPE_GET = _URL_API_MAIN_ + "api/recipe/getRecipe";
 export const API_DIET_BASE_GET = _URL_API_MAIN_ + "api/diet/getDietBase";
 export const API_DIET_BASE_REGISTER = _URL_API_MAIN_ + "api/diet/registerDietBase";
 export const API_DIET_CUSTOM_GET = _URL_API_MAIN_ + "api/diet/getDietCustom";
-export const API_DIET_CUSTOM_GET_LIST = _URL_API_MAIN_ + "api/diet/getDietCustomList";
 export const API_DIET_CUSTOM_DELETE = _URL_API_MAIN_ + "api/diet/deleteDietCustom";
 export const API_DIET_CUSTOM_ADD = _URL_API_MAIN_ + "api/diet/addDietCustom";
 export const API_DIET_CUSTOM_EDIT = _URL_API_MAIN_ + "api/diet/editDietCustom";

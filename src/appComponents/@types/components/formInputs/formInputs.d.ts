@@ -5,10 +5,8 @@ export interface FormInputColumnPropsI {
     inputProps: InputElementPropsListI;
     columnWidth?: string;
     label: string;
-    /*id: string;*/
     tooltipText?: string;
     validations?: {
-        /*idValidation: string;*/
         validatorRules: ValidatorFn[];
     };
 }

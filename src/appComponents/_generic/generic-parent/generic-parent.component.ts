@@ -45,7 +45,7 @@ export class GenericParentComponent {
     if (_APP_ENVIRONMENT_ !== EnvironmentEnum.PRODUCTION)
       return title + " " + buildJsonFromFormGroup(formGroup);
 
-    return;
+    return undefined;
   }
 
   buildJsonFromFormArray(title: string, formArray: FormArray) {
@@ -53,7 +53,7 @@ export class GenericParentComponent {
     if (_APP_ENVIRONMENT_ !== EnvironmentEnum.PRODUCTION)
       return title + " " + buildJsonFromFormArray(formArray);
 
-    return;
+    return undefined;
   }
 
   buildJsonToString(data: any) {
