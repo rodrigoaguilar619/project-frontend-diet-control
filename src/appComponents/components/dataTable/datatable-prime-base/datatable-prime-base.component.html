@@ -1,0 +1,52 @@
+<div [ngStyle]="{width: tableWidth}">
+    <p-table #dt 
+        [columns]="columns" [value]="values" [paginator]="sectionsProperties.pagination" [rows]="10" 
+        [globalFilterFields]="fieldsFilter" [scrollable]="true" selectionMode="multiple"
+    >
+        <ng-template pTemplate="caption" *ngIf="sectionsProperties.header">
+            <div class="p-d-flex">
+                <div style="display: flex">
+                    <div ml-auto style="width: 100%; text-align: center; margin: auto; position: relative;" [innerHTML]="title"></div>
+                        <div style="text-align: right; width: 97%; position: absolute;" *ngIf="sectionsProperties.search">
+                            <span class="p-input-icon-right p-ml-auto">
+                                <em class="pi pi-search"></em>
+                                <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Global Search" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th scope="col" *ngIf="buttonsOptions" [ngStyle]="{'min-width': buttonsOptionsWidth }" pFrozenColumn alignFrozen="left" [frozen]="true"></th>
+                <th scope="col" *ngFor="let col of columns" [ngStyle]="col.tableConfig.styleColumnHeaderCss" pFrozenColumn alignFrozen="left" 
+                    [frozen]="col.tableConfig.isColumnFreeze ? col.tableConfig.isColumnFreeze : false">
+                    <div [ngStyle]="{'width': '100%', 'text-align': 'center'}">{{col.header}}</div>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-value let-columns="columns">
+            <tr [ngStyle]="setRowStyle({}, value.rowCssProperties)" [pSelectableRow]="value">
+                <td *ngIf="buttonsOptions" [ngStyle]="{'text-align': 'center', 'min-width': buttonsOptionsWidth }"
+                pFrozenColumn alignFrozen="left" [frozen]="true">
+                    <div [ngStyle]="{'width': '100%'}">
+                        <app-buttons-options [ngStyle]="{'display': 'flex', 'justify-content': 'center', 'align-items': 'center', 'gap': '5px'}" [buttonsOptions]="buttonsOptions" [rowData]="value"></app-buttons-options>
+                    </div>
+                </td>
+                <td *ngFor="let col of columns" [ngStyle]="col.tableConfig.styleColumnCellCss" pFrozenColumn alignFrozen="left" [frozen]="col.tableConfig.isColumnFreeze ? col.tableConfig.isColumnFreeze : false">
+                    <div [ngStyle]="{'width': '100%'}" [innerHTML]="setMaskData(value[col.field], col.maskProps ?? undefined)"></div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary" *ngIf="sectionsProperties.footer">
+            {{values?.length}} records
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td [attr.colspan]="columns.length + (buttonsOptions !== undefined ? 1 : 0)">
+                    No records found
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

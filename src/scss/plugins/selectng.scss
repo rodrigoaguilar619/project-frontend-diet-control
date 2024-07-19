@@ -1,0 +1,28 @@
+//---------------- SELECT NG -----------------------
+
+ng-select.ng-invalid.ng-touched .ng-select-container {
+    border-color: #f86c6b;
+}
+
+ng-select.ng-invalid.ng-touched.ng-select-focused .ng-select-container {
+    border-color: #f86c6b;
+    box-shadow: 0 0 0 0.2rem rgb(248 108 107 / 25%);
+}
+
+ng-select.ng-valid.ng-touched .ng-select-container {
+    border-color: #acabeb;
+}
+
+ng-select.ng-valid.ng-touched.ng-select-focused .ng-select-container {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+}
+
+.ng-select .ng-select-container {
+    min-height: 32px;
+    border: var(--cui-border-width) solid var(--cui-border-color);
+}
+
+.ng-select.ng-select-single .ng-select-container {
+    height: 32px;
+}

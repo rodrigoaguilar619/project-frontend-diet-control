@@ -1,0 +1,20 @@
+<app-datatable-prime-base [columns]="totalTableColumns" [values]="totalTableValues"
+    [sectionsProperties]="dataTableSectionsProperties"></app-datatable-prime-base>
+<br>
+<p-accordion>
+    <p-accordionTab header="RECIPE">
+        <div [ngStyle]="{ 'white-space': 'pre-wrap'}">{{recipe != null ? recipe.instructions : ""}}</div>
+    </p-accordionTab>
+</p-accordion>
+<br>
+<p-accordion>
+    <p-accordionTab header="DIET FOOD BASE" [selected]="true">
+        <app-diet-foods-resume [foodListValues]="foodsDietBaseValues" [totalValues]="[subTotalDietBase]"></app-diet-foods-resume>
+    </p-accordionTab>
+</p-accordion>
+<br>
+<p-accordion>
+    <p-accordionTab header="DIET CUSTOM BASE" [selected]="true">
+        <app-diet-foods-resume [foodListValues]="foodsDietCustomValues" [totalValues]="[subTotalDietCustom]"></app-diet-foods-resume>
+    </p-accordionTab>
+</p-accordion>

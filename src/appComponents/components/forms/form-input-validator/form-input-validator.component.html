@@ -1,0 +1,5 @@
+@if (valueFormControl.touched && valueFormControl.errors) {
+    <div class="invalid-feedback invalid-feedback-custom">
+        <div>{{ getErrorMessage(valueFormControl) }}</div>
+    </div>
+}

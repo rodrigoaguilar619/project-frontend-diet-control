@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles with default layout.
+@import "@coreui/coreui/scss/coreui";
+@import "~simple-line-icons/css/simple-line-icons.css";
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/nova/theme.css";
+//@import "~primeng/resources/primeng.min.css";
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "scrollbar";
+
+// Custom styles for coreui theme
+@import "../../../scss/plugins/dependenceCoreUI.scss";

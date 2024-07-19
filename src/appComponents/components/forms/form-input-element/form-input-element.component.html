@@ -1,0 +1,38 @@
+<div>
+    @if (inputProperties.inputType === inputElementEnum.TEXT) {
+    <input [ngClass]="{ 'is-invalid': valueFormControl.touched && valueFormControl.errors }" class="form-control"
+        (keydown)="onKeyDown(valueFormControl)" [formControl]="valueFormControl" />
+    }
+    @else if (inputProperties.inputType === inputElementEnum.SELECT) {
+    <ng-select [style]="{'textAlign': 'left'}" placeholder="Select" [formControl]="valueFormControl"
+        *ngIf="getInputSelectProps().options">
+        <ng-option *ngFor="let option of getInputSelectProps().options" [value]="option.id">{{option.description}}</ng-option>
+    </ng-select>
+    }
+    @else if (inputProperties.inputType === inputElementEnum.TEXTAREA) {
+    <textarea [ngClass]="{ 'is-invalid': valueFormControl.touched && valueFormControl.errors }" class="form-control"
+        [formControl]="valueFormControl" [ngStyle]="{'height': '34px'}"></textarea>
+    }
+    @else if (inputProperties.inputType === inputElementEnum.CALENDAR) {
+    <!-- <p-calendar [formControl]="valueFormControl" /> -->
+    <p-calendar
+        [inputStyleClass]="'form-control ' + (valueFormControl.touched && valueFormControl.errors ? 'is-invalid' : '')"
+        [(ngModel)]="date" (ngModelChange)="eventInputCalendarChange($event)" [showButtonBar]="true"
+        [dateFormat]="getCalendarProps().dateFormat" />
+    }
+    @else if (inputProperties.inputType === inputElementEnum.FILE) {
+    <input [ngClass]="{ 'is-invalid': valueFormControl.touched && valueFormControl.errors }" class="form-control"
+        type="file" (change)="eventInputFileChange($event)" />
+    }
+    @else if (inputProperties.inputType === inputElementEnum.MASK) {
+        @if (getInputMaskProps().maskType === inputMaskEnum.NUMBER) {
+        <p-inputNumber
+            [inputStyleClass]="'form-control ' + (valueFormControl.touched && valueFormControl.errors ? 'is-invalid' : '')"
+            inputId="integeronly" [formControl]="valueFormControl"
+            [maxFractionDigits]="getInputMaskProps().maskProps.totalDecimals ?? undefined"
+            [minFractionDigits]="getInputMaskProps().maskProps.totalDecimals ?? undefined"
+             />
+        }
+    }
+
+</div>

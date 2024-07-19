@@ -1,0 +1,8 @@
+<button *ngFor="let buttonOption of buttonsOptions"
+    [ngStyle]="buttonStyles"
+    class="btn btn-primary btn-sm" type="button"
+    [title]="buttonOption.title !== undefined ? buttonOption.title : ''"
+    (click)="buttonOption.function(rowData, rowIndex)">
+    <em *ngIf="buttonOption.icon" [ngClass]="buttonOption.icon"></em>
+    {{buttonOption.label}}
+</button>

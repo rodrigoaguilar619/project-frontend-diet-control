@@ -1,0 +1,38 @@
+<!--sidebar-->
+<c-sidebar #sidebar1="cSidebar" class="d-print-none sidebar sidebar-fixed border-end" colorScheme="dark" id="sidebar1"
+  visible>
+  <c-sidebar-header class="border-bottom">
+    <c-sidebar-brand [routerLink]="[]">
+      <img cIcon class="sidebar-brand-full" src="../../../../../assets/img/brand/coreui-angular.svg" height="42" alt="CoreUI Logo">
+      <img cIcon class="sidebar-brand-narrow" src="../../../../../assets/img/brand/coreui-signet.svg" height="42" alt="CoreUI Logo">
+    </c-sidebar-brand>
+  </c-sidebar-header>
+
+  <ng-scrollbar #scrollbar="ngScrollbar" class="overflow" pointerEventsMethod="scrollbar" visibility="hover">
+    <c-sidebar-nav #overflow [navItems]="layout?.menu" dropdownMode="close" compact />
+  </ng-scrollbar>
+  @if (!sidebar1.narrow) {
+  <c-sidebar-footer cSidebarToggle="sidebar1" class="border-top d-none d-lg-flex" toggle="unfoldable"
+    style="cursor: pointer;">
+    <button csidebartoggler="" role="button" class="sidebar-toggler" style="align-items: flex-start; appearance: button; cursor: pointer;"></button>
+  </c-sidebar-footer>
+  }
+</c-sidebar>
+
+<!--main-->
+<div class="wrapper d-flex flex-column min-vh-100">
+  <!--app-header-->
+  <app-header [cShadowOnScroll]="'sm'" class="mb-4 d-print-none header header-sticky p-0 shadow-sm" position="sticky"
+    sidebarId="sidebar1"></app-header>
+  <!--app-body-->
+  <div class="body flex-grow-1">
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="small" color="#fff" type="square-jelly-box" [fullScreen]="true">
+      <img alt="spinner_loader" src='../../../../../assets/img/spinners/spinning-loading-3.gif' width="70px" />
+    </ngx-spinner>
+    <c-container breakpoint="lg" class="h-auto px-4">
+      <router-outlet />
+    </c-container>
+  </div>
+  <!--app footer-->
+  <app-footer />
+</div>

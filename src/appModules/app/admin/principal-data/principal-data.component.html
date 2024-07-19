@@ -1,0 +1,29 @@
+<br>
+<div>
+<app-datatable-prime-base [ngStyle]="{'display': 'flex', 'justify-content': 'center', 'align-items': 'center', 'width': '100%'}"
+  [columns]="nutritionalGoalsColumns"
+  [values]="nutritionalGoalsValues"
+  [title]="'Nutritional goals'"
+  tableWidth="90%"
+  [sectionsProperties]="dataTableSectionsProperties"
+>
+</app-datatable-prime-base>
+<div style="text-align: center; padding: 5px;"><strong>Proteins: Weight x 2, Fat: 30%, Fat Saturate: 7%, Fat Trans: 1%, Sugar Added: 35g, Carbohydrates: rest of calories </strong></div>
+<div [ngStyle]="{textAlign: 'center'}">
+  <button class="btn btn-primary" type="button" (click)="openModalRegisterNutritionalGoal()">Register nutritional goals</button>
+</div>
+</div>
+<br>
+<div>
+  <a href={{pathApiDocumentation}} target="_blank" rel="noopener noreferrer" ngClass="button_hiperlink">API Documentation</a>
+</div>
+<br>
+<br>
+<app-modal-popup [title]="modalClass.title" [text]="modalClass.text" [isShowPopUp]="modalClass.isShowPopUp"
+[executeFunctionOnClose]="closeModal.bind(this)" [modalType]="modalClass.modalType" [size]="modalClass.size">
+    <ng-container modal-body>
+      <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.NUTRITIONAL_GOALS_REGISTER">
+        <app-nutritional-register *ngIf="modalClass.isShowPopUp === true" [executeOnSubmitFunction]="executeAfterSubmit.bind(this)"></app-nutritional-register>
+      </ng-container>
+    </ng-container>
+</app-modal-popup>

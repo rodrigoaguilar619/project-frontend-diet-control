@@ -1,0 +1,30 @@
+<div [ngStyle]="{textAlign: 'center'}">
+  <button class="btn btn-primary" type="button" (click)="openModalRegisterFoods()">Register foods</button>
+</div>
+<br>
+<div [ngStyle]="{width: '100%'}">
+  <app-datatable-prime-base
+    [columns]="foodListColumns"
+    [values]="foodListValues"
+    title="Food list"
+    [buttonsOptions]="buttonsOptions"
+    buttonsOptionsWidth="120px"
+  >
+  </app-datatable-prime-base>
+</div>
+
+<app-modal-popup [title]="modalClass.title" [text]="modalClass.text" [isShowPopUp]="modalClass.isShowPopUp"
+[executeFunctionOnConfirm]="modalClass.executeFunction.bind(this)" [executeFunctionOnCancel]="closeModal.bind(this)"
+[executeFunctionOnClose]="closeModal.bind(this)" [modalType]="modalClass.modalType" [size]="modalClass.size">
+    <ng-container modal-body>
+      <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.FOOD_LIST_REGISTER_MULTIPLE">
+        <app-food-register-multiple *ngIf="modalClass.isShowPopUp === true" [executeOnSubmitFunction]="executeAfterSubmit.bind(this)"></app-food-register-multiple>
+      </ng-container>
+      <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.FOOD_EDIT">
+        <app-food-add-edit *ngIf="modalClass.isShowPopUp === true" [idFood]="idFoodEdit" [executeOnSubmitFunction]="executeAfterSubmit.bind(this)"></app-food-add-edit>
+      </ng-container>
+      <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.FOOD_DELETE">
+        <div>{{modalClass.contentText}}</div>
+      </ng-container>
+    </ng-container>
+</app-modal-popup>

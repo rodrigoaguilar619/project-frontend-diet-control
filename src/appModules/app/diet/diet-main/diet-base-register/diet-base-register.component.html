@@ -1,0 +1,23 @@
+<app-datatable-prime-base
+  [columns]="foodResumeColumns"
+  [values]="foodResumeValues"
+  [sectionsProperties]="dataTableSectionsProperties"
+></app-datatable-prime-base>
+<br>
+<br>
+<app-diet-foods-resume [foodListValues]="foodListValues" [totalValues]="foodResumeValues"></app-diet-foods-resume>
+<br>
+<div [ngStyle]="{textAlign: 'center'}">
+  <button class="btn btn-primary" type="button" (click)="openModalRegisterDietBase()">Register Diet base</button>
+</div>
+<br>
+
+<app-modal-popup [title]="modalClass.title" [text]="modalClass.text" [isShowPopUp]="modalClass.isShowPopUp"
+[executeFunctionOnClose]="closeModal.bind(this)" [modalType]="modalClass.modalType" [size]="modalClass.size">
+    <ng-container modal-body>
+      <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.MODAL_REGISTER_DIET_BASE">
+        <app-diet-base-add-edit *ngIf="modalClass.isShowPopUp === true" [executeOnSubmitFunction]="executeAfterSubmit.bind(this)">
+        </app-diet-base-add-edit>
+      </ng-container>
+    </ng-container>
+</app-modal-popup>

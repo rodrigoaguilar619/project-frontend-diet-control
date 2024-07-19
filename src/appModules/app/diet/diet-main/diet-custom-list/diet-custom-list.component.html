@@ -1,0 +1,36 @@
+<div [ngStyle]="{textAlign: 'center'}">
+  <button class="btn btn-primary" type="button" (click)="openModalAddDietCustom()">Add new diet</button>
+</div>
+<br>
+<app-datatable-prime-base
+  [columns]="foodListColumns"
+  [values]="foodListValues"
+  title="Diet custom list"
+  [buttonsOptions]="buttonsOptions"
+  buttonsOptionsWidth="120px"
+></app-datatable-prime-base>
+<br>
+<div [ngStyle]="{'textAlign': 'center'}"><h4>DIETS CUSTOM DETAIL</h4></div>
+<div class="row_columns_two">
+  <div *ngFor="let dietCustomDetail of dietsCustomDetailListValues; let i = index" [ngStyle]="{'padding-bottom': '3px'}">
+    <app-diet-custom-detail-resume [dietCustomDetail]="dietCustomDetail" [executeOnSubmitFunction]="executeAfterSubmit.bind(this)"></app-diet-custom-detail-resume>
+  </div>
+</div>
+
+<app-modal-popup [title]="modalClass.title" [text]="modalClass.text" [isShowPopUp]="modalClass.isShowPopUp"
+  [executeFunctionOnConfirm]="modalClass.executeFunction.bind(this)" [executeFunctionOnCancel]="closeModal.bind(this)"
+  [executeFunctionOnClose]="closeModal.bind(this)" [modalType]="modalClass.modalType" [size]="modalClass.size">
+      <ng-container modal-body>
+        <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.MODAL_ADD_EDIT_DIET_CUSTOM">
+          <app-diet-custom-add-edit *ngIf="modalClass.isShowPopUp === true"
+            [idDietCustom]="idDietCustomEdit" [executeOnSubmitFunction]="executeAfterSubmit.bind(this)">
+          </app-diet-custom-add-edit>
+        </ng-container>
+        <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.MODAL_RESUME_DIET_CUSTOM">
+          <app-diet-custom-details [idDietCustom]="idDietCustomEdit"></app-diet-custom-details>
+        </ng-container>
+        <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.MODAL_DELETE_DIET_CUSTOM">
+          <div>{{modalClass.contentText}}</div>
+        </ng-container>
+      </ng-container>
+  </app-modal-popup>

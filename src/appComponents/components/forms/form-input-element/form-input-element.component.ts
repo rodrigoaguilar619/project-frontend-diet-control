@@ -1,0 +1,88 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { InputElementCalendarPropsI, InputElementMaskPropsI, InputElementPropsListI, InputElementSelectPropsI, InputElementTextPropsI } from '../../../../appComponents/@types/components/inputs/inputElement';
+import { InputElementEnum, InputMaskEnum } from '../../../catalogs/enumCatalog';
+
+@Component({
+  selector: 'app-form-input-element, [app-input-element]',
+  templateUrl: './form-input-element.component.html'
+})
+export class FormInputElementComponent implements OnInit {
+
+  public inputElementEnum = InputElementEnum;
+  public inputMaskEnum =InputMaskEnum;
+  @Input() inputProperties!: InputElementPropsListI;
+  @Input() valueFormControl!: FormControl;
+
+  public date: Date | null = null;
+
+  //@Input() formGroup: FormGroup;
+
+  constructor() {
+
+    //this.formGroup = new FormGroup({});
+  }
+
+  ngOnInit(): void {
+
+    if(this.valueFormControl === undefined) {
+      throw new Error('formControl is required');
+    }
+
+    if(this.inputProperties === undefined) {
+      throw new Error('inputProperties is required');
+    }
+
+    if(this.inputProperties.isReadOnly === true)
+      this.valueFormControl.disable();
+
+    this.valueFormControl.valueChanges.subscribe(value => {
+      this.executeOnChange(value, this.inputProperties?.executeOnChange)
+    });
+
+    if(this.inputProperties?.inputType === this.inputElementEnum.CALENDAR) {
+      this.date = this.valueFormControl.value !== undefined && this.valueFormControl.value !== null ? new Date(this.valueFormControl.value) : null;
+    }
+  }
+
+  executeOnChange (valueFormControl: FormControl, executeAfterChange?: Function) {
+    
+    if (executeAfterChange !== undefined) {
+      executeAfterChange(valueFormControl);
+    }
+  }
+
+  eventInputCalendarChange(value: any) {
+    this.valueFormControl.setValue(value !== undefined && value !== null ? new Date(value).getTime() : null);
+    this.valueFormControl.markAsTouched();
+  }
+
+  eventInputFileChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.valueFormControl.setValue(input.files[0]);
+    }
+    else {
+      this.valueFormControl.setValue(null);
+    }
+  }
+
+  onKeyDown(formControl: FormControl) {
+    formControl.markAsTouched();
+  }
+
+  getCalendarProps() {
+    return (this.inputProperties as InputElementCalendarPropsI);
+  }
+
+  getInputMaskProps() {
+    return (this.inputProperties as InputElementMaskPropsI);
+  }
+
+  getInputSelectProps() {
+    return (this.inputProperties as InputElementSelectPropsI);
+  }
+
+}
+
+export default FormInputElementComponent;

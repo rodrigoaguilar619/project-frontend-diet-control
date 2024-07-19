@@ -1,0 +1,21 @@
+<h2>Datatable Data</h2>
+<app-datatable-prime-base [columns]="columns" [values]="values" [title]="'DataTable list'"tableWidth="1150px"
+[buttonsOptions]="buttonsOptions" buttonsOptionsWidth="120px">
+</app-datatable-prime-base>
+<div>modalClass.isShowPopUp: {{modalClass.isShowPopUp}}</div>
+<div>formIdSelected: {{formIdSelected}}</div>
+<app-modal-popup [title]="modalClass.title" [text]="modalClass.text" [isShowPopUp]="modalClass.isShowPopUp"
+[executeFunctionOnConfirm]="modalClass.executeFunction.bind(this)" [executeFunctionOnClose]="closeModal.bind(this)"
+[executeFunctionOnCancel]="cancelConfirmation.bind(this)" [modalType]="modalClass.modalType" [size]="modalClass.size">
+    <ng-container modal-body>
+      <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.ROW_TEXT">
+       <div>{{modalClass.contentText}}</div>
+      </ng-container>
+      <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.CONTAINER_MODULE">
+        <app-form-container [formId]="formIdSelected"></app-form-container>
+      </ng-container>
+      <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.CONFIRMATION_TEXT">
+        <div>Modal confirmation context</div>
+      </ng-container>
+    </ng-container>
+  </app-modal-popup>

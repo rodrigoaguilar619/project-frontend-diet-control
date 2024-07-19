@@ -1,0 +1,6 @@
+<app-form-input-containers [inputContainers]="formContainers" [formGroup]="formGroup"></app-form-input-containers>
+<app-form-input-containers [inputContainers]="formContainers2" [formGroup]="formGroup2"></app-form-input-containers>
+<br>
+<div><app-button-submit [title]="'Submit Form'" [clickFunction]="onSubmit.bind(this)"></app-button-submit></div>
+<div>{{buildJsonFromFormGroup("Form Group 1:", formGroup)}}</div>
+<div>{{buildJsonFromFormGroup("Form Group 2:", formGroup2)}}</div>

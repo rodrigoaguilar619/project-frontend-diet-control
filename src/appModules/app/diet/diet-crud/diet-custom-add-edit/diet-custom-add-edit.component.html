@@ -1,0 +1,26 @@
+<p-accordion>
+    <p-accordionTab header="DIET FOOD BASE">
+        <app-diet-foods-resume [foodListValues]="foodListValues" [totalValues]="foodResumeValues"></app-diet-foods-resume>
+    </p-accordionTab>
+</p-accordion>
+<br>
+<div class="resume-diet">
+    <app-datatable-prime-base
+  [columns]="totalDietCustomResumeColumns"
+  [values]="totalDietCustomResumeValues"
+  [sectionsProperties]="dataTableSectionsProperties"
+></app-datatable-prime-base>
+</div>
+<br>
+<div [ngStyle]="{'display': 'flex', 'justify-content': 'center'}">
+    <div [ngStyle]="{'width': '300px'}">
+        <app-form-input-container [inputContainer]="dietRecipeData" [formGroup]="formGroupRecipe"></app-form-input-container>
+    </div>
+</div>
+<br>
+<app-form-input-dynamic-row [inputContainer]="dietFoodListColumns" [formArray]="formArray" [minRows]="1"
+[executeOnAddRowFunction]="executeOnAddArrowCustom.bind(this)" [executeOnRemoveRowFunction]="executeOnRemoveArrowCustom.bind(this)">
+</app-form-input-dynamic-row>
+<br>
+<app-button-submit title="Register Diet Custom" [clickFunction]="onSubmit.bind(this)"></app-button-submit>
+<br>

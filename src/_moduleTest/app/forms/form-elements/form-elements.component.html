@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-auto" [ngStyle]="{'width': '20%'}">
+      <div>Data text tests:</div>
+      <app-form-input-element [inputProperties]="columnInputTextProps" [valueFormControl]="valueControlText"></app-form-input-element>
+    </div>
+    <div class="col-md-auto" [ngStyle]="{'width': '20%'}">
+      <div>Data select tests:</div>
+      <app-form-input-element [inputProperties]="columnInputSelectProps" [valueFormControl]="valueControlSelect"></app-form-input-element>
+    </div>
+    <div class="col-md-auto" [ngStyle]="{'width': '20%'}">
+      <div>Data calendar testss:</div>
+      <app-form-input-element [inputProperties]="columnInputCalendarProps" [valueFormControl]="valueControlCalendar"></app-form-input-element>
+    </div>
+    <div class="col-md-auto" [ngStyle]="{'width': '20%'}">
+      <div>Data calendar format yy/mm/dd: tests:</div>
+      <app-form-input-element [inputProperties]="columnInputCalendartFormatProps" [valueFormControl]="valueControlCalendarFormat"></app-form-input-element>
+    </div>
+    <div class="col-md-auto" [ngStyle]="{'width': '20%'}">
+      <div>Data text area tests:</div>
+      <app-form-input-element [inputProperties]="columnInputTextAreaProps" [valueFormControl]="valueControlTextArea"></app-form-input-element>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-auto" [ngStyle]="{'width': '50%'}">
+      <div>Data file tests:</div>
+      <app-form-input-element [inputProperties]="columnInputFileProps" [valueFormControl]="valueControlFile"></app-form-input-element>
+    </div>
+    <div class="col-md-auto" [ngStyle]="{'width': '25%'}">
+      <div>Data mask number tests:</div>
+      <app-form-input-element [inputProperties]="columnInputMaskNumberProps" [valueFormControl]="valueControlMaskNumber"></app-form-input-element>
+    </div>
+    <div class="col-md-auto" [ngStyle]="{'width': '25%'}">
+      <div>Data mask decimal tests:</div>
+      <app-form-input-element [inputProperties]="columnInputMaskDecimalProps" [valueFormControl]="valueControntrolMaskDecimal"></app-form-input-element>
+    </div>
+  </div>
+</div>
+<div>Form Controls: {{buildJsonFromFormControls()}}</div>

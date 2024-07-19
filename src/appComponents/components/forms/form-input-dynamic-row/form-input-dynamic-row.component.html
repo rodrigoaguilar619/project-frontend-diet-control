@@ -1,0 +1,28 @@
+<div>
+    @if (formArray.length === 0) {
+        <div [ngStyle]="{'display': 'flex', 'justify-content': 'center', 'align-items': 'center'}">
+            <button class="btn btn-primary pull-right" (click)="addRow()"><em class="fa fa-plus"></em></button>
+        </div>
+    }
+    @else {
+        <div class="row" [ngStyle]="{'border-bottom': '1px solid black', 'margin-top': '10px'}"
+            *ngFor="let formGroup of formArray.controls; let i = index">
+            <div [ngStyle]="{'display': 'inline-flex', 'margin-bottom': '12px'}">
+                <div [ngStyle]="{'width': '90%'}">
+                    <app-form-input-container [inputContainer]="inputContainer" [formGroup]="castFormGoup(formGroup)"></app-form-input-container>
+                </div>
+                <div [ngStyle]="{'width': '10%'}">
+                    <div [ngStyle]="{'visibility': 'hidden'}">____</div>
+                    <div [ngStyle]="{'display': 'flex', 'gap': '5px', 'justify-content': 'center', 'align-items': 'center'}">
+                        @if (isSetButtonDelete(i)) {
+                            <button class="btn btn-primary pull-right" (click)="removeRow(i)"><em class="far fa-trash-alt"></em></button>
+                        }
+                        @if (isSetButtonAdd(i)) {
+                            <button class="btn btn-primary pull-right" (click)="addRow()"><em class="fa fa-plus"></em></button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,22 @@
+<app-datatable-prime-base
+  [columns]="dietCustomDetailColumns"
+  [values]="dietCustomDetailValues"
+  [title]="dietCustomDetail.recipe !== undefined ? dietCustomDetail.recipe.title : ''"
+  [sectionsProperties]="dataTableSectionsProperties"
+></app-datatable-prime-base>
+  <app-buttons-options [ngStyle]="{'padding-top': '3px', 'display': 'flex', 'justify-content': 'center', 'align-items': 'center', 'gap': '5px'}"
+    [buttonsOptions]="buttonsOptions"></app-buttons-options>
+
+<app-modal-popup [title]="modalClass.title" [text]="modalClass.text" [isShowPopUp]="modalClass.isShowPopUp"
+  [executeFunctionOnClose]="closeModal.bind(this)" [modalType]="modalClass.modalType" [size]="modalClass.size">
+      <ng-container modal-body>
+        <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.MODAL_ADD_EDIT_DIET_CUSTOM">
+          <app-diet-custom-add-edit *ngIf="modalClass.isShowPopUp === true"
+            [idDietCustom]="idDietCustomEdit" [executeOnSubmitFunction]="executeAfterSubmit.bind(this)">
+          </app-diet-custom-add-edit>
+        </ng-container>
+        <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.MODAL_RESUME_DIET_CUSTOM">
+          <app-diet-custom-details [idDietCustom]="idDietCustomEdit"></app-diet-custom-details>
+        </ng-container>
+      </ng-container>
+  </app-modal-popup>

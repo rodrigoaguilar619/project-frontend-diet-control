@@ -1,0 +1,7 @@
+<div>Form dynamic row</div>
+<app-form-input-dynamic-row [inputContainer]="inputContainer" [formArray]="formArray"></app-form-input-dynamic-row>
+<div [ngStyle]="{'display': 'flex', 'gap': '5px', 'justify-content': 'right', 'align-items': 'center', 'margin-top': '10px'}">
+    <app-button-submit [title]="'untouch Form'" [clickFunction]="setUntouched.bind(this)"></app-button-submit>
+    <app-button-submit [title]="'Submit Form'" [clickFunction]="onSubmit.bind(this)"></app-button-submit>
+</div>
+<div>{{buildJsonFromFormArray("Form Arrays:", formArray)}}</div>

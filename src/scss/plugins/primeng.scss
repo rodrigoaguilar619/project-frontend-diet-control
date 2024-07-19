@@ -1,0 +1,62 @@
+//---------------- PRIME CSS -----------------------
+
+.pi.pi-search {
+    padding-right: 5px;
+    padding-top: 2px;
+  }
+  
+  .p-component {
+    font-size: 12px;
+  }
+  
+  .p-datatable .p-datatable-tbody > tr > td, .p-datatable .p-datatable-thead > tr > th {
+    padding: 0.280rem 0.425rem;
+    border: 1px solid #c8c8c8 !important;
+  }
+  
+  .p-accordion.p-component {
+    background-color: #f4f4f4 !important;
+  }
+  
+  .p-inputtext, .p-inputnumber, .p-dropdown, .p-calendar, .p-element.p-inputwrapper   {
+    width: 100%;
+  }
+  
+  .p-datepicker {
+    padding: 0.5rem;
+  }
+  
+  .p-datepicker table {
+    font-size: inherit;
+  }
+  
+  .p-datepicker .p-datepicker-header {
+    padding: unset;
+  }
+  
+  .p-datepicker table td {
+    padding: unset;
+  }
+  
+  .p-datepicker table td > span {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .p-datepicker .p-datepicker-header {
+    height: 20px;
+  }
+  
+  .p-inputtext {
+    border: var(--cui-border-width) solid var(--cui-border-color);
+  }
+
+//--------------- TOAST CSS -----------------------
+
+.p-toast .p-toast-message .p-toast-message-content .p-toast-message-icon {
+    font-size: 1rem;
+  }
+  
+  .p-toast .p-toast-message .p-toast-icon-close {
+    border-width: 0;
+  }

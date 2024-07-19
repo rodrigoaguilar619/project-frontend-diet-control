@@ -1,0 +1,30 @@
+<div [ngStyle]="{textAlign: 'center'}">
+  <button class="btn btn-primary" type="button" (click)="openModalAddRecipe()">Register recipe</button>
+</div>
+<br>
+<div [ngStyle]="{width: '100%', 'display': 'flex', 'gap': '5px', 'justify-content': 'center', 'align-items': 'center'}">
+  <app-datatable-prime-base
+    [columns]="recipeListColumns"
+    [values]="recipeListValues"
+    title="Recipe list"
+    [buttonsOptions]="buttonsOptions"
+    buttonsOptionsWidth="120px"
+  >
+  </app-datatable-prime-base>
+</div>
+
+<app-modal-popup [title]="modalClass.title" [text]="modalClass.text" [isShowPopUp]="modalClass.isShowPopUp"
+[executeFunctionOnConfirm]="modalClass.executeFunction.bind(this)" [executeFunctionOnCancel]="closeModal.bind(this)"
+[executeFunctionOnClose]="closeModal.bind(this)" [modalType]="modalClass.modalType" [size]="modalClass.size">
+    <ng-container modal-body>
+      <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.RECIPE_ADD">
+        <app-recipe-add-edit *ngIf="modalClass.isShowPopUp === true" [executeOnSubmitFunction]="executeAfterSubmit.bind(this)"></app-recipe-add-edit>
+      </ng-container>
+      <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.RECIPE_EDIT">
+        <app-recipe-add-edit *ngIf="modalClass.isShowPopUp === true" [idRecipe]="idRecipeEdit" [executeOnSubmitFunction]="executeAfterSubmit.bind(this)"></app-recipe-add-edit>
+      </ng-container>
+      <ng-container *ngIf="modalClass.moduleToShow === moduleEnum.RECIPE_DELETE">
+        <div>{{modalClass.contentText}}</div>
+      </ng-container>
+    </ng-container>
+</app-modal-popup>
