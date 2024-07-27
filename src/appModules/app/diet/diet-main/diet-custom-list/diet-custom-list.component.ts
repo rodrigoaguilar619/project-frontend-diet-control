@@ -106,8 +106,8 @@ export class DietCustomListComponent extends GenericParentComponent {
     this.routingInstance.openUrlNewWindow(SUB_PATHS.DIET.DIET_CUSTOM_DETAILS.fullPath, { idDietCustom: rowData.id, recipeTitle: rowData.recipeTitle });
   }
 
-  deleteDietCustom(rowData: any) {
-    this.deleteDietCustomService(rowData.id).then(() => {
+  deleteDietCustom(id: number) {
+    this.deleteDietCustomService(id).then(() => {
       return this.getDietCustomListService();
     })
     .then(() => {

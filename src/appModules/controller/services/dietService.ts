@@ -77,7 +77,7 @@ export class DietService {
 
     deleteDietCustomService(idDietCustom: number) {
 
-      let debugClass = generateDebugClassService("Get Diets Custom Data");
+      let debugClass = generateDebugClassService("Delete Diet Custom Data");
 
       let params = { id: idDietCustom };
       let url = API_DIET_CUSTOM_DELETE;
