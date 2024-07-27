@@ -5,9 +5,9 @@
 $enable-deprecation-messages: false !default;
 
 body {
-    font-size: 12px;
+    font-size: 12px !important;
 }
 
 .btn {
-    --cui-btn-font-size: 12px;
+    --cui-btn-font-size: 12px !important;
 }

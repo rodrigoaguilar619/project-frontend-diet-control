@@ -6,7 +6,7 @@
   }
   
   .p-component {
-    font-size: 12px;
+    font-size: 12px !important;
   }
   
   .p-datatable .p-datatable-tbody > tr > td, .p-datatable .p-datatable-thead > tr > th {
@@ -57,3 +57,18 @@
   .p-toast .p-toast-message .p-toast-icon-close {
     border-width: 0;
   }
+
+
+//--------------- ACCORDION CSS -----------------------
+.p-accordion-header {
+  background-color: #367AF6;
+}
+
+.p-accordion-header a {
+    color: white;
+    text-decoration: unset;
+}
+
+.p-accordion-header a:hover {
+    text-decoration: unset;
+}

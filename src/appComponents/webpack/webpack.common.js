@@ -26,7 +26,7 @@ function getCommonConfig(enviroment, args) {
         },
         output: {
             path: path.resolve(args.dirname, '../../dist/dist_' + enviroment),
-            filename: 'bundles/[name].[hash].bundle.js',
+            filename: 'bundles/[name].[fullhash].bundle.js',
             chunkFilename: 'bundles/[name].chunk.js',
         },
         resolve: {
@@ -46,7 +46,7 @@ function getCommonConfig(enviroment, args) {
                 {
                     test: /\.(sa|sc|c)ss$/,
                     use: [
-                        enviroment === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+                        'style-loader',
                         'css-loader',    // Translates CSS into CommonJS
                         'sass-loader'    // Compiles Sass to CSS
                     ],
