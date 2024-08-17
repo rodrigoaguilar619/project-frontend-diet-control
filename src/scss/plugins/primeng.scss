@@ -72,3 +72,9 @@
 .p-accordion-header a:hover {
     text-decoration: unset;
 }
+
+//--------------- DATATABLE CSS -----------------------
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+  background-color: rgb(155, 209, 253) !important;
+  color: white !important;
+}
