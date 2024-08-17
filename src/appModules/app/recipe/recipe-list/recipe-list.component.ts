@@ -97,6 +97,9 @@ export class RecipeListComponent extends GenericParentComponent {
 
     this.deleteRecipeService(idRecipe).then(() => {
       this.getRecipeListService();
+    })
+    .then(() => {
+      this.closeModal();
     });
   }
 
