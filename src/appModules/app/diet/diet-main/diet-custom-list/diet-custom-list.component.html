@@ -10,12 +10,6 @@
   buttonsOptionsWidth="120px"
 ></app-datatable-prime-base>
 <br>
-<!-- <div [ngStyle]="{'textAlign': 'center'}"><h4>DIETS CUSTOM DETAIL</h4></div>
-<div class="row_columns_two">
-  <div *ngFor="let dietCustomDetail of dietsCustomDetailListValues; let i = index" [ngStyle]="{'padding-bottom': '3px'}">
-    <app-diet-custom-detail-resume [dietCustomDetail]="dietCustomDetail" [executeOnSubmitFunction]="executeAfterSubmit.bind(this)"></app-diet-custom-detail-resume>
-  </div>
-</div> -->
 
 <app-modal-popup [title]="modalClass.title" [text]="modalClass.text" [isShowPopUp]="modalClass.isShowPopUp"
   [executeFunctionOnConfirm]="modalClass.executeFunction.bind(this)" [executeFunctionOnCancel]="closeModal.bind(this)"

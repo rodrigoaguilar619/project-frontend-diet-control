@@ -22,7 +22,7 @@ enum ModuleDietCustomDataEnum {
   templateUrl: './diet-custom-list.component.html'
 })
 export class DietCustomListComponent extends GenericParentComponent {
-  
+
   public foodListValues: any = [];
   public foodListColumns = DIET_CUSTOM_FOOD_COLUMNS;
   public dietsCustomDetailListValues: any = [];
@@ -163,7 +163,6 @@ export class DietCustomListComponent extends GenericParentComponent {
 
             debug(debugClass, "result", dietCustomData);
             this.foodListValues = dietCustomData.data.diets;
-            return;
 
         }))
         .catch((error) => {
@@ -181,23 +180,20 @@ export class DietCustomListComponent extends GenericParentComponent {
 
             debug(debugClass, "result", dietCustomDetailData);
             this.dietsCustomDetailListValues = this.normalizeArrayList(dietCustomDetailData.data.dietCustomDetailList);
-            
+
             this.dietsCustomDetailListValues.map((diet: any) => {
 
               diet.foods.map((food: any) => {
-    
+
                 let descriptionMaxsize = 22;
                 let description = food[DIET_FOOD_COLUMNS_IDS.DESCRIPTION];
-    
+
                 if (description.length > descriptionMaxsize)
                   description = description.substring(0, descriptionMaxsize);
-    
+
                 food[DIET_FOOD_COLUMNS_IDS.DESCRIPTION] = description + "...";
               });
             });
-
-            return;
-
         }))
         .catch((error) => {
             this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
@@ -214,7 +210,6 @@ export class DietCustomListComponent extends GenericParentComponent {
 
             debug(debugClass, "result", dietCustomData);
             this.foodListValues = dietCustomData.data.diets;
-            return;
 
         }))
         .catch((error) => {

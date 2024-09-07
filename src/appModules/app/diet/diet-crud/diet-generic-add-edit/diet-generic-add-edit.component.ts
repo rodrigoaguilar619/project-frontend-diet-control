@@ -37,7 +37,7 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
   public foodColumnsIds = FOOD_ELEMENT_COLUMNS_IDS;
   public formArray: FormArray;
   public formGroupRecipe: FormGroup;
-  
+
   constructor(injector: Injector) {
     super(injector);
     this.dietService = injector.get(DietService);
@@ -111,8 +111,6 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
           (column.inputProps as InputElementSelectPropsI).options = catalogFoodData.data.catalogs;
         }
       });
-
-      return;
     }));
 
   }
@@ -198,7 +196,7 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
       }
       else if (tagId === DIET_FOOD_REGISTER_DATA_IDS.PORTIONS) {
         formGroup.controls[DIET_FOOD_REGISTER_DATA_IDS.UNITIES].setValue(
-          Number(food.unityGrams) !== 0.0 
+          Number(food.unityGrams) !== 0.0
             ? ((portions * food.quantityGrams) / food.unityGrams).toFixed(2) : 0.0, {emitEvent:false}
           );
       }
@@ -212,8 +210,6 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
       });
 
       this.updateDietFoodsTotals();
-      
-      return;
     });
   }
 
@@ -243,7 +239,7 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
       dietFoodTotalUpdatedObject[DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FIBER] += Number(formControl.controls[DIET_FOOD_REGISTER_DATA_IDS.FIBER].value);
       dietFoodTotalUpdatedObject[DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_CHOLESTEROL] += Number(formControl.controls[DIET_FOOD_REGISTER_DATA_IDS.CHOLESTEROL].value);
       dietFoodTotalUpdatedObject[DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_SODIUM] += Number(formControl.controls[DIET_FOOD_REGISTER_DATA_IDS.SODIUM].value);
-      
+
     });
     this.dietFoodTotalUpdatedValues = dietFoodTotalUpdatedObject;
     this.dietFoodTotalFormatedValues = this.getDietFoodsTotalsFormatted();
