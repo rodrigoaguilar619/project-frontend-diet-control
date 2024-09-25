@@ -1,4 +1,12 @@
 export const SUB_PATHS = {
+    LOGIN: {
+      path: "login",
+      fullPath: "/login"
+    },
+    LOGOUT: {
+      path: "logout",
+      fullPath: "/logout"
+    },
     ADMIN: {
         path: "admin",
         fullPath: "/admin",

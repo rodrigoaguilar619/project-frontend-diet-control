@@ -1,4 +1,5 @@
 export const _APP_ENVIRONMENT_: string | undefined = process.env.NODE_ENV;                          //environment (development|production)
+export const _APP_LOGIN_TITLE_: string = process.env.APP_LOGIN_TITLE ?? "Login";        //app title to shoe on header
 export const _APP_TITLE_: string = process.env.APP_TITLE ?? "TITLE DEFAULT";            //app title to shoe on header
 export const _APP_CONTEXT_PATH_: string = process.env.APP_CONTEXT_PATH ?? "/";          //context of project. Ex: www.project.com
 export const _APP_URL_CONTEXT_PATH_: string = process.env.APP_URL_CONTEXT_PATH ?? "/";  //context path of project. Ex: https://www.project.com

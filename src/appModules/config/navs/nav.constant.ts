@@ -31,5 +31,11 @@ export const navItems: INavData[] = [
     url: SUB_PATHS.DIET.DIET_CUSTOM_LIST.fullPath,
     icon: 'fas fa-hamburger',
     attributes: { disabled: false },
-  }
+  },
+  {
+    name: 'Logout',
+    url: SUB_PATHS.LOGOUT.fullPath,
+    icon: 'fas fa-sign-out-alt',
+    attributes: { disabled: false },
+  },
 ];

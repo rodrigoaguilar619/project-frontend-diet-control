@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { _APP_SECURITY_ENABLED_ } from '../../catalogs/constantCatalog';
+import { _APP_ROUTE_START_, _APP_SECURITY_ENABLED_ } from '../../catalogs/constantCatalog';
 import { ComponentTypeEnum, HttpMethodEnum } from '../../catalogs/enumCatalog';
 import DebugClass from '../../classes/debugClass';
 import { debug, debugError } from '../../utils/webUtils/debugUtil';
 import { HttpStatusCode } from 'axios';
 import { ToastPrimeInstance } from '../messages/toastPrimeInstance';
 import { HttpInstance } from './httpIntance';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class HttpManagerInstance {
 
   private axiosInstance: any;
 
-  constructor(private httpUtil: HttpInstance, private toastPrimeInstance: ToastPrimeInstance) {
+  constructor(private router: Router, private httpUtil: HttpInstance, private toastPrimeInstance: ToastPrimeInstance) {
     this.axiosInstance = this.httpUtil.getAxiosInstance();
   }
 
@@ -43,7 +44,7 @@ export class HttpManagerInstance {
         if (!(error instanceof Error)) {
           error = new Error(error);
         }
-        
+
         return Promise.reject(error);
       });
   }
@@ -54,15 +55,13 @@ export class HttpManagerInstance {
   * @param {any} store - The store object for managing state
   * @param {DebugClass} debugClass - The debug class for logging errors
   * @param {any} error - The error object to be managed
-  * @return {void} 
+  * @return {void}
   */
   manageAlertModuleError(_componentType: ComponentTypeEnum, debugClass: DebugClass, error: any) {
     try {
-  
+
         let errorMessage = "";
-  
         if (error.response !== undefined) {
-            
             if(error.response.status === HttpStatusCode.UnprocessableEntity) {
                 errorMessage = error.response.data.message;
             }
@@ -73,7 +72,7 @@ export class HttpManagerInstance {
                 errorMessage = "Error internal server";
             }
             else if(error.response.status === HttpStatusCode.Unauthorized && _APP_SECURITY_ENABLED_) {
-                //redirectSessionExpired(dispatch, true);
+              this.redirectSessionExpired();
             }
             else
                 errorMessage = "Error with status: " + error.response.status;
@@ -83,7 +82,7 @@ export class HttpManagerInstance {
         }
         else
             errorMessage = "Error unhandled";
-  
+
         debugError(debugClass, "<" + errorMessage + ">", error);
         this.toastPrimeInstance.showError("Error " + (error.response?.status !== undefined ? error.response.status : ""), errorMessage, error);
     }
@@ -91,16 +90,20 @@ export class HttpManagerInstance {
         debugError(debugClass, "Error manage module", errorCatch);
     }
   }
-  
-  /*export function redirectLogout(dispatch: any, isRedirectLogout: boolean) {
-    dispatch(setRedirectLogoutAction(isRedirectLogout));
+
+  redirectMainRoute() {
+    this.router.navigate([_APP_ROUTE_START_]);
   }
-  
-  export function redirectSessionExpired(dispatch: any, isSessionExpired: boolean) {
-    dispatch(setSessionExpiredAction(isSessionExpired));
+
+  redirectLogout() {
+    this.router.navigate(['login'], { queryParams: { isLogOut: true } });
   }
-  
-  export function setRedirectSessionRestart(dispatch: any) {
-    dispatch(setRedirectSessionRestartAction());
-  }*/
+
+  redirectLogin() {
+    this.router.navigate(['login']);
+  }
+
+  redirectSessionExpired() {
+    this.router.navigate(['login'], { queryParams: { isSessionExpiredApp: true } });
+  }
 }
