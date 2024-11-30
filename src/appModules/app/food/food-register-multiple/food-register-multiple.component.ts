@@ -1,11 +1,12 @@
 import { Component, Injector } from '@angular/core';
 import { FoodService } from '../../../controller/services/food.service';
-import { ADMIN_FOOD_COLUMN_DATA } from '../food-constants';
-import { FormArray } from '@angular/forms';
+import { ADMIN_FOOD_COLUMN_DATA, ADMIN_FOOD_COLUMN_IDS } from '../food-constants';
+import { FormArray, FormGroup } from '@angular/forms';
 import { GenericParentComponent } from '@app/appComponents/_generic/generic-parent/generic-parent.component';
 import { buildFormArrayFromContainer } from '@app/appComponents/utils/dataUtils/formDataUtil';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import axios from 'axios';
+import { calculateCosts, initFormFoodEvents } from '@app/appModules/utils/moduleUtils/FoodRegisterUtil';
 
 @Component({
   selector: 'app-food-register-multiple',
@@ -20,6 +21,10 @@ export class FoodRegisterMultipleComponent extends GenericParentComponent {
     super(injector);
 
     this.formArray = buildFormArrayFromContainer(this.formData);
+
+    this.formArray.controls.forEach((formGroup: any) => {
+      initFormFoodEvents(formGroup);
+    });
   }
 
   onSubmit() {
@@ -48,7 +53,6 @@ export class FoodRegisterMultipleComponent extends GenericParentComponent {
         this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
       });
   }
-
 }
 
 export default FoodRegisterMultipleComponent;

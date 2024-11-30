@@ -19,6 +19,9 @@ export const DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS = {
   TOTAL_FIBER: "totalFiber",
   TOTAL_CHOLESTEROL: "totalCholesterol",
   TOTAL_SODIUM: "totalSodium",
+  TOTAL_COST_GRAM: "totalCostGram",
+  TOTAL_COST_CALORIE: "totalCostCalorie",
+  TOTAL_COST_PROTEIN: "totalCostProtein"
 }
 
 export const DIET_CUSTOM_FOOD_TOTALS_RESUME_COLUMNS_IDS = {
@@ -54,72 +57,87 @@ export const DIET_FOOD_TOTALS_RESUME_COLUMNS: DataTablePropsI[] = [
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_QUANTITY_GRAMS, header: 'Total Grams', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_CALORIES, header: 'Total Calories', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_PROTEINS, header: 'Total Proteins', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_CARBOHYDRATES, header: 'Total Carb.', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_CARB_SUGAR, header: 'Total Carb Sugar', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_CARB_SUGAR_ADDED, header: 'Total Sugar Added', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT, header: 'Total Fat', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT_MONO, header: 'Total Fat Mono', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT_POLI, header: 'Total Fat Poli', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT_SAT, header: 'Total Fat Sat', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT_TRANS, header: 'Total Fat Trans', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FIBER, header: 'Total Fiber', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_CHOLESTEROL, header: 'Total Cholesterol', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_SODIUM, header: 'Total Sodium', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
+  },
+  { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_GRAM, header: 'Total Cost Grams', tableConfig: {
+    styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
+    styleColumnCellCss: { textAlign: "center" } },
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true, addSymbolCurrency: true } }
+  },
+  { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_CALORIE, header: 'Total Cost Calories', tableConfig: {
+    styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
+    styleColumnCellCss: { textAlign: "center" } },
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true, addSymbolCurrency: true } }
+  },
+  { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_PROTEIN, header: 'Total Cost Proteins', tableConfig: {
+    styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
+    styleColumnCellCss: { textAlign: "center" } },
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true, addSymbolCurrency: true } }
   },
 ];
 
@@ -171,31 +189,46 @@ export const DIET_CUSTOM_TOTALS_RESUME_COLUMNS: DataTablePropsI[] = [
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT_POLI, header: 'Total Fat Poli', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT_SAT, header: 'Total Fat Sat', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT_TRANS, header: 'Total Fat Trans', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FIBER, header: 'Total Fiber', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_CHOLESTEROL, header: 'Total Cholesterol', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
-    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } } 
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
   { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_SODIUM, header: 'Total Sodium', tableConfig: {
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } } ,
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
+  },
+  { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_GRAM, header: 'Total Cost Grams', tableConfig: {
+    styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
+    styleColumnCellCss: { textAlign: "center" } },
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
+  },
+  { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_CALORIE, header: 'Total Cost Calories', tableConfig: {
+    styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
+    styleColumnCellCss: { textAlign: "center" } },
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
+  },
+  { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_PROTEIN, header: 'Total Cost Proteins', tableConfig: {
+    styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
+    styleColumnCellCss: { textAlign: "center" } },
     maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
   },
 ];
@@ -284,7 +317,22 @@ export const DIET_FOOD_COLUMNS: DataTablePropsI[] = [
     styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
     styleColumnCellCss: { textAlign: "center" } },
     maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
-  }
+  },
+  { field: DIET_FOOD_COLUMNS_IDS.COST_GRAM, header: 'Cost Grams', tableConfig: {
+    styleColumnHeaderCss: { minWidth: "80px", textAlign: "center" },
+    styleColumnCellCss: { textAlign: "center" } },
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true, addSymbolCurrency: true } }
+  },
+  { field: DIET_FOOD_COLUMNS_IDS.COST_CALORIE, header: 'Cost Calories', tableConfig: {
+    styleColumnHeaderCss: { minWidth: "80px", textAlign: "center" },
+    styleColumnCellCss: { textAlign: "center" } },
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true, addSymbolCurrency: true } }
+  },
+  { field: DIET_FOOD_COLUMNS_IDS.COST_PROTEIN, header: 'Cost Proteins', tableConfig: {
+    styleColumnHeaderCss: { minWidth: "80px", textAlign: "center" },
+    styleColumnCellCss: { textAlign: "center" } },
+    maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true, addSymbolCurrency: true } }
+  },
 ];
 
 export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
@@ -319,14 +367,14 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
 ];
 
   export const DIET_ADD_EDIT_TOTALS_COLUMNS_TWO: DataTablePropsI[] = [
-    { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT_MONO, header: 'Total Fat Mono', tableConfig: {
+    /*{ field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT_MONO, header: 'Total Fat Mono', tableConfig: {
       styleColumnHeaderCss: { width: "14.2%", textAlign: "center" },
       styleColumnCellCss: { textAlign: "center" } }
     },
     { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT_POLI, header: 'Total Fat Poli', tableConfig: {
       styleColumnHeaderCss: { width: "14.2%", textAlign: "center" },
       styleColumnCellCss: { textAlign: "center" } }
-    },
+    },*/
     { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FAT_SAT, header: 'Total Fat Sat', tableConfig: {
       styleColumnHeaderCss: { width: "14.2%", textAlign: "center" },
       styleColumnCellCss: { textAlign: "center" } }
@@ -335,10 +383,10 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
       styleColumnHeaderCss: { width: "14.2%", textAlign: "center" },
       styleColumnCellCss: { textAlign: "center" } }
     },
-    { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_CHOLESTEROL, header: 'Total Cholesterol', tableConfig: {
+    /*{ field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_CHOLESTEROL, header: 'Total Cholesterol', tableConfig: {
       styleColumnHeaderCss: { width: "14.2%", textAlign: "center" },
       styleColumnCellCss: { textAlign: "center" } }
-    },
+    },*/
     { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FIBER, header: 'Total Fiber', tableConfig: {
       styleColumnHeaderCss: { width: "14.2%", textAlign: "center" },
       styleColumnCellCss: { textAlign: "center" } }
@@ -347,6 +395,18 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
       styleColumnHeaderCss: { width: "14.2%", textAlign: "center" },
       styleColumnCellCss: { textAlign: "center" } }
     },
+    { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_GRAM, header: 'Total Cost Grams', tableConfig: {
+      styleColumnHeaderCss: { width: "14.2%", textAlign: "center" },
+      styleColumnCellCss: { textAlign: "center" } }
+    },
+    { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_CALORIE, header: 'Total Cost Calories', tableConfig: {
+      styleColumnHeaderCss: { width: "14.2%", textAlign: "center" },
+      styleColumnCellCss: { textAlign: "center" } }
+    },
+    { field: DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_PROTEIN, header: 'Total Cost Proteins', tableConfig: {
+      styleColumnHeaderCss: { width: "14.2%", textAlign: "center" },
+      styleColumnCellCss: { textAlign: "center" } }
+    }
 ];
 
   export const DIET_CUSTOM_RECIPE_DATA: FormInputContainerPropsI = {
@@ -368,7 +428,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
   export const DIET_FOOD_REGISTER_DATA: FormInputContainerPropsI = {
     inputColumns: [
       {
-        label: "Food:", columnWidth: "30%",
+        label: "Food:", columnWidth: "18%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.ID, inputType: InputElementEnum.SELECT, value: null, updateValue: () => { },
           options: [],
@@ -379,7 +439,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Portions:", columnWidth: "10%",
+        label: "Portions:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.PORTIONS, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -389,7 +449,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Unities:", columnWidth: "10%",
+        label: "Unities:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.UNITIES, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -399,7 +459,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Unity Grams:", columnWidth: "10%",
+        label: "Unity Grams:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.UNIT, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -409,7 +469,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Grams:", columnWidth: "10%",
+        label: "Grams:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.QUANTITY, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -419,7 +479,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Calories:", columnWidth: "10%",
+        label: "Calories:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.CALORIES, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -429,7 +489,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Proteins:", columnWidth: "10%",
+        label: "Proteins:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.PROTEIN, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -439,7 +499,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Carbohydrates:", columnWidth: "10%",
+        label: "Carbohydrates:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.CARBOHYDRATES, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -449,7 +509,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Carb/Sugar:", columnWidth: "10%",
+        label: "Carb/Sugar:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.CARB_SUGAR, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -459,7 +519,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Sugar Added:", columnWidth: "10%",
+        label: "Sugar Added:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.CARB_SUGAR_ADDED, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -469,7 +529,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Fat:", columnWidth: "10%",
+        label: "Fat:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.FAT, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -479,7 +539,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Fat Mono:", columnWidth: "10%",
+        label: "Fat Mono:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.FAT_MONO, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -489,7 +549,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Fat Poli:", columnWidth: "10%",
+        label: "Fat Poli:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.FAT_POLI, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -499,7 +559,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Fat Sat:", columnWidth: "10%",
+        label: "Fat Sat:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.FAT_SAT, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -509,7 +569,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Fat Trans:", columnWidth: "10%",
+        label: "Fat Trans:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.FAT_TRANS, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -519,7 +579,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Fiber:", columnWidth: "10%",
+        label: "Fiber:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.FIBER, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -529,7 +589,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Chol.:", columnWidth: "10%",
+        label: "Chol.:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.CHOLESTEROL, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -539,7 +599,7 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
         }
       },
       {
-        label: "Sodium:", columnWidth: "10%",
+        label: "Sodium:", columnWidth: "9%",
         inputProps: {
           id: DIET_FOOD_REGISTER_DATA_IDS.SODIUM, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
           maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }, isReadOnly: true
@@ -548,6 +608,36 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
           validatorRules: [Validators.required]
         }
       },
+      {
+        label: "Cost Grams:", columnWidth: "9%",
+        inputProps: {
+          id: DIET_FOOD_REGISTER_DATA_IDS.COST_GRAM, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
+          maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 4 }, isReadOnly: true
+        },
+        validations: {
+          validatorRules: [Validators.required]
+        }
+      },
+      {
+        label: "Cost Calories:", columnWidth: "9%",
+        inputProps: {
+          id: DIET_FOOD_REGISTER_DATA_IDS.COST_CALORIE, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
+          maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 4 }, isReadOnly: true
+        },
+        validations: {
+          validatorRules: [Validators.required]
+        }
+      },
+      {
+        label: "Cost Proteins:", columnWidth: "9%",
+        inputProps: {
+          id: DIET_FOOD_REGISTER_DATA_IDS.COST_PROTEIN, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
+          maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 4 }, isReadOnly: true
+        },
+        validations: {
+          validatorRules: [Validators.required]
+        }
+      }
     ],
     containerWidth: "100%"
   }
@@ -629,7 +719,22 @@ export const DIET_ADD_EDIT_TOTALS_COLUMNS_ONE: DataTablePropsI[] = [
       styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" },
       styleColumnCellCss: { textAlign: "center" } },
       maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true } }
-    }
+    },
+    { field: DIET_CUSTOM_FOOD_COLUMNS_IDS.TOTAL_COST_GRAM, header: 'Total Cost Grams', tableConfig: {
+      styleColumnHeaderCss: { minWidth: "80px", textAlign: "center" },
+      styleColumnCellCss: { textAlign: "center" } },
+      maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true, addSymbolCurrency: true } }
+    },
+    { field: DIET_CUSTOM_FOOD_COLUMNS_IDS.TOTAL_COST_CALORIE, header: 'Total Cost Calories', tableConfig: {
+      styleColumnHeaderCss: { minWidth: "80px", textAlign: "center" },
+      styleColumnCellCss: { textAlign: "center" } },
+      maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true, addSymbolCurrency: true } }
+    },
+    { field: DIET_CUSTOM_FOOD_COLUMNS_IDS.TOTAL_COST_PROTEIN, header: 'Total Cost Proteins', tableConfig: {
+      styleColumnHeaderCss: { minWidth: "80px", textAlign: "center" },
+      styleColumnCellCss: { textAlign: "center" } },
+      maskProps: { maskType: MaskDataTypeEnum.CURRENCY, maskDataProps: { decimalPlaces: 2, addSeparateComma: true, addSymbolCurrency: true } }
+    },
   ];
 
   export const DIET_CUSTOM_DETAIL_FOOD_COLUMNS: DataTablePropsI[] = [

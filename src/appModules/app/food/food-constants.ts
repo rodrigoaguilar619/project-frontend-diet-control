@@ -1,7 +1,7 @@
 import { Validators } from "@angular/forms";
 import { DataTablePropsI } from "@app/appComponents/@types/components/dataTable/dataTable";
 import { FormInputContainerPropsI } from "@app/appComponents/@types/components/formInputs/formInputs";
-import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enumCatalog";
+import { InputElementEnum, InputMaskEnum, MaskDataTypeEnum } from "@app/appComponents/catalogs/enumCatalog";
 
     export const FOOD_ELEMENT_COLUMNS_IDS = {
       QUANTITY: "quantityGrams",
@@ -19,6 +19,10 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
       FIBER: "fiber",
       CHOLESTEROL: "cholesterol",
       SODIUM: "sodium",
+      COST_KILO: "costKilo",
+      COST_GRAM: "costGram",
+      COST_CALORIE: "costCalorie",
+      COST_PROTEIN: "costProtein",
     }
 
     export const FOOD_LIST_COLUMNS_IDS = {
@@ -29,7 +33,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
 
     export const FOOD_LIST_COLUMNS: DataTablePropsI[] = [
         { field: FOOD_LIST_COLUMNS_IDS.DESCRIPTION, header: 'Description', tableConfig: {
-          styleColumnHeaderCss: { minWidth: "300px", textAlign: "center" }, isColumnFreeze: true } 
+          styleColumnHeaderCss: { minWidth: "300px", textAlign: "center" }, isColumnFreeze: true }
         },
         { field: FOOD_LIST_COLUMNS_IDS.PRICE, header: 'Price', tableConfig: {
           styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" } }
@@ -79,18 +83,61 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
         { field: FOOD_LIST_COLUMNS_IDS.SODIUM, header: 'Sodium', tableConfig: {
           styleColumnHeaderCss: { minWidth: "60px", textAlign: "center" } }
         },
+        { field: FOOD_LIST_COLUMNS_IDS.COST_KILO, header: 'Cost Kilo', tableConfig: {
+          styleColumnHeaderCss: { minWidth: "80px", textAlign: "center" } },
+          maskProps: {
+            maskType: MaskDataTypeEnum.CURRENCY,
+            maskDataProps: {
+                decimalPlaces: 2,
+                addZeroPad: true,
+                addSymbolCurrency: true
+            }
+          }
+        },
+        { field: FOOD_LIST_COLUMNS_IDS.COST_GRAM, header: 'Cost Gram', tableConfig: {
+          styleColumnHeaderCss: { minWidth: "90px", textAlign: "center" } },
+          maskProps: {
+            maskType: MaskDataTypeEnum.CURRENCY,
+            maskDataProps: {
+                decimalPlaces: 4,
+                addZeroPad: true,
+                addSymbolCurrency: true
+            }
+          }
+        },
+        { field: FOOD_LIST_COLUMNS_IDS.COST_CALORIE, header: 'Cost Calorie', tableConfig: {
+          styleColumnHeaderCss: { minWidth: "90px", textAlign: "center" } },
+          maskProps: {
+            maskType: MaskDataTypeEnum.CURRENCY,
+            maskDataProps: {
+                decimalPlaces: 4,
+                addZeroPad: true,
+                addSymbolCurrency: true
+            }
+          }
+        },
+        { field: FOOD_LIST_COLUMNS_IDS.COST_PROTEIN, header: 'Cost Protein', tableConfig: {
+          styleColumnHeaderCss: { minWidth: "90px", textAlign: "center" } },
+          maskProps: {
+            maskType: MaskDataTypeEnum.CURRENCY,
+            maskDataProps: {
+                decimalPlaces: 4,
+                addZeroPad: true,
+                addSymbolCurrency: true
+            }
+          }
+        }
     ];
 
     export const ADMIN_FOOD_COLUMN_IDS = {
       DESCRIPTION: "description",
-      PRICE: "price",
       ...FOOD_ELEMENT_COLUMNS_IDS
     }
-    
+
     export const ADMIN_FOOD_COLUMN_DATA: FormInputContainerPropsI = {
       inputColumns: [
         {
-          label: "Description:", columnWidth: "30%",
+          label: "Description:", columnWidth: "18%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.DESCRIPTION, inputType: InputElementEnum.TEXT, value: null, updateValue: () => { },
             placeholder: "Description"
@@ -100,17 +147,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Price:", columnWidth: "10%",
-          inputProps: {
-            id: ADMIN_FOOD_COLUMN_IDS.PRICE, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
-            maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
-          },
-          validations: {
-            validatorRules: [Validators.required]
-          }
-        },
-        {
-          label: "Grams:", columnWidth: "10%",
+          label: "Grams:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.QUANTITY, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -120,7 +157,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Unity Grams:", columnWidth: "10%",
+          label: "Unity Grams:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.UNIT, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -130,7 +167,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Calories:", columnWidth: "10%",
+          label: "Calories:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.CALORIES, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -140,7 +177,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Proteins:", columnWidth: "10%",
+          label: "Proteins:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.PROTEIN, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -150,7 +187,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Carbohydrates:", columnWidth: "10%",
+          label: "Carbohydrates:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.CARBOHYDRATES, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -160,7 +197,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Carb/Sugar:", columnWidth: "10%",
+          label: "Carb/Sugar:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.CARB_SUGAR, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -170,7 +207,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Sugar Added:", columnWidth: "10%",
+          label: "Sugar Added:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.CARB_SUGAR_ADDED, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -180,7 +217,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Fat:", columnWidth: "10%",
+          label: "Fat:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.FAT, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -190,7 +227,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Fat Mono:", columnWidth: "10%",
+          label: "Fat Mono:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.FAT_MONO, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -200,7 +237,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Fat Poli:", columnWidth: "10%",
+          label: "Fat Poli:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.FAT_POLI, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -210,7 +247,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Fat Sat:", columnWidth: "10%",
+          label: "Fat Sat:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.FAT_SAT, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -220,7 +257,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Fat Trans:", columnWidth: "10%",
+          label: "Fat Trans:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.FAT_TRANS, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -230,7 +267,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Fiber:", columnWidth: "10%",
+          label: "Fiber:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.FIBER, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -240,7 +277,7 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Chol.:", columnWidth: "10%",
+          label: "Chol.:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.CHOLESTEROL, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
@@ -250,10 +287,50 @@ import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enu
           }
         },
         {
-          label: "Sodium:", columnWidth: "10%",
+          label: "Sodium:", columnWidth: "9%",
           inputProps: {
             id: ADMIN_FOOD_COLUMN_IDS.SODIUM, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
             maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
+          },
+          validations: {
+            validatorRules: [Validators.required]
+          }
+        },
+        {
+          label: "Price Kilo:", columnWidth: "9%",
+          inputProps: {
+            id: ADMIN_FOOD_COLUMN_IDS.COST_KILO, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
+            maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 2 }
+          },
+          validations: {
+            validatorRules: [Validators.required]
+          }
+        },
+        {
+          label: "Cost Gram:", columnWidth: "9%",
+          inputProps: {
+            id: ADMIN_FOOD_COLUMN_IDS.COST_GRAM, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
+            maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 4 }, isReadOnly: true
+          },
+          validations: {
+            validatorRules: [Validators.required]
+          }
+        },
+        {
+          label: "Cost Calorie:", columnWidth: "9%",
+          inputProps: {
+            id: ADMIN_FOOD_COLUMN_IDS.COST_CALORIE, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
+            maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 4 }, isReadOnly: true
+          },
+          validations: {
+            validatorRules: [Validators.required]
+          }
+        },
+        {
+          label: "Cost Protein:", columnWidth: "9%",
+          inputProps: {
+            id: ADMIN_FOOD_COLUMN_IDS.COST_PROTEIN, inputType: InputElementEnum.MASK, value: null, updateValue: () => { },
+            maskType: InputMaskEnum.NUMBER, maskProps: { totalDecimals: 4 }, isReadOnly: true
           },
           validations: {
             validatorRules: [Validators.required]

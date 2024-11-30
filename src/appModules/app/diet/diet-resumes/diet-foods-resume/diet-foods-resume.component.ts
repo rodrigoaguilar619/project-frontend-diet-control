@@ -27,7 +27,7 @@ export class DietFoodsResumeComponent implements OnInit {
   ngDoCheck(): void {
 
     let changesValuesTotals = this.iterableDiffer.diff(this.totalValues);
-  
+
     if (changesValuesTotals) {
 
       if (this.totalValues.length > 0)
@@ -50,6 +50,9 @@ export class DietFoodsResumeComponent implements OnInit {
           [DIET_FOOD_COLUMNS_IDS.FIBER] : this.totalValues[0][DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FIBER],
           [DIET_FOOD_COLUMNS_IDS.CHOLESTEROL] : this.totalValues[0][DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_CHOLESTEROL],
           [DIET_FOOD_COLUMNS_IDS.SODIUM] : this.totalValues[0][DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_SODIUM],
+          [DIET_FOOD_COLUMNS_IDS.COST_GRAM] : this.totalValues[0][DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_GRAM],
+          [DIET_FOOD_COLUMNS_IDS.COST_CALORIE] : this.totalValues[0][DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_CALORIE],
+          [DIET_FOOD_COLUMNS_IDS.COST_PROTEIN] : this.totalValues[0][DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_PROTEIN]
         });
     }
   }

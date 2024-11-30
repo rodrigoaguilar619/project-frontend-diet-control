@@ -6,6 +6,7 @@ import { FormGroup } from '@angular/forms';
 import { buildFormGroupFromContainers } from '@app/appComponents/utils/dataUtils/formDataUtil';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import axios from 'axios';
+import { initFormFoodEvents } from '@app/appModules/utils/moduleUtils/FoodRegisterUtil';
 
 @Component({
   selector: 'app-food-add-edit',
@@ -23,6 +24,8 @@ export class FoodAddEditComponent extends GenericCrudComponent {
 
     this.formGroup = buildFormGroupFromContainers([this.formData]);
     this.formGroup.addControl("id", this.formBuilder.control(null));
+
+    initFormFoodEvents(this.formGroup);
   }
 
   ngOnInit(): void {

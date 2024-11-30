@@ -1,18 +1,13 @@
 <div class="resume-diet">
-    <app-datatable-prime-base
-  [columns]="dietFoodTotalsOneColumns"
-  [values]="[dietFoodTotalFormatedValues]"
-  [sectionsProperties]="dataTableSectionsProperties"
-></app-datatable-prime-base>
-<app-datatable-prime-base
-  [columns]="dietFoodTotalsTwoColumns"
-  [values]="[dietFoodTotalFormatedValues]"
-  [sectionsProperties]="dataTableSectionsProperties"
-></app-datatable-prime-base>
+  <app-datatable-prime-base [columns]="dietFoodTotalsOneColumns" [values]="[dietFoodTotalFormatedValues]"
+    [sectionsProperties]="dataTableSectionsProperties"></app-datatable-prime-base>
+  <app-datatable-prime-base [columns]="dietFoodTotalsTwoColumns" [values]="[dietFoodTotalFormatedValues]"
+    [sectionsProperties]="dataTableSectionsProperties"></app-datatable-prime-base>
 </div>
 <br>
 <app-form-input-dynamic-row [inputContainer]="dietFoodListColumns" [formArray]="formArray"
-[executeOnAddRowFunction]="executeOnAddArrowBase.bind(this)" [executeOnRemoveRowFunction]="executeOnRemoveArrow.bind(this)">
+  [executeOnAddRowFunction]="executeOnAddArrowBase.bind(this)"
+  [executeOnRemoveRowFunction]="executeOnRemoveArrow.bind(this)">
 </app-form-input-dynamic-row>
 <br>
 <app-button-submit title="Register Diet Base" [clickFunction]="onSubmit.bind(this)"></app-button-submit>

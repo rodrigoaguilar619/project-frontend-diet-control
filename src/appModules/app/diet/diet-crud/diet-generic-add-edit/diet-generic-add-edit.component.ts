@@ -34,7 +34,7 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
   public dietRecipeData = deepClone(DIET_CUSTOM_RECIPE_DATA);
   public dietFoodListColumns = DIET_FOOD_REGISTER_DATA;
   public dietFoodTotalsColumnsIds = DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS;
-  public foodColumnsIds = FOOD_ELEMENT_COLUMNS_IDS;
+  public foodColumnsIds: Record<string, any> = FOOD_ELEMENT_COLUMNS_IDS;
   public formArray: FormArray;
   public formGroupRecipe: FormGroup;
 
@@ -46,6 +46,9 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
 
     this.formArray = this.formBuilder.array([]);
     this.formGroupRecipe = this.formBuilder.group({});
+
+    //remove from dietFoodTotalsColumnsIds
+    delete this.foodColumnsIds["COST_KILO"];
   }
 
   /**
@@ -129,10 +132,10 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
     this.scanFieldDietFood(formGroup);
     formGroup.controls[DIET_FOOD_REGISTER_DATA_IDS.ID].valueChanges.subscribe((_value) => {
 
-      this.scanFieldDietFood(formGroup);
-
       formGroup.controls[DIET_FOOD_REGISTER_DATA_IDS.PORTIONS].reset(null, { emitEvent: false });
       formGroup.controls[DIET_FOOD_REGISTER_DATA_IDS.UNITIES].reset(null, { emitEvent: false });
+
+      this.scanFieldDietFood(formGroup);
 
       Object.values(this.foodColumnsIds).forEach((value) => {
         formGroup.controls[value].reset(null, { emitEvent: false });
@@ -203,11 +206,22 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
 
       Object.keys(this.foodColumnsIds).forEach((key) => {
 
+        let ignoreKeys = [
+          DIET_FOOD_REGISTER_DATA_IDS.COST_GRAM,
+          DIET_FOOD_REGISTER_DATA_IDS.COST_CALORIE,
+          DIET_FOOD_REGISTER_DATA_IDS.COST_PROTEIN
+        ];
+
         let foodColumnValue: any = this.foodColumnsIds[key as keyof typeof this.foodColumnsIds];
-        if (foodColumnValue !== DIET_FOOD_REGISTER_DATA_IDS.UNIT) {
+
+        if (foodColumnValue !== DIET_FOOD_REGISTER_DATA_IDS.UNIT && !ignoreKeys.includes(key)) {
           formGroup.controls[foodColumnValue].setValue(this.getValueTotal(food[foodColumnValue], portions));
         }
       });
+
+      formGroup.controls[DIET_FOOD_REGISTER_DATA_IDS.COST_GRAM].setValue(formGroup.controls[DIET_FOOD_REGISTER_DATA_IDS.QUANTITY].value * food.costGram, {emitEvent:false});
+      formGroup.controls[DIET_FOOD_REGISTER_DATA_IDS.COST_CALORIE].setValue(formGroup.controls[DIET_FOOD_REGISTER_DATA_IDS.CALORIES].value * food.costCalorie, {emitEvent:false});
+      formGroup.controls[DIET_FOOD_REGISTER_DATA_IDS.COST_PROTEIN].setValue(formGroup.controls[DIET_FOOD_REGISTER_DATA_IDS.PROTEIN].value * food.costProtein, {emitEvent:false});
 
       this.updateDietFoodsTotals();
     });
@@ -239,7 +253,9 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
       dietFoodTotalUpdatedObject[DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_FIBER] += Number(formControl.controls[DIET_FOOD_REGISTER_DATA_IDS.FIBER].value);
       dietFoodTotalUpdatedObject[DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_CHOLESTEROL] += Number(formControl.controls[DIET_FOOD_REGISTER_DATA_IDS.CHOLESTEROL].value);
       dietFoodTotalUpdatedObject[DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_SODIUM] += Number(formControl.controls[DIET_FOOD_REGISTER_DATA_IDS.SODIUM].value);
-
+      dietFoodTotalUpdatedObject[DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_GRAM] += Number(formControl.controls[DIET_FOOD_REGISTER_DATA_IDS.COST_GRAM].value);
+      dietFoodTotalUpdatedObject[DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_CALORIE] += Number(formControl.controls[DIET_FOOD_REGISTER_DATA_IDS.COST_CALORIE].value);
+      dietFoodTotalUpdatedObject[DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS.TOTAL_COST_PROTEIN] += Number(formControl.controls[DIET_FOOD_REGISTER_DATA_IDS.COST_PROTEIN].value);
     });
     this.dietFoodTotalUpdatedValues = dietFoodTotalUpdatedObject;
     this.dietFoodTotalFormatedValues = this.getDietFoodsTotalsFormatted();
