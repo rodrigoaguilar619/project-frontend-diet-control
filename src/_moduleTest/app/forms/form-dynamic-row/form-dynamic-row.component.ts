@@ -1,15 +1,22 @@
 import { Component, Injector } from '@angular/core';
 import { FormArray, Validators } from '@angular/forms';
-import { FormInputContainerPropsI } from '../../../../appComponents/@types/components/formInputs/formInputs';
-import { GenericParentComponent } from '../../../../appComponents/_generic/generic-parent/generic-parent.component';
-import { setTitle } from '../../../../appComponents/controller/actions/layout.actions';
-import { InputElementEnum } from '../../../../appComponents/catalogs/enumCatalog';
-import { buildFormArrayFromContainer } from '../../../../appComponents/utils/dataUtils/formDataUtil';
-import { debug, generateDebugClassModule } from '../../../../appComponents/utils/webUtils/debugUtil';
+import { FormInputContainerPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
+import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { InputElementEnum } from '@app/appComponents/catalogs/enumCatalog';
+import { buildFormArrayFromContainer } from '@app/appComponents/utils/dataUtils/formDataUtil';
+import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { GenericParentComponent, ButtonSubmitComponent, FormInputContainerComponent, FormInputDynamicRowComponent } from '@app/appComponents/components/commonComponents.config';
 
 @Component({
   selector: 'app-form-dynamic-row',
-  templateUrl: './form-dynamic-row.component.html'
+  templateUrl: './form-dynamic-row.component.html',
+  imports: [
+    commonAppModules,
+    FormInputDynamicRowComponent,
+    ButtonSubmitComponent,
+    FormInputContainerComponent
+  ]
 })
 export class FormDynamicRowComponent extends GenericParentComponent {
 
@@ -26,7 +33,7 @@ export class FormDynamicRowComponent extends GenericParentComponent {
     validate_number_2: "validate_number_2",
     file: "file"
   }
-  
+
   public cities: any[] = [
     { description: 'New York', id: 'NY' },
     { description: 'Rome', id: 'RM' },
@@ -34,12 +41,12 @@ export class FormDynamicRowComponent extends GenericParentComponent {
     { description: 'Istanbul', id: 'IST' },
     { description: 'Paris', id: 'PRS' }
   ];
-  
+
   public answers: any[] = [
     { description: 'Yes', id: true },
     { description: 'No', id: false }
   ];
-  
+
   public inputContainer: FormInputContainerPropsI = {
     inputColumns: [
         {

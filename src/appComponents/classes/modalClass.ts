@@ -1,4 +1,4 @@
-import { ModalTypeEnum } from "../catalogs/enumCatalog";
+import { ModalTypeEnum } from "@app/appComponents/catalogs/enumCatalog";
 
 class ModalClass {
 
@@ -55,7 +55,7 @@ class ModalClass {
         this.executeFunctionOnClose = executeFunctionOnClose;
     }
 
-    getIsShowPopUp() {  
+    getIsShowPopUp() {
         return this.isShowPopUp;
     }
 
@@ -83,7 +83,7 @@ class ModalClass {
         return this.size;
     }
 
-    setSize(size: string) { 
+    setSize(size: string) {
         this.size = size;
     }
 
@@ -99,7 +99,7 @@ class ModalClass {
         return this.executeFunction;
     }
 
-    setExecuteFunction(executeFunction: Function) { 
+    setExecuteFunction(executeFunction: Function) {
         this.executeFunction = executeFunction;
     }
 }

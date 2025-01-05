@@ -1,6 +1,7 @@
+import axios from 'axios';
 import { Component, Injector } from '@angular/core';
 import { IButtonOptions } from '@app/appComponents/@types/components/buttons/buttons';
-import { GenericParentComponent } from '@app/appComponents/_generic/generic-parent/generic-parent.component';
+import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
 import ModalClass from '@app/appComponents/classes/modalClass';
 import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
@@ -8,8 +9,11 @@ import { RoutingInstance } from '@app/appComponents/instances/webInstances/routi
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { SUB_PATHS } from '@app/appModules/catalogs/pathsCatalog';
 import { DietService } from '@app/appModules/controller/services/dietService';
-import axios from 'axios';
-import { DIET_CUSTOM_FOOD_COLUMNS, DIET_FOOD_COLUMNS_IDS } from '../../diet.contants';
+import { DIET_CUSTOM_FOOD_COLUMNS, DIET_FOOD_COLUMNS_IDS } from '@app/appModules/app/diet/diet.contants';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
+import DietCustomAddEditComponent from '@app/appModules/app/diet/diet-crud/diet-custom-add-edit/diet-custom-add-edit.component';
+import DietCustomDetailsComponent from '@app/appModules/app/diet/diet-main/diet-custom-details/diet-custom-details.component';
 
 enum ModuleDietCustomDataEnum {
   MODAL_ADD_EDIT_DIET_CUSTOM = "add_edit_diet_custom",
@@ -18,6 +22,7 @@ enum ModuleDietCustomDataEnum {
 }
 
 @Component({
+  imports: [commonAppModules, commonAppComponents, DietCustomAddEditComponent, DietCustomDetailsComponent],
   selector: 'app-diet-custom-list',
   templateUrl: './diet-custom-list.component.html'
 })

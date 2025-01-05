@@ -4,48 +4,45 @@
     padding-right: 5px;
     padding-top: 2px;
   }
-  
+
   .p-component {
     font-size: 12px !important;
   }
-  
+
   .p-datatable .p-datatable-tbody > tr > td, .p-datatable .p-datatable-thead > tr > th {
     padding: 0.280rem 0.425rem;
     border: 1px solid #c8c8c8 !important;
   }
-  
+
   .p-accordion.p-component {
     background-color: #f4f4f4 !important;
   }
-  
-  .p-inputtext, .p-inputnumber, .p-dropdown, .p-calendar, .p-element.p-inputwrapper   {
+
+  .p-inputtext, .p-inputnumber, .p-dropdown, .p-calendar, .p-element.p-inputwrapper, .p-datepicker  {
     width: 100%;
   }
-  
-  .p-datepicker {
-    padding: 0.5rem;
-  }
-  
+
   .p-datepicker table {
     font-size: inherit;
   }
-  
+
   .p-datepicker .p-datepicker-header {
     padding: unset;
     height: 20px;
   }
-  
+
   .p-datepicker table td {
     padding: unset;
   }
-  
+
   .p-datepicker table td > span {
     width: 1.5rem;
     height: 1.5rem;
   }
-  
+
   .p-inputtext {
     border: var(--cui-border-width) solid var(--cui-border-color);
+    padding-block: 6px !important;
   }
 
 //--------------- TOAST CSS -----------------------
@@ -53,24 +50,24 @@
 .p-toast .p-toast-message .p-toast-message-content .p-toast-message-icon {
     font-size: 1rem;
   }
-  
+
   .p-toast .p-toast-message .p-toast-icon-close {
     border-width: 0;
   }
 
 
 //--------------- ACCORDION CSS -----------------------
-.p-accordion-header {
-  background-color: #367AF6;
+.p-accordionpanel-active .p-accordionheader {
+  background-color: #367AF6 !important;
 }
 
-.p-accordion-header a {
-    color: white;
-    text-decoration: unset;
+.p-accordionheader a {
+    color: white !important;
+    text-decoration: unset !important;
 }
 
-.p-accordion-header a:hover {
-    text-decoration: unset;
+.p-accordionheader a:hover {
+    text-decoration: unset !important;
 }
 
 //--------------- DATATABLE CSS -----------------------

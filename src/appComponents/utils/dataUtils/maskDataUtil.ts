@@ -1,7 +1,7 @@
-import { MaskDataTypeEnum } from "../../catalogs/enumCatalog";
-import { formatAnswerData, formatCurrency } from "../formatUtils/formatNumericUtil";
-import { MaskDataCurrencyPropsI, MaskDataDatePropsI, MaskDataPropsI } from "../../../appComponents/@types/components/dataTable/dataTable";
-import { formatDate } from "../formatUtils/formatDateUtil";
+import { MaskDataTypeEnum } from "@app/appComponents/catalogs/enumCatalog";
+import { formatAnswerData, formatCurrency } from "@app/appComponents/utils/formatUtils/formatNumericUtil";
+import { MaskDataCurrencyPropsI, MaskDataDatePropsI, MaskDataPropsI } from "@app/appComponents/@types/components/dataTable/dataTable";
+import { formatDate } from "@app/appComponents/utils/formatUtils/formatDateUtil";
 
 export function maskData(value: any, maskDataProps?: MaskDataPropsI) {
 

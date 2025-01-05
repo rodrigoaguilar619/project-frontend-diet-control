@@ -1,5 +1,5 @@
 import { ValidatorFn } from "@angular/forms";
-import { InputElementPropsListI } from "../../../@types/components/inputs/inputElement";
+import { InputElementPropsListI } from "@app/appComponents/@types/components/inputs/inputElement";
 
 export interface FormInputColumnPropsI {
     inputProps: InputElementPropsListI;

@@ -1,10 +1,13 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import TemplateComponent from '../../appComponents/templates/environments/coreui/template/template.component';
-import { SUB_PATHS } from '../catalogs/pathsCatalog';
+import { Routes } from '@angular/router';
+import TemplateComponent from '@app/appComponents/templates/environments/coreui/template/template.component';
+import { SUB_PATHS } from '@app/appModules/catalogs/pathsCatalog';
 import { LoginComponent } from '@app/appComponents/templates/logins/coreui/login.component';
 import { AuthGuard } from '@app/appComponents/instances/authInstances/authGuard';
 import { LogoutLayoutComponent } from '@app/appComponents/templates/environments/coreui/logout/logout.component';
+import { appAdminRoutes } from './admin/admin.routing';
+import { appFoodRoutes } from './food/food.routing';
+import { appRecipeRoutes } from './recipe/recipe.routing';
+import { appDietRoutes } from './diet/diet.routing';
 
 const routes: Routes = [{
   path: '',
@@ -18,22 +21,22 @@ const routes: Routes = [{
     {
       path: SUB_PATHS.ADMIN.path,
       canActivate: [AuthGuard],
-      loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule)
+      children: appAdminRoutes
     },
     {
       path: SUB_PATHS.FOOD.path,
       canActivate: [AuthGuard],
-      loadChildren: () => import('./food/food.module').then((m) => m.FoodModule)
+      children: appFoodRoutes
     },
     {
       path: 'recipe',
       canActivate: [AuthGuard],
-      loadChildren: () => import('./recipe/recipe.module').then((m) => m.RecipeModule)
+      children: appRecipeRoutes
     },
     {
       path: 'diet',
       canActivate: [AuthGuard],
-      loadChildren: () => import('./diet/diet.module').then((m) => m.DietModule)
+      children: appDietRoutes
     },
   ]
 },
@@ -46,8 +49,4 @@ const routes: Routes = [{
   component: LogoutLayoutComponent
 }];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule]
-})
-export class AppMainRoutingModule { }
+export const appRoutes: Routes = routes;

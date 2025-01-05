@@ -1,12 +1,15 @@
 import { Component, Injector } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import axios from 'axios';
 import { buildFormGroupFromContainers, validateForm } from '@app/appComponents/utils/dataUtils/formDataUtil';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import axios from 'axios';
-import { DIET_ADD_EDIT_TOTALS_COLUMNS_ONE, DIET_ADD_EDIT_TOTALS_COLUMNS_TWO } from '../../diet.contants';
-import { DietGenericAddEditComponent } from '../diet-generic-add-edit/diet-generic-add-edit.component';
+import { DIET_ADD_EDIT_TOTALS_COLUMNS_ONE, DIET_ADD_EDIT_TOTALS_COLUMNS_TWO } from '@app/appModules/app/diet/diet.contants';
+import { DietGenericAddEditComponent } from '@app/appModules/app/diet/diet-crud/diet-generic-add-edit/diet-generic-add-edit.component';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
 
 @Component({
+  imports: [commonAppModules, commonAppComponents],
   selector: 'app-diet-base-add-edit',
   templateUrl: './diet-base-add-edit.component.html'
 })
@@ -26,7 +29,7 @@ export class DietBaseAddEditComponent extends DietGenericAddEditComponent {
 
       let debugClass = generateDebugClassModule("init add/edit diet base module");
       debug(debugClass, "start");
-  
+
       this.spinner.show();
 
       this.getCatalogs()
@@ -34,7 +37,7 @@ export class DietBaseAddEditComponent extends DietGenericAddEditComponent {
               return this.dietService.getDietBaseService();
           })
           .then((dietBaseData) => {
-  
+
               debug(debugClass, "result", dietBaseData);
               this.dietFoodTotalRegisteredValues = {...dietBaseData.data.diet};
               this.dietFoodTotalUpdatedValues = {...dietBaseData.data.diet};
@@ -43,7 +46,7 @@ export class DietBaseAddEditComponent extends DietGenericAddEditComponent {
               if(dietBaseData.data.recipe !== null && Object.keys(dietBaseData.data).length > 0) {
 
                 this.formGroupRecipe.addControl("idRecipe", this.formBuilder.control(dietBaseData.data.recipe.id));
-              
+
                 dietBaseData.data.foods.forEach((food: any) => {
                   let formGroup: FormGroup = buildFormGroupFromContainers([this.dietFoodListColumns]);
                   formGroup.patchValue(food);
@@ -53,7 +56,7 @@ export class DietBaseAddEditComponent extends DietGenericAddEditComponent {
               }
 
               this.spinner.hide();
-  
+
           })
           .catch((error) => {
               this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);

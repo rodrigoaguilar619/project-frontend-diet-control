@@ -1,4 +1,4 @@
-import { API_ADMIN_NUTRITIONAL_GOAL_GET } from "../../catalogs/uriCatalog";
+import { API_ADMIN_NUTRITIONAL_GOAL_GET } from "@app/appModules/catalogs/uriCatalog";
 
 const RESPONSE_NUTRITIONAL_GOALS_GET: Record<string, any> =
 {

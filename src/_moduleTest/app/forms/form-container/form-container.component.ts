@@ -1,16 +1,25 @@
 import { Component, Injector, Input, SimpleChanges } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
-import { FormInputContainerPropsI } from '../../../../appComponents/@types/components/formInputs/formInputs';
-import { GenericParentComponent } from '../../../../appComponents/_generic/generic-parent/generic-parent.component';
-import { setTitle } from '../../../../appComponents/controller/actions/layout.actions';
-import { ValidatorsCustom } from '../../../../appComponents/controller/validators/validatorsCustom';
-import { InputElementEnum, InputMaskEnum } from '../../../../appComponents/catalogs/enumCatalog';
-import { buildFormGroupFromContainers } from '../../../../appComponents/utils/dataUtils/formDataUtil';
-import { setValidatorCustomToContainer } from '../../../../appComponents/utils/validatorUtils/validatorUtil';
+import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormInputContainerPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
+import { GenericParentComponent } from '@app/appComponents/components/commonComponents.config';
+import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { ValidatorsCustom } from '@app/appComponents/controller/validators/validatorsCustom';
+import { InputElementEnum, InputMaskEnum } from '@app/appComponents/catalogs/enumCatalog';
+import { buildFormGroupFromContainers } from '@app/appComponents/utils/dataUtils/formDataUtil';
+import { setValidatorCustomToContainer } from '@app/appComponents/utils/validatorUtils/validatorUtil';
+import { ButtonSubmitComponent, FormInputContainerComponent } from '@app/appComponents/components/commonComponents.config';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
 
 @Component({
   selector: 'app-form-container',
-  templateUrl: './form-container.component.html'
+  templateUrl: './form-container.component.html',
+  imports: [
+    commonAppModules,
+    ReactiveFormsModule,
+    FormInputContainerComponent,
+    FormContainerComponent,
+    ButtonSubmitComponent
+  ]
 })
 export class FormContainerComponent extends GenericParentComponent {
 
@@ -172,7 +181,7 @@ export class FormContainerComponent extends GenericParentComponent {
   }
 
   setValidatorCustomRangeBetween() {
-    
+
     setValidatorCustomToContainer(
       this.inputSectionTwo,
       this.formGroup.controls[this.inputIds.validate_number_between],

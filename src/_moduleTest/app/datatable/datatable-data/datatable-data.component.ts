@@ -1,14 +1,17 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { IButtonOptions } from '../../../../appComponents/@types/components/buttons/buttons';
-import { DataTablePropsI } from '../../../../appComponents/@types/components/dataTable/dataTable';
-import { DataTableService } from '../../../../_moduleTest/controller/services/dataTableService';
-import { GenericParentComponent } from '../../../../appComponents/_generic/generic-parent/generic-parent.component';
-import { MaskDataTypeEnum, ModalTypeEnum } from '../../../../appComponents/catalogs/enumCatalog';
-import ModalClass from "../../../../appComponents/classes/modalClass";
-import { debug, generateDebugClassModule } from '../../../../appComponents/utils/webUtils/debugUtil';
 import axios from 'axios';
+import { TableModule } from 'primeng/table';
+import { IButtonOptions } from '@app/appComponents/@types/components/buttons/buttons';
+import { DataTablePropsI } from '@app/appComponents/@types/components/dataTable/dataTable';
+import { DataTableService } from '@app/_moduleTest/controller/services/dataTableService';
+import { MaskDataTypeEnum, ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
+import ModalClass from "@app/appComponents/classes/modalClass";
+import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { _APP_TITLE_ } from '@app/appComponents/catalogs/constantCatalog';
+import { GenericParentComponent, DatatablePrimeBaseComponent, ModalPopupComponent } from '@app/appComponents/components/commonComponents.config';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { FormContainerComponent } from '@app/_moduleTest/app/forms/form-container/form-container.component';
 
 export const columnsList: DataTablePropsI[] = [
     {
@@ -122,7 +125,14 @@ export enum ModuleEnum {
 
 @Component({
     selector: 'app-datatable-data',
-    templateUrl: './datatable-data.component.html'
+    templateUrl: './datatable-data.component.html',
+    imports: [
+      commonAppModules,
+      TableModule,
+      DatatablePrimeBaseComponent,
+      ModalPopupComponent,
+      FormContainerComponent
+    ]
 })
 export class DataTableDataComponent extends GenericParentComponent implements OnInit {
 

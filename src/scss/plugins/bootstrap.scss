@@ -4,3 +4,12 @@
     --cui-btn-hover-bg: var(--custom-bootstrap-btn-color-hover);
     --cui-btn-hover-border-color: var(--custom-bootstrap-btn-color-hover);
 }
+
+.row {
+  width: 100%;
+}
+
+//----------- MODAL ------------
+.btn-close:focus {
+  box-shadow: unset;
+}

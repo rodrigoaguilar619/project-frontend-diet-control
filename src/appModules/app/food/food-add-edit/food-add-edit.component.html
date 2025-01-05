@@ -1,2 +1,4 @@
 <app-form-input-container [inputContainer]="formData" [formGroup]="formGroup"></app-form-input-container>
-<div><app-button-submit [title]="idFood === undefined ? 'Register Food' : 'Edit Food'" [clickFunction]="onSubmit.bind(this)"></app-button-submit></div>
+<div [ngStyle]="{'display': 'flex', 'gap': '5px', 'justify-content': 'right', 'align-items': 'center', 'margin-top': '10px'}">
+  <app-button-submit [ngStyle]="{'width': '100px'}" [title]="idFood === undefined ? 'Register Food' : 'Edit Food'" [clickFunction]="onSubmit.bind(this)"></app-button-submit>
+</div>

@@ -1,13 +1,17 @@
 import { Component, Injector } from '@angular/core';
-import { GenericParentComponent } from '@app/appComponents/_generic/generic-parent/generic-parent.component';
-import { FoodService } from '../../../controller/services/food.service';
-import { FOOD_LIST_COLUMNS } from '../food-constants';
+import axios from 'axios';
+import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
+import { FoodService } from '@app/appModules/controller/services/food.service';
+import { FOOD_LIST_COLUMNS } from '@app/appModules/app/food/food-constants';
 import ModalClass from '@app/appComponents/classes/modalClass';
 import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import axios from 'axios';
 import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { IButtonOptions } from '@app/appComponents/@types/components/buttons/buttons';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
+import FoodRegisterMultipleComponent from '@app/appModules/app/food/food-register-multiple/food-register-multiple.component';
+import FoodAddEditComponent from '@app/appModules/app/food/food-add-edit/food-add-edit.component';
 
 export enum ModulePrincipalDataEnum {
   FOOD_LIST_REGISTER_MULTIPLE = 'FOOD_LIST_REGISTER_MULTIPLE',
@@ -16,6 +20,7 @@ export enum ModulePrincipalDataEnum {
 }
 
 @Component({
+  imports: [commonAppModules, commonAppComponents, FoodRegisterMultipleComponent, FoodAddEditComponent],
   selector: 'app-food-list',
   templateUrl: './food-list.component.html'
 })

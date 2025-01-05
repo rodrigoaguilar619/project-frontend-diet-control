@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
-import { ModalTypeEnum } from '../../../catalogs/enumCatalog';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
 
 @Component({
   selector: 'app-modal-popup',
-  templateUrl: './modal-popup.component.html'
+  templateUrl: './modal-popup.component.html',
 })
 export class ModalPopupComponent implements OnInit {
 
@@ -28,7 +28,7 @@ export class ModalPopupComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (this.modalType === undefined) 
+    if (this.modalType === undefined)
       throw new Error("Modal type not defined");
 
     this.config.size = this.size;

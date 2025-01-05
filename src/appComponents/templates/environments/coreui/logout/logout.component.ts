@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Component, Injector } from '@angular/core';
-import { GenericParentComponent } from '@app/appComponents/_generic/generic-parent/generic-parent.component';
+import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { AuthService } from '@app/appComponents/controller/services/auth.service';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 

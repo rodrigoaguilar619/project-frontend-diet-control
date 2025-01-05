@@ -22,5 +22,7 @@
 [executeOnAddRowFunction]="executeOnAddArrowCustom.bind(this)" [executeOnRemoveRowFunction]="executeOnRemoveArrowCustom.bind(this)">
 </app-form-input-dynamic-row>
 <br>
-<app-button-submit [title]="idDietCustom == null ? 'Register Diet Custom' : 'Edit Diet Custom'" [clickFunction]="onSubmit.bind(this)"></app-button-submit>
+<div [ngStyle]="{'display': 'flex', 'gap': '5px', 'justify-content': 'right', 'align-items': 'center', 'margin-top': '10px'}">
+  <app-button-submit [ngStyle]="{'width': '200px'}" [title]="idDietCustom == null ? 'Register Diet Custom' : 'Edit Diet Custom'" [clickFunction]="onSubmit.bind(this)"></app-button-submit>
+</div>
 <br>

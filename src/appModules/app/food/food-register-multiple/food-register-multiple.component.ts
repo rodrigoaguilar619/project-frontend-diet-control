@@ -1,14 +1,17 @@
 import { Component, Injector } from '@angular/core';
-import { FoodService } from '../../../controller/services/food.service';
-import { ADMIN_FOOD_COLUMN_DATA, ADMIN_FOOD_COLUMN_IDS } from '../food-constants';
+import axios from 'axios';
+import { FoodService } from '@app/appModules/controller/services/food.service';
+import { ADMIN_FOOD_COLUMN_DATA } from '@app/appModules/app/food/food-constants';
 import { FormArray, FormGroup } from '@angular/forms';
-import { GenericParentComponent } from '@app/appComponents/_generic/generic-parent/generic-parent.component';
+import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { buildFormArrayFromContainer } from '@app/appComponents/utils/dataUtils/formDataUtil';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import axios from 'axios';
-import { calculateCosts, initFormFoodEvents } from '@app/appModules/utils/moduleUtils/FoodRegisterUtil';
+import { initFormFoodEvents } from '@app/appModules/utils/moduleUtils/FoodRegisterUtil';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
 
 @Component({
+  imports: [commonAppModules, commonAppComponents],
   selector: 'app-food-register-multiple',
   templateUrl: './food-register-multiple.component.html'
 })
@@ -53,6 +56,11 @@ export class FoodRegisterMultipleComponent extends GenericParentComponent {
         this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
       });
   }
+
+  executeOnAddArrowCustom(formGroup: FormGroup) {
+    initFormFoodEvents(formGroup);
+  }
+
 }
 
 export default FoodRegisterMultipleComponent;

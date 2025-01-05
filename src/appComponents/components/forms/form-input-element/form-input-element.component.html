@@ -14,7 +14,7 @@
         [formControl]="valueFormControl" [ngStyle]="{'height': '34px'}"></textarea>
     }
     @else if (inputProperties.inputType === inputElementEnum.CALENDAR) {
-    <p-calendar
+    <p-datepicker
         [inputStyleClass]="'form-control ' + (valueFormControl.touched && valueFormControl.errors ? 'is-invalid' : '')"
         [(ngModel)]="date" (ngModelChange)="eventInputCalendarChange($event)" [showButtonBar]="true"
         [dateFormat]="getCalendarProps().dateFormat" />

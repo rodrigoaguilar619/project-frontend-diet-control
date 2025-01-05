@@ -1,7 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import TemplateComponent from '../../appComponents/templates/environments/coreui/template/template.component';
-import { SUB_PATHS } from '../catalogs/pathsCatalog';
+import { Routes } from '@angular/router';
+import TemplateComponent from '@app/appComponents/templates/environments/coreui/template/template.component';
+import { SUB_PATHS } from '@app/_moduleTest/catalogs/pathsCatalog';
+import { appAdminRoutes } from './admin/admin.routing';
+import { appDatatableRoutes } from './datatable/app-datatable.routing';
+import { appFormsRoutes } from './forms/forms.routing';
 
 const routes: Routes = [{
   path: '',
@@ -13,22 +15,18 @@ const routes: Routes = [{
   children: [
     {
       path: SUB_PATHS.ADMIN.path,
-      loadChildren: () => import('./admin/admin.module').then( (m) => m.AdminModule)
+      children: appAdminRoutes
     },
     {
       path: SUB_PATHS.DATATABLE.path,
-      loadChildren: () => import('./datatable/datatable.module').then( (m) => m.DataTableModule),
-      
+      children: appDatatableRoutes
+
     },
     {
       path: SUB_PATHS.FORMS.path,
-      loadChildren: () => import('./forms/forms.module').then((m) => m.FormsModule)
+      children: appFormsRoutes
     },
   ]
 }];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}
+export const appRoutes = routes;

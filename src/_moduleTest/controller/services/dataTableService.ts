@@ -1,8 +1,8 @@
-import { URL_DATATABLE_EXPAND_LIST_GET, URL_DATATABLE_LIST_GET } from "../../../_moduleTest/catalogs/uriCatalog";
-import { HttpMethodEnum } from "../../../appComponents/catalogs/enumCatalog";
-import { HttpManagerInstance } from "../../../appComponents/instances/webInstances/httpManagerInstance";
+import { URL_DATATABLE_EXPAND_LIST_GET, URL_DATATABLE_LIST_GET } from "@app/_moduleTest/catalogs/uriCatalog";
+import { HttpMethodEnum } from "@app/appComponents/catalogs/enumCatalog";
+import { HttpManagerInstance } from "@app/appComponents/instances/webInstances/httpManagerInstance";
 import { Injectable } from "@angular/core";
-import { generateDebugClassService } from "../../../appComponents/utils/webUtils/debugUtil";
+import { generateDebugClassService } from "@app/appComponents/utils/webUtils/debugUtil";
 
 @Injectable({
     providedIn: 'root'

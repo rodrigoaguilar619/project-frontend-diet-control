@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { API_FOOD_ADD, API_FOOD_DELETE, API_FOOD_EDIT, API_FOOD_GET, API_FOOD_LIST_GET, API_FOOD_REGISTER_MULTIPLE } from '../../../appModules/catalogs/uriCatalog';
+import { API_FOOD_ADD, API_FOOD_DELETE, API_FOOD_EDIT, API_FOOD_GET, API_FOOD_LIST_GET, API_FOOD_REGISTER_MULTIPLE } from '@app/appModules/catalogs/uriCatalog';
 import { HttpManagerInstance } from '@app/appComponents/instances/webInstances/httpManagerInstance';
 import { generateDebugClassService } from '@app/appComponents/utils/webUtils/debugUtil';
 import { HttpMethodEnum } from '@app/appComponents/catalogs/enumCatalog';

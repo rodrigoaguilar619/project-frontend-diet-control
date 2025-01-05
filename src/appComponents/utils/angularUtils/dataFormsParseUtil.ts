@@ -1,5 +1,5 @@
 import { FormArray, FormGroup } from "@angular/forms";
-import { FormControlData } from "../../@types/utils/dataFormsUtil";
+import { FormControlData } from "@app/appComponents/@types/utils/dataFormsUtil";
 
 export function buildJsonFromFormControls(data: FormControlData[]) {
 
@@ -27,7 +27,7 @@ export function buildJsonFromFormGroup(formGroup: FormGroup) {
 export function buildJsonFromFormArray(formArray: FormArray): string {
 
   const result: any[] = [];
-  
+
   formArray.controls.forEach(control => {
 
     if (control instanceof FormGroup) {

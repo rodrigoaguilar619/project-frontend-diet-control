@@ -1,4 +1,4 @@
-import { URL_CATALOG_DATA_LIST_GET, URL_DATATABLE_EXPAND_LIST_GET, URL_DATATABLE_LIST_GET } from "../../../_moduleTest/catalogs/uriCatalog";
+import { URL_CATALOG_DATA_LIST_GET, URL_DATATABLE_EXPAND_LIST_GET, URL_DATATABLE_LIST_GET } from "@app/_moduleTest/catalogs/uriCatalog";
 
 const RESPONSE_DATATABLE_LIST_GET: any[] = [
   { "id": 1, "answer": true,   "currency": 1234567,        "currencyZeroPad": 1234567,       "currencySymbol": 1234567,         "percentageSymbol": 1234567,        "currencyComma": 1234567,       "currencyInteger": 1234567,       "currencyAllOptions": 1234567,           "dateMillis": 1609351640000  },

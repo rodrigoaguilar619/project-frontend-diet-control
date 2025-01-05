@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { _APP_SECURITY_ENABLED_ } from '@app/appComponents/catalogs/constantCatalog';
 import { AuthService } from '@app/appComponents/controller/services/auth.service';
-import { HttpManagerInstance } from '../webInstances/httpManagerInstance';
+import { HttpManagerInstance } from '@app/appComponents/instances/webInstances/httpManagerInstance';
 import { generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 
 @Injectable({

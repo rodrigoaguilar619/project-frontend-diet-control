@@ -1,8 +1,11 @@
 import { Component, Input, IterableDiffers, OnInit } from '@angular/core';
 import { dataTablePropertiesEnum } from '@app/appModules/catalogs/enumCatalog';
-import { DIET_FOOD_COLUMNS, DIET_FOOD_COLUMNS_IDS, DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS } from '../../diet.contants';
+import { DIET_FOOD_COLUMNS, DIET_FOOD_COLUMNS_IDS, DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS } from '@app/appModules/app/diet/diet.contants';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
 
 @Component({
+  imports: [commonAppModules, commonAppComponents],
   selector: 'app-diet-foods-resume',
   templateUrl: './diet-foods-resume.component.html'
 })

@@ -1,6 +1,6 @@
 import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
-import { FormInputColumnPropsI, FormInputContainerPropsI } from "../../@types/components/formInputs/formInputs";
 import { ElementRef } from "@angular/core";
+import { FormInputColumnPropsI, FormInputContainerPropsI } from "@app/appComponents/@types/components/formInputs/formInputs";
 
 const formBuilder = new FormBuilder();
 

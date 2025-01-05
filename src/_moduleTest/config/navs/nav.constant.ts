@@ -1,5 +1,5 @@
 import { INavData } from "@coreui/angular";
-import { SUB_PATHS } from "../../../_moduleTest/catalogs/pathsCatalog";
+import { SUB_PATHS } from "@app/_moduleTest/catalogs/pathsCatalog";
 
 export const navItems: INavData[] = [
   {

@@ -8,6 +8,7 @@ function executeConfigServer(mode, args) {
       directory: pathDevServer.join(args.dirname, '../../dist'),
     },
     client: {
+      logging: 'error', //Remove console logs
       overlay: {
         warnings: false,
         errors: true,

@@ -1,9 +1,13 @@
 import '@angular/compiler';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import './scss/environments/coreui/styles.scss';
+import './scss/environments/coreui/stylesApp.scss';
 
-//import { AppModule } from './_moduleTest/app/appTest.module';
-import { AppMainModule as AppModule } from './appModules/app/appMain.module';
+import { bootstrapApplication } from '@angular/platform-browser';
+import AppMainComponent from './_moduleTest/app/appTest.component';
 
+import { appRoutes } from './_moduleTest/app/appTest.routing';
+import { getLayoutConfig } from './appComponents/templates/environments/coreui/layout.config';
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+export const customReducers = {};
+
+bootstrapApplication(AppMainComponent, getLayoutConfig(appRoutes, customReducers)).catch((err) => console.error(err));

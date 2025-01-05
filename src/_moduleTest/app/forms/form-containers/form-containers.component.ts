@@ -1,14 +1,20 @@
 import { Component, Injector } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { FormInputContainerPropsI } from '../../../../appComponents/@types/components/formInputs/formInputs';
-import { GenericParentComponent } from '../../../../appComponents/_generic/generic-parent/generic-parent.component';
-import { setTitle } from '../../../../appComponents/controller/actions/layout.actions';
-import { InputElementEnum, InputMaskEnum } from '../../../../appComponents/catalogs/enumCatalog';
-import { buildFormGroupFromContainers } from '../../../../appComponents/utils/dataUtils/formDataUtil';
+import { FormInputContainerPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
+import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { InputElementEnum, InputMaskEnum } from '@app/appComponents/catalogs/enumCatalog';
+import { buildFormGroupFromContainers } from '@app/appComponents/utils/dataUtils/formDataUtil';
+import { GenericParentComponent, ButtonSubmitComponent, FormInputContainersComponent } from '@app/appComponents/components/commonComponents.config';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
 
 @Component({
   selector: 'app-form-containers',
-  templateUrl: './form-containers.component.html'
+  templateUrl: './form-containers.component.html',
+  imports: [
+    commonAppModules,
+    FormInputContainersComponent,
+    ButtonSubmitComponent
+  ]
 })
 export class FormContainersComponent extends GenericParentComponent {
 
@@ -25,7 +31,7 @@ export class FormContainersComponent extends GenericParentComponent {
     validate_number_2: "validate_number_2",
     file: "file"
   }
-  
+
   public cities: any[] = [
     { description: 'New York', id: 'NY' },
     { description: 'Rome', id: 'RM' },
@@ -33,12 +39,12 @@ export class FormContainersComponent extends GenericParentComponent {
     { description: 'Istanbul', id: 'IST' },
     { description: 'Paris', id: 'PRS' }
   ];
-  
+
   public answers: any[] = [
     { description: 'Yes', id: true },
     { description: 'No', id: false }
   ];
-  
+
   public inputSectionOne: FormInputContainerPropsI = {
     inputColumns: [
         {
@@ -101,7 +107,7 @@ export class FormContainersComponent extends GenericParentComponent {
     columnstotal: 6,
     containerWidth: "100%"
   }
-  
+
   public inputSectionTwo: FormInputContainerPropsI = {
     inputColumns: [
         {
@@ -127,7 +133,7 @@ export class FormContainersComponent extends GenericParentComponent {
     columnstotal: 2,
     containerWidth: "80%"
   }
-  
+
   public inputSectionThree: FormInputContainerPropsI = {
     inputColumns: [
         {
@@ -154,7 +160,7 @@ export class FormContainersComponent extends GenericParentComponent {
     columnstotal: 2,
     containerWidth: "80%"
   }
-  
+
   public inputSectionFour: FormInputContainerPropsI = {
     inputColumns: [
         {
@@ -171,7 +177,7 @@ export class FormContainersComponent extends GenericParentComponent {
     columnstotal: 1,
     containerWidth: "100%"
   }
-  
+
   public formContainers: FormInputContainerPropsI[] = [this.inputSectionOne, this.inputSectionTwo, this.inputSectionThree];
   public formContainers2: FormInputContainerPropsI[] = [this.inputSectionFour];
 

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { _APP_ROUTE_START_, _APP_SECURITY_ENABLED_ } from '../../catalogs/constantCatalog';
-import { ComponentTypeEnum, HttpMethodEnum } from '../../catalogs/enumCatalog';
-import DebugClass from '../../classes/debugClass';
-import { debug, debugError } from '../../utils/webUtils/debugUtil';
 import { HttpStatusCode } from 'axios';
-import { ToastPrimeInstance } from '../messages/toastPrimeInstance';
-import { HttpInstance } from './httpIntance';
 import { Router } from '@angular/router';
+import { _APP_ROUTE_START_, _APP_SECURITY_ENABLED_ } from '@app/appComponents/catalogs/constantCatalog';
+import { ComponentTypeEnum, HttpMethodEnum } from '@app/appComponents/catalogs/enumCatalog';
+import DebugClass from '@app/appComponents/classes/debugClass';
+import { debug, debugError } from '@app/appComponents/utils/webUtils/debugUtil';
+import { ToastPrimeInstance } from '@app/appComponents/instances/messages/toastPrimeInstance';
+import { HttpInstance } from './httpIntance';
 
 @Injectable({
   providedIn: 'root'

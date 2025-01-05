@@ -1,13 +1,16 @@
 import { Component, Injector } from '@angular/core';
-import { GenericCrudComponent } from '@app/appComponents/_generic/generic-parent/generic-crud/generic-crud.component';
-import { ADMIN_NUTRITIONAL_GOALS_REGISTER_DATA } from '../admin.constants';
+import { FormGroup } from '@angular/forms';
+import axios from 'axios';
+import { GenericCrudComponent } from '@app/appComponents/components/_generic/generic-parent/generic-crud/generic-crud.component';
+import { ADMIN_NUTRITIONAL_GOALS_REGISTER_DATA } from '@app/appModules/app/admin/admin.constants';
 import { AdminService } from '@app/appModules/controller/services/admin.service';
 import { buildFormGroupFromContainers } from '@app/appComponents/utils/dataUtils/formDataUtil';
-import { FormGroup } from '@angular/forms';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import axios from 'axios';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
 
 @Component({
+  imports: [commonAppModules, commonAppComponents],
   selector: 'app-nutritional-register',
   templateUrl: './nutritional-register.component.html'
 })

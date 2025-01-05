@@ -1,5 +1,5 @@
 import { Validators } from "@angular/forms";
-import { FOOD_LIST_COLUMNS_IDS } from "../food/food-constants";
+import { FOOD_LIST_COLUMNS_IDS } from "@app/appModules/app/food/food-constants";
 import { DataTablePropsI } from "@app/appComponents/@types/components/dataTable/dataTable";
 import { InputElementEnum, InputMaskEnum, MaskDataTypeEnum } from "@app/appComponents/catalogs/enumCatalog";
 import { FormInputContainerPropsI } from "@app/appComponents/@types/components/formInputs/formInputs";

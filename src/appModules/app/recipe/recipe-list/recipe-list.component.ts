@@ -1,13 +1,16 @@
 import { Component, Injector } from '@angular/core';
+import axios from 'axios';
 import { IButtonOptions } from '@app/appComponents/@types/components/buttons/buttons';
-import { GenericParentComponent } from '@app/appComponents/_generic/generic-parent/generic-parent.component';
-import { ADMIN_RECIPE_COLUMN } from '../recipe-contants';
+import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
+import { ADMIN_RECIPE_COLUMN } from '@app/appModules/app/recipe/recipe-contants';
 import ModalClass from '@app/appComponents/classes/modalClass';
 import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { RecipeService } from '@app/appModules/controller/services/recipe.service';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import axios from 'axios';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
+import RecipeAddEditComponent from '../recipe-add-edit/recipe-add-edit.component';
 
 enum ModuleRecipeListEnum {
   RECIPE_EDIT = "recipe_edit",
@@ -16,6 +19,7 @@ enum ModuleRecipeListEnum {
 }
 
 @Component({
+  imports: [commonAppModules, commonAppComponents, RecipeAddEditComponent],
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html'
 })

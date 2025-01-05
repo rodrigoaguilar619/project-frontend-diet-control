@@ -1,14 +1,14 @@
 import { Component, ElementRef, Injector, Input } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { _APP_ENVIRONMENT_ } from '../../catalogs/constantCatalog';
-import { ComponentTypeEnum, EnvironmentEnum } from '../../catalogs/enumCatalog';
-import { ToastPrimeInstance } from '../../instances/messages/toastPrimeInstance';
-import { HttpManagerInstance } from '../../instances/webInstances/httpManagerInstance';
-import { buildJsonFromFormArray, buildJsonFromFormGroup } from '../../utils/angularUtils/dataFormsParseUtil';
 import { Store } from '@ngrx/store';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ActivatedRoute, Router } from '@angular/router';
+import { _APP_ENVIRONMENT_ } from '@app/appComponents/catalogs/constantCatalog';
+import { ComponentTypeEnum, EnvironmentEnum } from '@app/appComponents/catalogs/enumCatalog';
+import { ToastPrimeInstance } from '@app/appComponents/instances/messages/toastPrimeInstance';
+import { HttpManagerInstance } from '@app/appComponents/instances/webInstances/httpManagerInstance';
+import { buildJsonFromFormArray, buildJsonFromFormGroup } from '@app/appComponents/utils/angularUtils/dataFormsParseUtil';
 
 @Component({
   selector: 'app-generic-parent',
@@ -41,7 +41,7 @@ export class GenericParentComponent {
   }
 
   buildJsonFromFormGroup(title: string, formGroup: FormGroup) {
-    
+
     if (_APP_ENVIRONMENT_ !== EnvironmentEnum.PRODUCTION)
       return title + " " + buildJsonFromFormGroup(formGroup);
 

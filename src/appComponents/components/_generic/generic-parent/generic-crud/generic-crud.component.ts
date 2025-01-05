@@ -1,7 +1,7 @@
 import { Component, Injector } from '@angular/core';
-import { InputElementEnum } from '@app/appComponents/catalogs/enumCatalog';
-import { GenericParentComponent } from '../generic-parent.component';
 import { FormBuilder } from '@angular/forms';
+import { InputElementEnum } from '@app/appComponents/catalogs/enumCatalog';
+import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 
 @Component({
   selector: 'app-generic-crud',

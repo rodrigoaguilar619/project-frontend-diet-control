@@ -1,11 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 
-import { FormInputContainerPropsI } from '../../../../appComponents/@types/components/formInputs/formInputs';
+import { FormInputContainerPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
+import FormInputElementComponent from '@app/appComponents/components/forms/form-input-element/form-input-element.component';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import FormInputColumnComponent from '@app/appComponents/components/forms/form-input-column/form-input-column.component';
 
 @Component({
   selector: 'app-form-input-container, [app-form-input-container]',
-  templateUrl: './form-input-container.component.html'
+  templateUrl: './form-input-container.component.html',
+  imports: [
+    commonAppModules,
+    FormInputElementComponent,
+    FormInputColumnComponent
+  ]
 })
 export class FormInputContainerComponent implements OnInit {
 

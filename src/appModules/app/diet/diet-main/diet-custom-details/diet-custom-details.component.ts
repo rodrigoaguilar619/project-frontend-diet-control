@@ -1,19 +1,24 @@
 import { Component, Injector, Input } from '@angular/core';
-import { GenericParentComponent } from '@app/appComponents/_generic/generic-parent/generic-parent.component';
+import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { DietService } from '@app/appModules/controller/services/dietService';
-import { DIET_CUSTOM_FOOD_TOTALS_RESUME_COLUMNS_IDS, DIET_CUSTOM_TOTALS_RESUME_COLUMNS, DIET_FOOD_COLUMNS, DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS } from '../../diet.contants';
+import { DIET_CUSTOM_FOOD_TOTALS_RESUME_COLUMNS_IDS, DIET_CUSTOM_TOTALS_RESUME_COLUMNS, DIET_FOOD_COLUMNS, DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS } from '@app/appModules/app/diet/diet.contants';
 import { dataTablePropertiesEnum } from '@app/appModules/catalogs/enumCatalog';
+import DietFoodsResumeComponent from '@app/appModules/app/diet/diet-resumes/diet-foods-resume/diet-foods-resume.component';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
+import { AccordionModule } from 'primeng/accordion';
 
 @Component({
+  imports: [commonAppModules, commonAppComponents, DietFoodsResumeComponent, AccordionModule],
   selector: 'app-diet-custom-details',
   templateUrl: './diet-custom-details.component.html'
 })
 export class DietCustomDetailsComponent extends GenericParentComponent {
 
   @Input() idDietCustom: any = null;
-  
+
   public params: any;
   public subTotalDietBase = {};
   public subTotalDietCustom = {};
@@ -50,16 +55,16 @@ export class DietCustomDetailsComponent extends GenericParentComponent {
 
     let debugClass = generateDebugClassModule("init diet custom detail module");
       debug(debugClass, "start");
-  
+
       this.spinner.show();
 
       this.dietService.getDietCustomService(idDietCustom)
           .then((dietCustomData: any) => {
-  
+
               debug(debugClass, "result", dietCustomData);
 
               this.store.dispatch(setTitle({ title: "Module diet custom detail: [" + dietCustomData.data.dietCustom.recipe.id + "] - " + dietCustomData.data.dietCustom.recipe.title }));
-              
+
               this.subTotalDietBase = dietCustomData.data.subTotalDietBase;
               this.subTotalDietCustom = dietCustomData.data.subTotalDietCustom;
               this.nutritionalGoals = dietCustomData.data.nutritionalGoals;
@@ -82,7 +87,7 @@ export class DietCustomDetailsComponent extends GenericParentComponent {
               }
 
               this.spinner.hide();
-  
+
           })
           .catch((error: any) => {
               this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);

@@ -1,6 +1,6 @@
 import { Component, Injector } from '@angular/core';
-import { GenericParentComponent } from '../../../../appComponents/_generic/generic-parent/generic-parent.component';
-import { setTitle } from '../../../../appComponents/controller/actions/layout.actions';
+import { GenericParentComponent } from '@app/appComponents/components/commonComponents.config';
+import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
 
 @Component({
   selector: 'app-principal-data',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { MockConfigI } from '../../@types/utils/axiosUtil';
+import { MockConfigI } from '@app/appComponents/@types/utils/axiosUtil';
 
 @Injectable({
   providedIn: 'root'

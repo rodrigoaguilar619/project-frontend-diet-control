@@ -1,18 +1,21 @@
 import { Component, Injector } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
+import axios from 'axios';
 import { FormInputColumnPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
 import { InputElementSelectPropsI } from '@app/appComponents/@types/components/inputs/inputElement';
-import { GenericCrudComponent } from '@app/appComponents/_generic/generic-parent/generic-crud/generic-crud.component';
+import { GenericCrudComponent } from '@app/appComponents/components/_generic/generic-parent/generic-crud/generic-crud.component';
 import { decimalsZeroPad, digitsZeroPad } from '@app/appComponents/utils/dataUtils/numberDataUtil';
 import { FOOD_ELEMENT_COLUMNS_IDS } from '@app/appModules/app/food/food-constants';
 import { catalogEnum } from '@app/appModules/catalogs/enumCatalog';
 import { CatalogService } from '@app/appModules/controller/services/catalogService';
 import { DietService } from '@app/appModules/controller/services/dietService';
 import { FoodService } from '@app/appModules/controller/services/food.service';
-import axios from 'axios';
-import { DIET_CUSTOM_RECIPE_DATA, DIET_CUSTOM_RECIPE_DATA_IDS, DIET_FOOD_REGISTER_DATA, DIET_FOOD_REGISTER_DATA_IDS, DIET_FOOD_TOTALS_RESUME_COLUMNS, DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS } from '../../diet.contants';
+import { DIET_CUSTOM_RECIPE_DATA, DIET_CUSTOM_RECIPE_DATA_IDS, DIET_FOOD_REGISTER_DATA, DIET_FOOD_REGISTER_DATA_IDS, DIET_FOOD_TOTALS_RESUME_COLUMNS, DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS } from '@app/appModules/app/diet/diet.contants';
 import { deepClone } from '@app/appComponents/utils/dataUtils/cloneUtils';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
 @Component({
+  imports: [commonAppModules, commonAppComponents],
   selector: 'app-diet-generic-add-edit',
   templateUrl: './diet-generic-add-edit.component.html'
 })

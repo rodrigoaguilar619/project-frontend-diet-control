@@ -1,11 +1,19 @@
 import { Component, IterableDiffers } from '@angular/core';
-import { DatatableGenericComponent } from '../../../../appComponents/components/dataTable/datatable-generic/datatable-generic.component';
+import { TableModule } from 'primeng/table';
+import { DatatableGenericComponent } from '@app/appComponents/components/dataTable/datatable-generic/datatable-generic.component';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import ButtonsOptionsComponent from '@app/appComponents/components/buttons/buttons-options/buttons-options.component';
 
 @Component({
   selector: 'app-datatable-prime-base',
-  templateUrl: './datatable-prime-base.component.html'
+  templateUrl: './datatable-prime-base.component.html',
+  imports: [
+    commonAppModules,
+    TableModule,
+    ButtonsOptionsComponent
+  ],
 })
-class DatatablePrimeBaseComponent extends DatatableGenericComponent {
+export class DatatablePrimeBaseComponent extends DatatableGenericComponent {
 
   constructor(public iterableDiffers: IterableDiffers) {
     super(iterableDiffers);

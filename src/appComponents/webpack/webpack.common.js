@@ -72,7 +72,7 @@ function getCommonConfig(enviroment, args) {
  * @return {Array} an array of common plugins
  */
 function getCommonPlugins(enviroment, args) {
-    
+
     let dotEnvFile;
 
     if (args.dotEnvFile)

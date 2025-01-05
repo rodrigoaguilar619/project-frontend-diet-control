@@ -1,4 +1,4 @@
-import { FormInputColumnPropsI } from "../../../@types/components/formInputs/formInputs";
+import { FormInputColumnPropsI } from "@app/appComponents/@types/components/formInputs/formInputs";
 
 export interface FormInputColumnsPropsI {
     inputColumns: FormInputColumnPropsI[];

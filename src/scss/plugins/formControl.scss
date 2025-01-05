@@ -4,9 +4,22 @@
     font-size: 12px !important;
 }
 
+.form-control:enabled:hover {
+  border-color: #80bdff !important;
+}
+
 .form-control:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+    border-color: #80bdff !important;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25) !important;
+}
+
+.form-control.is-invalid:focus {
+  border-color: var(--cui-form-invalid-border-color) !important;
+  box-shadow: 0 0 0 .2rem rgba(245, 54, 54, 0.25) !important;
+}
+
+.form-control.is-invalid:enabled:hover {
+  border-color: var(--cui-form-invalid-border-color) !important;
 }
 
 .form-control:disabled,
@@ -20,6 +33,12 @@
 
 .form-control.is-invalid {
     padding-right: 5px;
+    border-color: var(--cui-form-invalid-border-color) !important;
+}
+
+p-inputnumber.ng-invalid.ng-dirty > .p-inputtext:enabled:focus {
+    border-color: var(--cui-form-invalid-border-color) !important;
+    box-shadow: 0 0 0 .2rem rgba(245, 54, 54, 0.25) !important;
 }
 
 .invalid-feedback-custom {

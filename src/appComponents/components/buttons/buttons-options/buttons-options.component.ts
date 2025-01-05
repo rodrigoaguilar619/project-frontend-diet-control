@@ -1,9 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { IButtonOptions } from '../../../../appComponents/@types/components/buttons/buttons';
+import { IButtonOptions } from '@app/appComponents/@types/components/buttons/buttons';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
 
 @Component({
   selector: 'app-buttons-options',
-  templateUrl: './buttons-options.component.html'
+  templateUrl: './buttons-options.component.html',
+  imports: [
+      commonAppModules
+    ],
 })
 export class ButtonsOptionsComponent {
 

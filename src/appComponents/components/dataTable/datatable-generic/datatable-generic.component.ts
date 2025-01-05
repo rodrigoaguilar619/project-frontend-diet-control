@@ -1,6 +1,6 @@
 import { Component, Input, IterableDiffers } from '@angular/core';
-import { IButtonOptions } from '../../../../appComponents/@types/components/buttons/buttons';
-import { maskData } from '../../../utils/dataUtils/maskDataUtil';
+import { IButtonOptions } from '@app/appComponents/@types/components/buttons/buttons';
+import { maskData } from '@app/appComponents/utils/dataUtils/maskDataUtil';
 
 @Component({
   selector: 'app-datatable-generic',

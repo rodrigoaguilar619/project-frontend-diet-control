@@ -1,3 +1,5 @@
-<app-form-input-dynamic-row [inputContainer]="formData" [formArray]="formArray"></app-form-input-dynamic-row>
+<app-form-input-dynamic-row [inputContainer]="formData" [formArray]="formArray" [executeOnAddRowFunction]="executeOnAddArrowCustom.bind(this)"></app-form-input-dynamic-row>
 <br>
-<div><app-button-submit title="Save Foods" [clickFunction]="onSubmit.bind(this)"></app-button-submit></div>
+<div [ngStyle]="{'display': 'flex', 'gap': '5px', 'justify-content': 'right', 'align-items': 'center', 'margin-top': '10px'}">
+  <app-button-submit [ngStyle]="{'width': '100px'}" title="Save Foods" [clickFunction]="onSubmit.bind(this)"></app-button-submit>
+</div>

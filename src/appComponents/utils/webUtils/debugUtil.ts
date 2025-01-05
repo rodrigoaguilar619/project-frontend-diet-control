@@ -1,6 +1,6 @@
-import { _APP_ENVIRONMENT_ } from "../../catalogs/constantCatalog";
-import DebugClass from "../../classes/debugClass";
-import { EnvironmentEnum } from "../../catalogs/enumCatalog";
+import { _APP_ENVIRONMENT_ } from "@app/appComponents/catalogs/constantCatalog";
+import DebugClass from "@app/appComponents/classes/debugClass";
+import { EnvironmentEnum } from "@app/appComponents/catalogs/enumCatalog";
 
 const colorsModuleList = [
     "#F91F1F", "#F9961F", "#F9C11F", "#D1BC06", "#A9D106", "#84D106", "#50D106",

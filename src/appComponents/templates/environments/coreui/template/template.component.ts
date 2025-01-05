@@ -17,9 +17,9 @@ import {
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { ILayout } from '../../../../../appComponents/@types/controller/reducers/ilayout';
-import { HeaderLayoutComponent } from '../../../../../appComponents/templates/environments/coreui/header/header.component';
-import { FooterLayoutComponent } from '../../../../../appComponents/templates/environments/coreui/footer/footer.component';
+import { ILayout } from '@app/appComponents/@types/controller/reducers/ilayout';
+import { HeaderLayoutComponent } from '@app/appComponents/templates/environments/coreui/header/header.component';
+import { FooterLayoutComponent } from '@app/appComponents/templates/environments/coreui/footer/footer.component';
 
 @Component({
   selector: 'app-template',
@@ -56,6 +56,7 @@ export class TemplateComponent {
 
     this.$layout.subscribe((data)=>{
       this.layout = {...data};
+      console.log("test layout", this.layout);
     });
   }
 

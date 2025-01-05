@@ -1,18 +1,23 @@
 import { Component, Injector } from '@angular/core';
-import { DIET_FOOD_TOTALS_RESUME_COLUMNS } from '../../diet.contants';
-import { GenericParentComponent } from '@app/appComponents/_generic/generic-parent/generic-parent.component';
+import axios from 'axios';
+import { DIET_FOOD_TOTALS_RESUME_COLUMNS } from '@app/appModules/app/diet/diet.contants';
+import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { DietService } from '@app/appModules/controller/services/dietService';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import axios from 'axios';
 import ModalClass from '@app/appComponents/classes/modalClass';
 import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
+import DietFoodsResumeComponent from '@app/appModules/app/diet/diet-resumes/diet-foods-resume/diet-foods-resume.component';
+import DietBaseAddEditComponent from '../../diet-crud/diet-base-add-edit/diet-base-add-edit.component';
 
 enum ModuleDietBaseDataEnum {
   MODAL_REGISTER_DIET_BASE = "register_diet_base"
 }
 
 @Component({
+  imports: [commonAppModules, commonAppComponents, DietBaseAddEditComponent, DietFoodsResumeComponent],
   selector: 'app-diet-base-register',
   templateUrl: './diet-base-register.component.html'
 })

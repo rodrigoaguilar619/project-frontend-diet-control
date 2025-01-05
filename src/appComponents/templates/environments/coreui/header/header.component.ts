@@ -28,7 +28,7 @@ import { IconDirective } from '@coreui/icons-angular';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { delay, filter, map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { ILayout } from '../../../../../appComponents/@types/controller/reducers/ilayout';
+import { ILayout } from '@app/appComponents/@types/controller/reducers/ilayout';
 import { Store } from '@ngrx/store';
 
 @Component({

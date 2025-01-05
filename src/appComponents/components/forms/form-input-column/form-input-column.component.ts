@@ -1,10 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FormInputColumnPropsI } from '../../../../appComponents/@types/components/formInputs/formInputs';
+import { FormInputColumnPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import FormInputElementComponent from '@app/appComponents/components/forms/form-input-element/form-input-element.component';
+import FormInputValidatorComponent from '@app/appComponents/components/forms/form-input-validator/form-input-validator.component';
 
 @Component({
   selector: 'app-form-input-column, [app-form-input-column]',
-  templateUrl: './form-input-column.component.html'
+  templateUrl: './form-input-column.component.html',
+  imports: [
+      commonAppModules,
+      FormInputElementComponent,
+      FormInputValidatorComponent
+    ]
 })
 export class FormInputColumnComponent implements OnInit {
 

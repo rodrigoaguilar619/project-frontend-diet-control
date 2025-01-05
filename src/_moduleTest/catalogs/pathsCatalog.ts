@@ -4,7 +4,7 @@ export const SUB_PATHS = {
         fullPath: "/admin",
         PRINCIPAL_PAGE: {
             path: "principal",
-            fullPath: "admin/principal"
+            fullPath: "/admin/principal"
         }
     },
     DATATABLE: {

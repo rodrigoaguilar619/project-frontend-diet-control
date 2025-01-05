@@ -1,8 +1,8 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { FormInputColumnPropsI, FormInputContainerPropsI } from '../../@types/components/formInputs/formInputs';
+import { FormInputColumnPropsI, FormInputContainerPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
 
 export function setValidatorCustom(formControl: AbstractControl, validatorRules: ValidatorFn[], customValidatorFn: ValidatorFn): void {
-    
+
     if (!validatorRules.includes(customValidatorFn)) {
       validatorRules.push(customValidatorFn);
     }
@@ -13,7 +13,7 @@ export function setValidatorCustom(formControl: AbstractControl, validatorRules:
   }
 
   export function setValidatorCustomToContainer(formInputContainerProps: FormInputContainerPropsI, formControl: AbstractControl, inputId: string, customValidatorFn: ValidatorFn): void {
-    
+
     formInputContainerProps.inputColumns.forEach((inputColumn: FormInputColumnPropsI) => {
 
         if (inputColumn.inputProps.id === inputId && inputColumn.validations) {

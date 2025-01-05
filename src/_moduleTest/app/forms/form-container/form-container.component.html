@@ -1,5 +1,7 @@
 <div>Form Id: {{formId}}</div>
 <app-form-input-container [inputContainer]="inputSectionOne" [formGroup]="formGroup"></app-form-input-container>
 <app-form-input-container [inputContainer]="inputSectionTwo" [formGroup]="formGroup"></app-form-input-container>
-<div><app-button-submit [title]="'Submit Form'" [clickFunction]="onSubmit.bind(this)"></app-button-submit></div>
+<div [ngStyle]="{'display': 'flex', 'gap': '5px', 'justify-content': 'right', 'align-items': 'center', 'margin-top': '10px'}">
+  <app-button-submit [ngStyle]="{'width': '150px'}" [title]="'Submit Form'" [clickFunction]="onSubmit.bind(this)"></app-button-submit>
+</div>
 <div>{{buildJsonFromFormGroup("Form Group:", formGroup)}}</div>

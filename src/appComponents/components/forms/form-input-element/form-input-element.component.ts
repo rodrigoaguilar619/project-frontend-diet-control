@@ -1,11 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { InputElementCalendarPropsI, InputElementMaskPropsI, InputElementPropsListI, InputElementSelectPropsI } from '../../../../appComponents/@types/components/inputs/inputElement';
-import { InputElementEnum, InputMaskEnum } from '../../../catalogs/enumCatalog';
+import { DatePickerModule } from 'primeng/datepicker';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputElementCalendarPropsI, InputElementMaskPropsI, InputElementPropsListI, InputElementSelectPropsI } from '@app/appComponents/@types/components/inputs/inputElement';
+import { InputElementEnum, InputMaskEnum } from '@app/appComponents/catalogs/enumCatalog';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
 
 @Component({
   selector: 'app-form-input-element, [app-input-element]',
-  templateUrl: './form-input-element.component.html'
+  templateUrl: './form-input-element.component.html',
+  imports: [
+    commonAppModules,
+    DatePickerModule,
+    InputNumberModule,
+  ]
 })
 export class FormInputElementComponent implements OnInit {
 
@@ -42,7 +50,7 @@ export class FormInputElementComponent implements OnInit {
   }
 
   executeOnChange (valueFormControl: FormControl, executeAfterChange?: Function) {
-    
+
     if (executeAfterChange !== undefined) {
       executeAfterChange(valueFormControl);
     }

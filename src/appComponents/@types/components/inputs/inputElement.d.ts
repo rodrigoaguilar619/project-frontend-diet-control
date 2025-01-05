@@ -1,6 +1,6 @@
-import { InputElementEnum, InputMaskEnum } from "../../../catalogs/enumCatalog";
+import { InputElementEnum, InputMaskEnum } from "@app/appComponents/catalogs/enumCatalog";
 
-type InputElementPropsListI = InputElementTextPropsI | InputElementSelectPropsI | InputElementCalendarPropsI 
+type InputElementPropsListI = InputElementTextPropsI | InputElementSelectPropsI | InputElementCalendarPropsI
     | InputElementFilePropsI | InputElementMaskPropsI;
 
 export interface InputDropDownValueI {
@@ -29,7 +29,7 @@ export interface InputElementTextPropsI extends InputElementPropsI<string> {
 export interface InputElementSelectPropsI extends InputElementPropsI<string> {
     options: InputDropDownValueI[],
     placeholder?: string,
-    isOptionAll?: boolean 
+    isOptionAll?: boolean
 }
 
 export interface InputElementCalendarPropsI extends InputElementPropsI<number | undefined | null> {

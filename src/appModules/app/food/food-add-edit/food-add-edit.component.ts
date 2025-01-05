@@ -1,14 +1,17 @@
 import { Component, Injector, Input } from '@angular/core';
-import { ADMIN_FOOD_COLUMN_DATA } from '../food-constants';
-import { GenericCrudComponent } from '@app/appComponents/_generic/generic-parent/generic-crud/generic-crud.component';
+import axios from 'axios';
+import { ADMIN_FOOD_COLUMN_DATA } from '@app/appModules/app/food/food-constants';
+import { GenericCrudComponent } from '@app/appComponents/components/_generic/generic-parent/generic-crud/generic-crud.component';
 import { FoodService } from '@app/appModules/controller/services/food.service';
 import { FormGroup } from '@angular/forms';
 import { buildFormGroupFromContainers } from '@app/appComponents/utils/dataUtils/formDataUtil';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import axios from 'axios';
 import { initFormFoodEvents } from '@app/appModules/utils/moduleUtils/FoodRegisterUtil';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
 
 @Component({
+  imports: [commonAppModules, commonAppComponents],
   selector: 'app-food-add-edit',
   templateUrl: './food-add-edit.component.html'
 })

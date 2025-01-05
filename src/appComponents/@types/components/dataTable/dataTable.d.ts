@@ -1,4 +1,4 @@
-import { MaskDataTypeEnum } from "../../../catalogs/enumCatalog";
+import { MaskDataTypeEnum } from "@app/appComponents/catalogs/enumCatalog";
 
 export interface MaskDataCurrencyPropsI {
     decimalPlaces?: number,

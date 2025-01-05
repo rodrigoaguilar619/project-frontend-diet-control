@@ -1,13 +1,16 @@
 import { Component, Injector, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { GenericCrudComponent } from '@app/appComponents/_generic/generic-parent/generic-crud/generic-crud.component';
+import axios from 'axios';
+import { GenericCrudComponent } from '@app/appComponents/components/_generic/generic-parent/generic-crud/generic-crud.component';
 import { buildFormGroupFromContainers } from '@app/appComponents/utils/dataUtils/formDataUtil';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { RecipeService } from '@app/appModules/controller/services/recipe.service';
-import axios from 'axios';
-import { RECIPE_REGISTER_DATA } from '../recipe-contants';
+import { RECIPE_REGISTER_DATA } from '@app/appModules/app/recipe/recipe-contants';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
 
 @Component({
+  imports: [commonAppModules, commonAppComponents],
   selector: 'app-recipe-add-edit',
   templateUrl: './recipe-add-edit.component.html'
 })

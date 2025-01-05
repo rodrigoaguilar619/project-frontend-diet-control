@@ -1,16 +1,21 @@
 import { Component, Injector, Input } from '@angular/core';
-import { DietGenericAddEditComponent } from '../diet-generic-add-edit/diet-generic-add-edit.component';
 import { FormGroup } from '@angular/forms';
+import axios from 'axios';
+import { DietGenericAddEditComponent } from '@app/appModules/app/diet/diet-crud/diet-generic-add-edit/diet-generic-add-edit.component';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { buildFormGroupFromContainers, validateForm } from '@app/appComponents/utils/dataUtils/formDataUtil';
-import { DIET_CUSTOM_FOOD_TOTALS_RESUME_COLUMNS_IDS, DIET_CUSTOM_RECIPE_DATA_IDS, DIET_CUSTOM_TOTALS_RESUME_COLUMNS } from '../../diet.contants';
+import { DIET_CUSTOM_FOOD_TOTALS_RESUME_COLUMNS_IDS, DIET_CUSTOM_RECIPE_DATA_IDS, DIET_CUSTOM_TOTALS_RESUME_COLUMNS } from '@app/appModules/app/diet/diet.contants';
 import { dataTablePropertiesEnum } from '@app/appModules/catalogs/enumCatalog';
-import axios from 'axios';
 import { FormInputColumnPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
 import { AdminService } from '@app/appModules/controller/services/admin.service';
 import { capitalizeFirstLetter } from '@app/appComponents/utils/dataUtils/dataUtil';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
+import DietFoodsResumeComponent from '@app/appModules/app/diet/diet-resumes/diet-foods-resume/diet-foods-resume.component';
+import { AccordionModule } from 'primeng/accordion';
 
 @Component({
+  imports: [commonAppModules, commonAppComponents, DietFoodsResumeComponent, AccordionModule],
   selector: 'app-diet-custom-add-edit',
   templateUrl: './diet-custom-add-edit.component.html'
 })
@@ -90,7 +95,7 @@ export class DietCustomAddEditComponent extends DietGenericAddEditComponent {
       },
     ];
   }
-  
+
   updateDietFoodsTotalsCustom() {
 
     this.updateDietFoodsTotals();
@@ -107,7 +112,7 @@ export class DietCustomAddEditComponent extends DietGenericAddEditComponent {
 
       let debugClass = generateDebugClassModule("init diet custom module");
       debug(debugClass, "start");
-  
+
       this.spinner.show();
 
       let formGroup: FormGroup = buildFormGroupFromContainers([this.dietFoodListColumns]);
@@ -157,7 +162,7 @@ export class DietCustomAddEditComponent extends DietGenericAddEditComponent {
               return this.dietService.getDietCustomService(idDietCustom);
           })
           .then((dietCustomData) => {
-  
+
               debug(debugClass, "result", dietCustomData);
               this.subTotalDietBase = dietCustomData.data.subTotalDietBase;
               this.subTotalDietCustom = dietCustomData.data.subTotalDietCustom;
@@ -172,7 +177,7 @@ export class DietCustomAddEditComponent extends DietGenericAddEditComponent {
               if(dietCustomData.data.dietCustom.recipe !== null) {
 
                 this.formGroupRecipe.patchValue(dietCustomData.data.dietCustom.recipe);
-                
+
                 dietCustomData.data.dietCustom.foods.forEach((food: any) => {
                   let formGroup: FormGroup = buildFormGroupFromContainers([this.dietFoodListColumns]);
                   formGroup.patchValue(food);
@@ -184,7 +189,7 @@ export class DietCustomAddEditComponent extends DietGenericAddEditComponent {
               this.buildTotalsResume();
 
               this.spinner.hide();
-  
+
           })
           .catch((error) => {
               this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);

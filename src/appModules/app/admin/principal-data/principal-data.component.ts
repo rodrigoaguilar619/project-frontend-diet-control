@@ -1,19 +1,23 @@
 import { Component, Injector } from '@angular/core';
-import { GenericParentComponent } from '../../../../appComponents/_generic/generic-parent/generic-parent.component';
-import { AdminService } from '../../../controller/services/admin.service';
-import { ADMIN_NUTRITIONAL_GOALS_COLUMNS } from '../admin.constants';
-import { PATH_API_DOCUMENTATION } from '../../../catalogs/uriCatalog';
-import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import axios from 'axios';
+import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
+import { AdminService } from '@app/appModules/controller/services/admin.service';
+import { ADMIN_NUTRITIONAL_GOALS_COLUMNS } from '@app/appModules/app/admin/admin.constants';
+import { PATH_API_DOCUMENTATION } from '@app/appModules/catalogs/uriCatalog';
+import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
 import ModalClass from '@app/appComponents/classes/modalClass';
 import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
+import { NutritionalRegisterComponent } from '@app/appModules/app/admin/nutritional-register/nutritional-register.component';
 
 export enum ModulePrincipalDataEnum {
   NUTRITIONAL_GOALS_REGISTER = 'NUTRITIONAL_GOALS_REGISTER',
 }
 
 @Component({
+  imports: [commonAppModules, commonAppComponents, NutritionalRegisterComponent],
   selector: 'app-principal-data',
   templateUrl: './principal-data.component.html'
 })

@@ -1,23 +1,23 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
 import { ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ButtonDirective, SpinnerModule } from '@coreui/angular';
-import { _APP_LOGIN_TITLE_, _APP_ROUTE_START_ } from '@app/appComponents/catalogs/constantCatalog';
-import { ComponentLoginMessageTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-import DebugClass from '@app/appComponents/classes/debugClass';
 import axios, { HttpStatusCode } from 'axios';
-import { debug, debugError, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import { AuthService } from '@app/appComponents/controller/services/auth.service';
+import { NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IconModule, IconSetService, IconDirective } from '@coreui/icons-angular';
 import { cilLockLocked, cilUser } from '@coreui/icons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpManagerInstance } from '@app/appComponents/instances/webInstances/httpManagerInstance';
+import { _APP_LOGIN_TITLE_, _APP_ROUTE_START_ } from '@app/appComponents/catalogs/constantCatalog';
+import { ComponentLoginMessageTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
+import DebugClass from '@app/appComponents/classes/debugClass';
+import { debug, debugError, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
+import { AuthService } from '@app/appComponents/controller/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  standalone: true,
   imports: [ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, IconDirective, FormControlDirective, ButtonDirective, NgStyle,
     CommonModule, SpinnerModule, NgbAlertModule, ReactiveFormsModule, IconModule],
   providers: [IconSetService]
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   @Input() loadingText: string = 'Loading...';
 
   constructor(private authService: AuthService, private httpManagerInstance: HttpManagerInstance, public iconSet: IconSetService, private fb: FormBuilder,
-    private router: Router, private route: ActivatedRoute) {
+    private router: Router, private route: ActivatedRoute, private zone: NgZone) {
     iconSet.icons = { cilUser, cilLockLocked };
 
     this.loginForm = this.fb.group({
@@ -150,8 +150,12 @@ export class LoginComponent implements OnInit {
         errorMessage = "Error with status: " + error.response.status;
     }
 
-    this.messageType = ComponentLoginMessageTypeEnum.ERROR;
-    this.currentMessage = errorMessage;
+    this.zone.run(() => {
+      this.messageType = ComponentLoginMessageTypeEnum.ERROR;
+      this.currentMessage = errorMessage;
+      this.isLoading = false;
+    });
+
     debugError(debugClass, "<" + errorMessage + ">", error);
   }
 

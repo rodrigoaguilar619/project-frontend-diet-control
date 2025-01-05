@@ -1,10 +1,11 @@
 import { Component, Injector } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { InputElementCalendarPropsI, InputElementFilePropsI, InputElementMaskPropsI, InputElementSelectPropsI, InputElementTextPropsI } from '../../../../appComponents/@types/components/inputs/inputElement';
-import { GenericParentComponent } from '../../../../appComponents/_generic/generic-parent/generic-parent.component';
-import { setTitle } from '../../../../appComponents/controller/actions/layout.actions';
-import { InputElementEnum, InputMaskEnum } from '../../../../appComponents/catalogs/enumCatalog';
-import { buildJsonFromFormControls } from '../../../../appComponents/utils/angularUtils/dataFormsParseUtil';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { InputElementCalendarPropsI, InputElementFilePropsI, InputElementMaskPropsI, InputElementSelectPropsI, InputElementTextPropsI } from '@app/appComponents/@types/components/inputs/inputElement';
+import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { InputElementEnum, InputMaskEnum } from '@app/appComponents/catalogs/enumCatalog';
+import { buildJsonFromFormControls } from '@app/appComponents/utils/angularUtils/dataFormsParseUtil';
+import { GenericParentComponent, FormInputElementComponent } from '@app/appComponents/components/commonComponents.config';
 
 const cities: { description: string; id: string }[] = [
   { description: 'New York', id: 'NY' },
@@ -16,7 +17,8 @@ const cities: { description: string; id: string }[] = [
 
 @Component({
   selector: 'app-form-elements',
-  templateUrl: './form-elements.component.html'
+  templateUrl: './form-elements.component.html',
+  imports: [CommonModule, ReactiveFormsModule, FormInputElementComponent]
 })
 export class FormElementsComponent extends GenericParentComponent {
 

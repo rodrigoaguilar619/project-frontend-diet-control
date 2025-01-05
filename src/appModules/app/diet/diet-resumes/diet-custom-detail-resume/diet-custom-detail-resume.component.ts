@@ -1,11 +1,15 @@
 import { Component, Injector, Input } from '@angular/core';
-import { DIET_CUSTOM_DETAIL_FOOD_COLUMNS } from '../../diet.contants';
+import { DIET_CUSTOM_DETAIL_FOOD_COLUMNS } from '@app/appModules/app/diet/diet.contants';
 import { IButtonOptions } from '@app/appComponents/@types/components/buttons/buttons';
 import { DietService } from '@app/appModules/controller/services/dietService';
 import { dataTablePropertiesEnum } from '@app/appModules/catalogs/enumCatalog';
-import { GenericParentComponent } from '@app/appComponents/_generic/generic-parent/generic-parent.component';
+import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
 import ModalClass from '@app/appComponents/classes/modalClass';
+import { commonAppModules } from '@app/appComponents/components/commonModules.config';
+import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
+import DietCustomAddEditComponent from '@app/appModules/app/diet/diet-crud/diet-custom-add-edit/diet-custom-add-edit.component';
+import DietCustomDetailsComponent from '@app/appModules/app/diet/diet-main/diet-custom-details/diet-custom-details.component';
 
 enum ModuleDietCustomDetailDataEnum {
   MODAL_ADD_EDIT_DIET_CUSTOM = "add_edit_diet_custom",
@@ -13,11 +17,12 @@ enum ModuleDietCustomDetailDataEnum {
 }
 
 @Component({
+  imports: [commonAppModules, commonAppComponents, DietCustomAddEditComponent, DietCustomDetailsComponent],
   selector: 'app-diet-custom-detail-resume',
   templateUrl: './diet-custom-detail-resume.component.html'
 })
 export class DietCustomDetailResumeComponent extends GenericParentComponent {
-  
+
   public dataTableSectionsProperties = { header: true, footer: false, search: false, pagination: false }
   public moduleEnum = ModuleDietCustomDetailDataEnum;
   @Input() dietCustomDetailValues: any = [];

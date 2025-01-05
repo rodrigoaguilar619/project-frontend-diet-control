@@ -1,8 +1,8 @@
-import { API_ADMIN_NUTRITIONAL_GOAL_GET, API_ADMIN_NUTRITIONAL_GOAL_REGISTER } from "../../../appModules/catalogs/uriCatalog";
-import { HttpMethodEnum } from "../../../appComponents/catalogs/enumCatalog";
-import { HttpManagerInstance } from "../../../appComponents/instances/webInstances/httpManagerInstance";
 import { Injectable } from "@angular/core";
-import { generateDebugClassService } from "../../../appComponents/utils/webUtils/debugUtil";
+import { API_ADMIN_NUTRITIONAL_GOAL_GET, API_ADMIN_NUTRITIONAL_GOAL_REGISTER } from "@app/appModules/catalogs/uriCatalog";
+import { HttpMethodEnum } from "@app/appComponents/catalogs/enumCatalog";
+import { HttpManagerInstance } from "@app/appComponents/instances/webInstances/httpManagerInstance";
+import { generateDebugClassService } from "@app/appComponents/utils/webUtils/debugUtil";
 
 @Injectable({
     providedIn: 'root'

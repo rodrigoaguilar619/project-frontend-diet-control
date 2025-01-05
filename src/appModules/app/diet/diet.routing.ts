@@ -21,13 +21,4 @@ const routes: Routes = [{
   pathMatch: 'full'
 }];
 
-@NgModule({
-  declarations: [],
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [
-    RouterModule
-  ]
-})
-export class DietRoutingModule { }
+export const appDietRoutes: Routes = routes;

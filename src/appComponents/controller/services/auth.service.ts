@@ -1,7 +1,7 @@
-import { HttpMethodEnum } from "../../catalogs/enumCatalog";
-import { HttpManagerInstance } from "../../instances/webInstances/httpManagerInstance";
 import { Injectable } from "@angular/core";
-import { generateDebugClassService } from "../../utils/webUtils/debugUtil";
+import { HttpMethodEnum } from "@app/appComponents/catalogs/enumCatalog";
+import { HttpManagerInstance } from "@app/appComponents/instances/webInstances/httpManagerInstance";
+import { generateDebugClassService } from "@app/appComponents/utils/webUtils/debugUtil";
 import { URL_AUTH_LOGIN, URL_AUTH_LOGOUT, URL_REFRESH_SESSION, URL_VALIDATE_SESSION } from "@app/appComponents/catalogs/uriCatalog";
 
 @Injectable({
