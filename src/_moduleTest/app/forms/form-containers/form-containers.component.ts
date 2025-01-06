@@ -1,7 +1,7 @@
 import { Component, Injector } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormInputContainerPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { InputElementEnum, InputMaskEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { buildFormGroupFromContainers } from '@app/appComponents/utils/dataUtils/formDataUtil';
 import { GenericParentComponent, ButtonSubmitComponent, FormInputContainersComponent } from '@app/appComponents/components/commonComponents.config';
@@ -187,7 +187,7 @@ export class FormContainersComponent extends GenericParentComponent {
   constructor(injector: Injector) {
     super(injector);
 
-    this.store.dispatch(setTitle({ title: "Form input containers" }));
+    this.store.dispatch(setSubTitle({ subTitle: "Form input containers" }));
     this.formGroup = buildFormGroupFromContainers(this.formContainers);
     this.formGroup2 = buildFormGroupFromContainers(this.formContainers2);
 

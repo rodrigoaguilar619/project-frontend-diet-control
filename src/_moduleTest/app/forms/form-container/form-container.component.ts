@@ -2,7 +2,7 @@ import { Component, Injector, Input, SimpleChanges } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormInputContainerPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
 import { GenericParentComponent } from '@app/appComponents/components/commonComponents.config';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { ValidatorsCustom } from '@app/appComponents/controller/validators/validatorsCustom';
 import { InputElementEnum, InputMaskEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { buildFormGroupFromContainers } from '@app/appComponents/utils/dataUtils/formDataUtil';
@@ -166,7 +166,7 @@ export class FormContainerComponent extends GenericParentComponent {
   constructor(injector: Injector) {
     super(injector);
 
-    this.store.dispatch(setTitle({ title: "Form input container" }));
+    this.store.dispatch(setSubTitle({ subTitle: "Form input container" }));
     this.formGroup = buildFormGroupFromContainers([this.inputSectionOne, this.inputSectionTwo]);
 
   }

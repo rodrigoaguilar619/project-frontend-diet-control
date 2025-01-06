@@ -2,7 +2,7 @@ import { Component, Injector } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputElementCalendarPropsI, InputElementFilePropsI, InputElementMaskPropsI, InputElementSelectPropsI, InputElementTextPropsI } from '@app/appComponents/@types/components/inputs/inputElement';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { InputElementEnum, InputMaskEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { buildJsonFromFormControls } from '@app/appComponents/utils/angularUtils/dataFormsParseUtil';
 import { GenericParentComponent, FormInputElementComponent } from '@app/appComponents/components/commonComponents.config';
@@ -46,7 +46,7 @@ export class FormElementsComponent extends GenericParentComponent {
   constructor(injector: Injector) {
     super(injector);
 
-    this.store.dispatch(setTitle({ title: "Form input elements" }));
+    this.store.dispatch(setSubTitle({ subTitle: "Form input elements" }));
     this.valueControlText = new FormControl(this.columnInputTextProps.value);
     this.valueControlSelect = new FormControl(this.columnInputSelectProps.value);
     this.valueControlTextArea = new FormControl(this.columnInputTextAreaProps.value);

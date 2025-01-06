@@ -1,6 +1,6 @@
 import { Component, Injector, Input } from '@angular/core';
 import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { DietService } from '@app/appModules/controller/services/dietService';
 import { DIET_CUSTOM_FOOD_TOTALS_RESUME_COLUMNS_IDS, DIET_CUSTOM_TOTALS_RESUME_COLUMNS, DIET_FOOD_COLUMNS, DIET_FOOD_TOTALS_RESUME_COLUMNS_IDS } from '@app/appModules/app/diet/diet.contants';
@@ -63,7 +63,7 @@ export class DietCustomDetailsComponent extends GenericParentComponent {
 
               debug(debugClass, "result", dietCustomData);
 
-              this.store.dispatch(setTitle({ title: "Module diet custom detail: [" + dietCustomData.data.dietCustom.recipe.id + "] - " + dietCustomData.data.dietCustom.recipe.title }));
+              this.store.dispatch(setSubTitle({ subTitle: "Diet custom detail: [" + dietCustomData.data.dietCustom.recipe.id + "] - " + dietCustomData.data.dietCustom.recipe.title }));
 
               this.subTotalDietBase = dietCustomData.data.subTotalDietBase;
               this.subTotalDietCustom = dietCustomData.data.subTotalDietCustom;

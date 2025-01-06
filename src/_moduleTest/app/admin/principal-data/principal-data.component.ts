@@ -1,6 +1,6 @@
 import { Component, Injector } from '@angular/core';
 import { GenericParentComponent } from '@app/appComponents/components/commonComponents.config';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 
 @Component({
   selector: 'app-principal-data',
@@ -11,7 +11,7 @@ export class PrincipalDataComponent extends GenericParentComponent {
   constructor(injector: Injector) {
     super(injector);
 
-    this.store.dispatch(setTitle({ title: "Principal page" }));
+    this.store.dispatch(setSubTitle({ subTitle: "Principal page" }));
   }
 
 }

@@ -5,7 +5,7 @@ import { AdminService } from '@app/appModules/controller/services/admin.service'
 import { ADMIN_NUTRITIONAL_GOALS_COLUMNS } from '@app/appModules/app/admin/admin.constants';
 import { PATH_API_DOCUMENTATION } from '@app/appModules/catalogs/uriCatalog';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import ModalClass from '@app/appComponents/classes/modalClass';
 import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { commonAppModules } from '@app/appComponents/components/commonModules.config';
@@ -33,7 +33,7 @@ export class PrincipalDataComponent extends GenericParentComponent {
   constructor(injector: Injector, private adminService: AdminService) {
     super(injector);
 
-    this.store.dispatch(setTitle({ title: "Module principal page" }));
+    this.store.dispatch(setSubTitle({ subTitle: "Principal page" }));
   }
 
   ngOnInit(): void {

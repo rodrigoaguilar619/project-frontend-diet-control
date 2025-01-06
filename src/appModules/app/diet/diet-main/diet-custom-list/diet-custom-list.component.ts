@@ -4,7 +4,7 @@ import { IButtonOptions } from '@app/appComponents/@types/components/buttons/but
 import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
 import ModalClass from '@app/appComponents/classes/modalClass';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { RoutingInstance } from '@app/appComponents/instances/webInstances/routingIntance';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { SUB_PATHS } from '@app/appModules/catalogs/pathsCatalog';
@@ -69,7 +69,7 @@ export class DietCustomListComponent extends GenericParentComponent {
   constructor(injector: Injector, private dietService: DietService, private routingInstance: RoutingInstance) {
     super(injector);
 
-    this.store.dispatch(setTitle({ title: "Module diet custom list" }));
+    this.store.dispatch(setSubTitle({ subTitle: "Diet custom list" }));
 
   }
 

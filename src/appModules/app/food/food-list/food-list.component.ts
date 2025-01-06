@@ -6,7 +6,7 @@ import { FOOD_LIST_COLUMNS } from '@app/appModules/app/food/food-constants';
 import ModalClass from '@app/appComponents/classes/modalClass';
 import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { IButtonOptions } from '@app/appComponents/@types/components/buttons/buttons';
 import { commonAppModules } from '@app/appComponents/components/commonModules.config';
 import { commonAppComponents } from '@app/appComponents/components/commonComponents.config';
@@ -35,7 +35,7 @@ export class FoodListComponent extends GenericParentComponent {
   constructor(injector: Injector, private foodService: FoodService) {
     super(injector);
 
-    this.store.dispatch(setTitle({ title: "Module food list" }));
+    this.store.dispatch(setSubTitle({ subTitle: "Module food list" }));
 
   }
 

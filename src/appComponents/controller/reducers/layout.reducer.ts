@@ -1,13 +1,16 @@
 import { createReducer, on } from '@ngrx/store';
 import { ILayout } from '@app/appComponents/@types/controller/reducers/ilayout';
-import { setMenu, setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setMenu, setSubTitle, setTitle } from '@app/appComponents/controller/actions/layout.actions';
 
-export const initialState: ILayout = { title: "", menu: [] };
+export const initialState: ILayout = { title: "", subTitle: "", menu: [] };
 
 const _setLayoutReducer = createReducer(
     initialState,
     on(setTitle, (state, parameters: { title: string }) => {
         return {...state, title: parameters.title }
+    }),
+    on(setSubTitle, (state, parameters: { subTitle: string }) => {
+        return {...state, subTitle: parameters.subTitle }
     }),
     on(setMenu, (state, parameters: { menu: any }) => {
         return {...state, menu: parameters.menu }

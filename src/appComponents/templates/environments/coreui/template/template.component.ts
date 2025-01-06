@@ -61,7 +61,7 @@ export class TemplateComponent {
 
       this.layout = {...data};
 
-      if(this.layout.menu != undefined){
+      if(this.layout.menu != undefined) {
         this.menu = transformNav(this.layout.menu);
       }
     });

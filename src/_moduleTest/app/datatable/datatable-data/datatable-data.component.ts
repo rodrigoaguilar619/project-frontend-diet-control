@@ -7,7 +7,7 @@ import { DataTableService } from '@app/_moduleTest/controller/services/dataTable
 import { MaskDataTypeEnum, ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
 import ModalClass from "@app/appComponents/classes/modalClass";
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { _APP_TITLE_ } from '@app/appComponents/catalogs/constantCatalog';
 import { GenericParentComponent, DatatablePrimeBaseComponent, ModalPopupComponent } from '@app/appComponents/components/commonComponents.config';
 import { commonAppModules } from '@app/appComponents/components/commonModules.config';
@@ -140,7 +140,7 @@ export class DataTableDataComponent extends GenericParentComponent implements On
     constructor(injector: Injector, private dataTableService: DataTableService) {
         super(injector);
 
-        this.store.dispatch(setTitle({ title: "Datatable Data " + _APP_TITLE_ }));
+        this.store.dispatch(setSubTitle({ subTitle: "Datatable Data " }));
     }
 
     public modalClass: ModalClass = new ModalClass(false, ModalTypeEnum.POPUP);

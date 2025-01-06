@@ -5,7 +5,7 @@ import { GenericParentComponent } from '@app/appComponents/components/_generic/g
 import { ADMIN_RECIPE_COLUMN } from '@app/appModules/app/recipe/recipe-contants';
 import ModalClass from '@app/appComponents/classes/modalClass';
 import { ModalTypeEnum } from '@app/appComponents/catalogs/enumCatalog';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { RecipeService } from '@app/appModules/controller/services/recipe.service';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { commonAppModules } from '@app/appComponents/components/commonModules.config';
@@ -48,7 +48,7 @@ export class RecipeListComponent extends GenericParentComponent {
   constructor(injector: Injector, private recipeService: RecipeService) {
     super(injector);
 
-    this.store.dispatch(setTitle({ title: "Module recipe list" }));
+    this.store.dispatch(setSubTitle({ subTitle: "Recipe list" }));
   }
 
   ngOnInit(): void {

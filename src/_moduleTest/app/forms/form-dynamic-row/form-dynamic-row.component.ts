@@ -1,7 +1,7 @@
 import { Component, Injector } from '@angular/core';
 import { FormArray, Validators } from '@angular/forms';
 import { FormInputContainerPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { InputElementEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { buildFormArrayFromContainer } from '@app/appComponents/utils/dataUtils/formDataUtil';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
@@ -115,7 +115,7 @@ export class FormDynamicRowComponent extends GenericParentComponent {
   constructor(injector: Injector) {
     super(injector);
 
-    this.store.dispatch(setTitle({ title: "Form dynamic row" }));
+    this.store.dispatch(setSubTitle({ subTitle: "Form dynamic row" }));
     this.formArray = buildFormArrayFromContainer(this.inputContainer);
   }
 

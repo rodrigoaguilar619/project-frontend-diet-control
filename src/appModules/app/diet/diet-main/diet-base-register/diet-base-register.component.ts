@@ -2,7 +2,7 @@ import { Component, Injector } from '@angular/core';
 import axios from 'axios';
 import { DIET_FOOD_TOTALS_RESUME_COLUMNS } from '@app/appModules/app/diet/diet.contants';
 import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
-import { setTitle } from '@app/appComponents/controller/actions/layout.actions';
+import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { DietService } from '@app/appModules/controller/services/dietService';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import ModalClass from '@app/appComponents/classes/modalClass';
@@ -33,7 +33,7 @@ export class DietBaseRegisterComponent extends GenericParentComponent {
 
   constructor(injector: Injector, private dietService: DietService) {
     super(injector);
-    this.store.dispatch(setTitle({ title: "Module Diet Base" }));
+    this.store.dispatch(setSubTitle({ subTitle: "Diet Base" }));
   }
 
   ngOnInit(): void {
