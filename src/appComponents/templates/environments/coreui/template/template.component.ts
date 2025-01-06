@@ -5,6 +5,7 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
 import { IconDirective } from '@coreui/icons-angular';
 import {
   ContainerComponent,
+  INavData,
   ShadowOnScrollDirective,
   SidebarBrandComponent,
   SidebarComponent,
@@ -20,6 +21,7 @@ import { Store } from '@ngrx/store';
 import { ILayout } from '@app/appComponents/@types/controller/reducers/ilayout';
 import { HeaderLayoutComponent } from '@app/appComponents/templates/environments/coreui/header/header.component';
 import { FooterLayoutComponent } from '@app/appComponents/templates/environments/coreui/footer/footer.component';
+import { transformNav } from '@app/appComponents/utils/templateUtil/menuCoreuiUtil';
 
 @Component({
   selector: 'app-template',
@@ -49,14 +51,19 @@ export class TemplateComponent {
   minimized = false;
   $layout: Observable<ILayout>;
   layout: ILayout | undefined;
+  menu:INavData[] = [];
 
   constructor(private store: Store<{ layout: ILayout }>) {
 
-    this.$layout = store.select('layout');
+    this.$layout = this.store.select('layout');
 
     this.$layout.subscribe((data)=>{
+
       this.layout = {...data};
-      console.log("test layout", this.layout);
+
+      if(this.layout.menu != undefined){
+        this.menu = transformNav(this.layout.menu);
+      }
     });
   }
 

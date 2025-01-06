@@ -1,50 +1,54 @@
-import { INavData } from "@coreui/angular";
 import { SUB_PATHS } from "@app/_moduleTest/catalogs/pathsCatalog";
+import { AppMenusPropsDataI } from "@app/appComponents/@types/layout/appMenuLayout";
 
-export const navItems: INavData[] = [
+export const navItems: AppMenusPropsDataI[] = [
   {
-    name: 'Principal page',
+    text: 'Principal page',
     url: SUB_PATHS.ADMIN.PRINCIPAL_PAGE.fullPath,
     icon: 'fas fa-home',
-    attributes: { disabled: false },
   },
   {
-    name: 'Datatable',
+    text: 'Datatable',
     url: SUB_PATHS.DATATABLE.fullPath,
     icon: 'fas fa-pizza-slice',
     children: [
       {
-        name: 'Datatable Data',
+        text: 'Datatable Data',
         url: SUB_PATHS.DATATABLE.DATATABLEDATA.fullPath,
         icon: 'nav-icon-bullet'
       },
-    ]
+    ],
   },
   {
-    name: 'Forms',
+    text: 'Forms',
     url: SUB_PATHS.FORMS.fullPath,
     icon: 'fas fa-pizza-slice',
     children: [
       {
-        name: 'Input Elements',
+        text: 'Input Elements',
         url: SUB_PATHS.FORMS.FORMINPUTELEMENTS.fullPath,
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'Input Container',
+        text: 'Input Container',
         url: SUB_PATHS.FORMS.FORMINPUTCONTAINER.fullPath,
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'Input Containers',
+        text: 'Input Containers',
         url: SUB_PATHS.FORMS.FORMINPUTCONTAINERS.fullPath,
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'Input Dynamic Row',
+        text: 'Input Dynamic Row',
         url: SUB_PATHS.FORMS.FORMINPUTDYNAMICROW.fullPath,
         icon: 'nav-icon-bullet'
       },
     ]
   },
-];
+  {
+    text: 'Logout',
+    url: "/#",
+    icon: 'fas fa-sign-out-alt',
+  }
+]

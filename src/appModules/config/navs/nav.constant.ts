@@ -1,41 +1,56 @@
-import { INavData } from "@coreui/angular";
 import { SUB_PATHS } from "@app/appModules/catalogs/pathsCatalog";
+import { AppMenusPropsDataI } from "@app/appComponents/@types/layout/appMenuLayout";
 
-export const navItems: INavData[] = [
+export const navItems: AppMenusPropsDataI[] = [
   {
-    name: 'Principal page',
+    text: 'Principal page',
     url: SUB_PATHS.ADMIN.PRINCIPAL_PAGE.fullPath,
     icon: 'fas fa-home',
-    attributes: { disabled: false },
   },
   {
-    name: 'Food list',
+    text: 'Food',
     url: SUB_PATHS.FOOD.FOOD_LIST.fullPath,
     icon: 'fas fa-pizza-slice',
-    attributes: { disabled: false },
+    children: [
+      {
+        text: 'Food List',
+        url: SUB_PATHS.FOOD.FOOD_LIST.fullPath,
+        icon: 'nav-icon-bullet',
+      },
+    ],
   },
   {
-    name: 'Recipe list',
+    text: 'Recipes',
     url: SUB_PATHS.RECIPE.RECIPE_LIST.fullPath,
     icon: 'fas fa-sink',
-    attributes: { disabled: false },
+    children: [
+      {
+        text: 'Recipe List',
+        url: SUB_PATHS.RECIPE.RECIPE_LIST.fullPath,
+        icon: 'nav-icon-bullet',
+      },
+    ],
   },
   {
-    name: 'Diet base',
+    text: 'Diet',
     url: SUB_PATHS.DIET.DIET_BASE_REGISTER.fullPath,
     icon: 'fas fa-drumstick-bite',
-    attributes: { disabled: false },
+    children: [
+      {
+        text: 'Diet Base',
+        url: SUB_PATHS.DIET.DIET_BASE_REGISTER.fullPath,
+        icon: 'nav-icon-bullet',
+      },
+      {
+        text: 'Diet Custom List',
+        url: SUB_PATHS.DIET.DIET_CUSTOM_LIST.fullPath,
+        icon: 'nav-icon-bullet',
+      },
+    ],
   },
   {
-    name: 'Diet custom list',
-    url: SUB_PATHS.DIET.DIET_CUSTOM_LIST.fullPath,
-    icon: 'fas fa-hamburger',
-    attributes: { disabled: false },
-  },
-  {
-    name: 'Logout',
+    text: 'Logout',
     url: SUB_PATHS.LOGOUT.fullPath,
     icon: 'fas fa-sign-out-alt',
-    attributes: { disabled: false },
   },
 ];
