@@ -13,3 +13,7 @@ import { appRoutes } from './appModules/app/appMain.routing';
 export const customReducers = {};
 
 bootstrapApplication(AppMainComponent, getLayoutConfig(appRoutes, customReducers)).catch((err) => console.error(err));
+
+if (module['hot']) {
+  module['hot'].accept();
+}
