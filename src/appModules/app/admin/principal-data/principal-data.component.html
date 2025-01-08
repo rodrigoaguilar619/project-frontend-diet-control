@@ -13,12 +13,6 @@
   <button class="btn btn-primary" type="button" (click)="openModalRegisterNutritionalGoal()">Register nutritional goals</button>
 </div>
 </div>
-<br>
-<div>
-  <a href={{pathApiDocumentation}} target="_blank" rel="noopener noreferrer" ngClass="button_hiperlink">API Documentation</a>
-</div>
-<br>
-<br>
 <app-modal-popup [title]="modalClass.title" [text]="modalClass.text" [isShowPopUp]="modalClass.isShowPopUp"
 [executeFunctionOnClose]="closeModal.bind(this)" [modalType]="modalClass.modalType" [size]="modalClass.size">
     <ng-container modal-body>

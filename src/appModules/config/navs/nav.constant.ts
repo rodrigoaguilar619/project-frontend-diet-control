@@ -1,5 +1,6 @@
 import { SUB_PATHS } from "@app/appModules/catalogs/pathsCatalog";
 import { AppMenusPropsDataI } from "@app/appComponents/@types/layout/appMenuLayout";
+import { PATH_API_DOCUMENTATION } from "@app/appModules/catalogs/uriCatalog";
 
 export const navItems: AppMenusPropsDataI[] = [
   {
@@ -44,9 +45,15 @@ export const navItems: AppMenusPropsDataI[] = [
       {
         text: 'Diet Custom List',
         url: SUB_PATHS.DIET.DIET_CUSTOM_LIST.fullPath,
-        icon: 'nav-icon-bullet',
+        icon: 'nav-icon-bullet'
       },
     ],
+  },
+  {
+    text: 'Documentation API',
+    url: PATH_API_DOCUMENTATION,
+    icon: 'fas fa-sitemap',
+    isOpenExternal: true
   },
   {
     text: 'Logout',

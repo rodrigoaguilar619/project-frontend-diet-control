@@ -19,6 +19,7 @@ export interface AppMenusPropsDataI {
     text?: string;
     url?: string;
     icon?: string;
+    isOpenExternal?: boolean;
     children?: AppMenusPropsDataI[];
 }
 
