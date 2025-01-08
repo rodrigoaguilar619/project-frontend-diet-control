@@ -1,6 +1,8 @@
 import { _APP_URL_CONTEXT_PATH_ } from "@app/appComponents/catalogs/constantCatalog";
 
 const _URL_API_MAIN_ = _APP_URL_CONTEXT_PATH_;
+const CURRRENT_CONTEXT_PATH = window.location.origin.replace("#", "") + window.location.pathname.replace("#/", "");
+
 export const API_ADMIN_NUTRITIONAL_GOAL_GET = _URL_API_MAIN_ + "api/admin/nutritionGoals/getNutritionGoals";
 export const API_ADMIN_NUTRITIONAL_GOAL_REGISTER = _URL_API_MAIN_ + "api/admin/nutritionGoals/registerNutritionGoals";
 
@@ -30,4 +32,4 @@ export const API_DIET_CUSTOM_LIST_GET = _URL_API_MAIN_ + "api/diet/getDietCustom
 export const API_DIET_CUSTOM_DETAIL_LIST_GET = _URL_API_MAIN_ + "api/diet/getDietCustomDetailList";
 export const API_DIET_REPORT_FILE = _URL_API_MAIN_ + "api/diet/reportDiet";
 
-export const PATH_API_DOCUMENTATION = _URL_API_MAIN_ + "swagger-ui/index.html";
+export const PATH_API_DOCUMENTATION = (_URL_API_MAIN_ != "" ? _URL_API_MAIN_ : CURRRENT_CONTEXT_PATH) + "swagger-ui/index.html";
