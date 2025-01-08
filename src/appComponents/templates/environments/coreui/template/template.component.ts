@@ -12,6 +12,7 @@ import {
   SidebarFooterComponent,
   SidebarHeaderComponent,
   SidebarNavComponent,
+  SidebarNavHelper,
   SidebarToggleDirective,
   SidebarTogglerDirective
 } from '@coreui/angular';
@@ -44,7 +45,8 @@ import { transformNav } from '@app/appComponents/utils/templateUtil/menuCoreuiUt
     ShadowOnScrollDirective,
     ContainerComponent,
     RouterOutlet
-  ]
+  ],
+  providers: [SidebarNavHelper]
 })
 export class TemplateComponent {
 

@@ -6,7 +6,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import AppMainComponent from './_moduleTest/app/appTest.component';
 
 import { appRoutes } from './_moduleTest/app/appTest.routing';
-import { getLayoutConfig } from './appComponents/templates/environments/coreui/layout.config';
+import { getLayoutConfig } from './main.config';
 
 export const customReducers = {};
 
