@@ -1,13 +1,17 @@
-const path = require('path');
-const Dotenv = require('dotenv-webpack');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { AngularWebpackPlugin } = require('@ngtools/webpack');
+import path from 'path';
+import Dotenv from 'dotenv-webpack';
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import TerserPlugin from "terser-webpack-plugin";
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ScriptExtHtmlWebpackPlugin from "script-ext-html-webpack-plugin";
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import { AngularWebpackPlugin } from '@ngtools/webpack';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 /**
  * Returns a common configuration object based on the provided environment and arguments.
@@ -22,10 +26,10 @@ function getCommonConfig(enviroment, args) {
         mode: enviroment,
         entry: {
             'polyfills': './src/polyfills.ts',
-            main: './src/mainWebpack.ts'
+            main: './src/main.ts'
         },
         output: {
-            path: path.resolve(args.dirname, '../../dist/dist_' + enviroment),
+            path: path.resolve(args.dirname, '../../../dist/dist_' + enviroment),
             filename: 'bundles/[name].[fullhash].bundle.js',
             chunkFilename: 'bundles/[name].chunk.js',
         },
@@ -33,8 +37,8 @@ function getCommonConfig(enviroment, args) {
             extensions: ['.ts', '.js'],
             modules: [path.resolve('node_modules'), 'node_modules'],
             alias: {
-                "src": path.resolve(args.dirname, '../../src'),
-                "@app": path.resolve(args.dirname, '../../src')
+                "src": path.resolve(args.dirname, '../../../src'),
+                "@app": path.resolve(args.dirname, '../../../src')
             },
         },
         module: {
@@ -54,8 +58,8 @@ function getCommonConfig(enviroment, args) {
                 {
                     test: /\.html$/,
                     include: [
-                        path.resolve(args.dirname, '../../src'),
-                        path.resolve(args.dirname, '../../node_modules', 'project-frontend-diet-control'),
+                        path.resolve(args.dirname, '../../../src'),
+                        path.resolve(args.dirname, '../../../node_modules', 'project-frontend-diet-control'),
                     ],
                     loader: 'html-loader'
                 },
@@ -76,9 +80,9 @@ function getCommonPlugins(enviroment, args) {
     let dotEnvFile;
 
     if (args.dotEnvFile)
-        dotEnvFile = "../../config/env/" + args.dotEnvFile;
+        dotEnvFile = "../../../config/env/" + args.dotEnvFile;
     else
-        dotEnvFile = enviroment === 'production' ? '../../config/env/.env.production' : '../../config/env/.env.development';
+        dotEnvFile = enviroment === 'production' ? '../../../config/env/.env.production' : '../../../config/env/.env.development';
 
     return [
         new Dotenv({
@@ -86,7 +90,7 @@ function getCommonPlugins(enviroment, args) {
         }),
         new HtmlWebpackPlugin({
             title: args.htmlTitle,
-            template: path.resolve(__dirname, "../../../public/index.html"),
+            template: path.resolve(__dirname, "../../../../public/indexWebpack.html"),
             filename: 'index.html',
             inject: 'body'
         }),
@@ -104,7 +108,7 @@ function getCommonPlugins(enviroment, args) {
  * @param {Record<string, any>} args - the arguments for configuration
  * @return {object} the merged common configuration
  */
-function executeCommonConfig(enviroment, args) {
+export function executeCommonConfig(enviroment, args) {
 
     return {
         ...getCommonConfig(enviroment, args),
@@ -154,7 +158,7 @@ function executeCommonConfig(enviroment, args) {
                 new BundleAnalyzerPlugin({
                     analyzerMode: 'static',
                     openAnalyzer: false,
-                    reportFilename: path.resolve(args.dirname, '../../dist/report_' + enviroment + '.html'),
+                    reportFilename: path.resolve(args.dirname, '../../../dist/report_' + enviroment + '.html'),
                 }),
             ],
         }
@@ -168,7 +172,7 @@ function executeCommonConfig(enviroment, args) {
  * @param {Record<string, any>} args - the arguments for the configuration
  * @return {object} the merged common configuration with plugins
  */
-function executeCommonServerConfig(enviroment, args) {
+export function executeCommonServerConfig(enviroment, args) {
 
     return {
         ...getCommonConfig(enviroment, args),
@@ -177,8 +181,3 @@ function executeCommonServerConfig(enviroment, args) {
         ],
     }
 }
-
-module.exports = {
-    executeCommonConfig: executeCommonConfig.bind(this),
-    executeCommonServerConfig: executeCommonServerConfig.bind(this)
-};

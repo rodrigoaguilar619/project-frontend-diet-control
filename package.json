@@ -1,15 +1,11 @@
 {
   "name": "project-frontend-diet-control",
-  "version": "2.0.0",
+  "version": "3.0.0",
+  "type": "module",
   "scripts": {
-    "ng": "ng",
-    "ng-start-dev": "NODE_OPTIONS=--openssl-legacy-provider ng serve --open --configuration=development",
-    "ng-build": "NODE_OPTIONS=--openssl-legacy-provider ng build --configuration=development",
-    "start-dev": "webpack-dev-server --config ./config/webpack/webpack.dev.server.js --open --mode=development",
-    "build-dev": "webpack --config ./config/webpack/webpack.dev.js",
-    "build-prod": "webpack --config ./config/webpack/webpack.prod.js",
-    "watch": "NODE_OPTIONS=--openssl-legacy-provider ng build --watch --configuration development",
-    "test": "NODE_OPTIONS=--openssl-legacy-provider ng test",
+    "start-dev-webpack": "webpack-dev-server --config ./config/bundlers/webpack/webpack.dev.server.js --open --mode=development",
+    "build-dev-webpack": "webpack --config ./config/bundlers/webpack/webpack.dev.js",
+    "build-prod-webpack": "webpack --config ./config/bundlers/webpack/webpack.prod.js",
     "sonarqube": "node sonarqube-scanner.js"
   },
   "private": true,
