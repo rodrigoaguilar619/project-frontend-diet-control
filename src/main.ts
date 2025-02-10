@@ -1,6 +1,7 @@
 import '@angular/compiler';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { getLayoutConfig } from './main.config';
+import 'zone.js';
 
 //-------- TEMPLATE COREUI CONFIG ----------------
 import './scss/environments/coreui/styles.scss';
