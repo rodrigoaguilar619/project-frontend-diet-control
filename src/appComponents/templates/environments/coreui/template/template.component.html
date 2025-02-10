@@ -3,12 +3,12 @@
   visible>
   <c-sidebar-header class="border-bottom">
     <c-sidebar-brand [routerLink]="[]">
-      <img cIcon class="sidebar-brand-full" src="../../../../../assets/img/brand/coreui-angular.svg" height="42" alt="CoreUI Logo">
-      <img cIcon class="sidebar-brand-narrow" src="../../../../../assets/img/brand/coreui-signet.svg" height="42" alt="CoreUI Logo">
+      <img cIcon class="sidebar-brand-full" [src]="imgCoreuiLogoFull" height="42" alt="CoreUI Logo">
+      <img cIcon class="sidebar-brand-narrow" [src]="imgCoreuiLogoNarrow" height="42" alt="CoreUI Logo">
     </c-sidebar-brand>
   </c-sidebar-header>
 
-  <ng-scrollbar #scrollbar="ngScrollbar" (updated)="onScrollbarUpdate(scrollbar.state)" class="overflow" pointerEventsMethod="scrollbar" visibility="hover">
+  <ng-scrollbar #scrollbar="ngScrollbar" class="overflow" pointerEventsMethod="scrollbar" visibility="hover">
     <c-sidebar-nav #overflow [navItems]="menu" dropdownMode="close" compact />
   </ng-scrollbar>
   @if (!sidebar1.narrow) {
@@ -27,7 +27,7 @@
   <!--app-body-->
   <div class="body flex-grow-1">
     <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="small" color="#fff" type="square-jelly-box" [fullScreen]="true">
-      <img alt="spinner_loader" src='../../../../../assets/img/spinners/spinning-loading-3.gif' width="70px" />
+      <img alt="spinner_loader" [src]="imgSpinner" width="70px" />
     </ngx-spinner>
     <c-container breakpoint="lg" class="h-auto px-4">
       <router-outlet />
