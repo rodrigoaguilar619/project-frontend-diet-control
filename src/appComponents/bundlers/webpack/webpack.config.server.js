@@ -1,8 +1,8 @@
-const pathDevServer = require('path');
-const commonConfigDevServer = require('./webpack.common');
+import pathDevServer from 'path';
+import { executeCommonServerConfig } from './webpack.common.js';
 
 function executeConfigServer(mode, args) {
-  let webpackConfig = commonConfigDevServer.executeCommonServerConfig(mode, args);
+  let webpackConfig = executeCommonServerConfig(mode, args);
   webpackConfig.devServer = {
     static: {
       directory: pathDevServer.join(args.dirname, '../../dist'),
@@ -28,6 +28,4 @@ function executeConfigServer(mode, args) {
   return webpackConfig;
 }
 
-module.exports = {
-  executeConfigServer: executeConfigServer.bind(this)
-};
+export default executeConfigServer;

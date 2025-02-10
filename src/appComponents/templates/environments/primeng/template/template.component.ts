@@ -26,6 +26,7 @@ export class TemplateComponent {
 
   $layout: Observable<ILayout>;
   layout: ILayout | undefined;
+  imgSpinner = new URL('src/assets/img/spinners/spinning-loading-3.gif', import.meta.url).href;
 
   items: MenuItem[] | undefined;
 

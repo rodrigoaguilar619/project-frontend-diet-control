@@ -55,6 +55,11 @@ export class TemplateComponent {
   layout: ILayout | undefined;
   menu:INavData[] = [];
 
+  imgCoreuiLogoFull = new URL('src/assets/img/brand/coreui-angular.svg', import.meta.url).href;
+  imgCoreuiLogoNarrow = new URL('src/assets/img/brand/coreui-signet.svg', import.meta.url).href;
+  imgSpinner = new URL('src/assets/img/spinners/spinning-loading-3.gif', import.meta.url).href;
+
+
   constructor(private store: Store<{ layout: ILayout }>) {
 
     this.$layout = this.store.select('layout');

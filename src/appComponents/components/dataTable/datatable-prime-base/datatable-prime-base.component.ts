@@ -15,7 +15,7 @@ import ButtonsOptionsComponent from '@app/appComponents/components/buttons/butto
 })
 export class DatatablePrimeBaseComponent extends DatatableGenericComponent {
 
-  constructor(public iterableDiffers: IterableDiffers) {
+  constructor(public override iterableDiffers: IterableDiffers) {
     super(iterableDiffers);
   }
 

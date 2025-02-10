@@ -5,34 +5,34 @@
     "baseUrl": "./",
     "paths": {
       "@app/*": ["src/*"],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "project-frontend-diet-control-lib": [
+      "@assets/*": ["src/assets/*"],
+      /*"project-frontend-diet-control-lib": [
         "./dist/project-frontend-diet-control-lib"
       ],
       "my-lib": [
         "./dist/my-lib"
-      ]
+      ]*/
     },
     "allowSyntheticDefaultImports": true,
-    "outDir": "./lib",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
-    "declaration": true,
+    "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "isolatedModules": true,
     "importHelpers": true,
+    //"noEmit": false,
     "target": "ES2022",
-    "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "module": "ES2022",
+    "lib": ["ES2022", "dom"],
+    "useDefineForClassFields": false,
+    "skipLibCheck": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
