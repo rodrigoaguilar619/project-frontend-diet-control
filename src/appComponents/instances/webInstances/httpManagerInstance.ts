@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpStatusCode } from 'axios';
+import { HttpStatusCode } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { _APP_ROUTE_START_, _APP_SECURITY_ENABLED_ } from '@app/appComponents/catalogs/constantCatalog';
 import { ComponentTypeEnum, HttpMethodEnum } from '@app/appComponents/catalogs/enumCatalog';
