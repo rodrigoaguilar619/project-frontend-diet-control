@@ -7,6 +7,7 @@ import pathVite from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
 import customHtmlPlugin from './customVitePluginHtml.js';
 import fs from 'fs';
+import checker from 'vite-plugin-checker';
 
 function removeDir(dirPath) {
   if (fs.existsSync(dirPath)) {
@@ -70,6 +71,7 @@ function viteConfig(enviroment, args) {
   var mode = enviroment;
   var isProduction = mode === 'production';
   var buildFilesPath = "bundles";
+  var removeWarning = true;
   //var dirNameLibs = pathVite.resolve(__dirname, '../../../');
 
   var envFilePath = pathVite.resolve(args.dirname, "./config/env/.env.".concat(mode));
@@ -144,6 +146,11 @@ function viteConfig(enviroment, args) {
     },
     plugins: [
       angular(),
+      checker({
+        typescript: true,
+        overlay: isProduction ? false : removeWarning, // Prevents errors from showing in the browser overlay
+        terminal: true, // Ensures errors appear only in the terminal
+      }),
       visualizer({
         open: false,
         filename: 'dist/report_' + mode + '.html',
@@ -177,6 +184,13 @@ function viteConfig(enviroment, args) {
     define: {
       'import.meta.vitest': mode !== 'production',
       'process.env': process.env,
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          quietDeps: removeWarning, // Suppresses warnings from dependencies
+        },
+      },
     },
     base: './',
     server: {

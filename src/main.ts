@@ -15,7 +15,7 @@ import TemplateComponent from './appComponents/templates/environments/primeng/te
 
 //-------- APP TEST CONFIG ----------------
 /*import AppMainComponent from './_moduleTest/app/appTest.component';
-import { appRoutes } from './_moduleTest/app/appTest.routing';*/
+import { getRoutes } from './_moduleTest/app/appTest.routing';*/
 
 //-------- APP MAIN CONFIG ----------------
 import AppMainComponent from './appModules/app/appMain.component';
