@@ -76,6 +76,12 @@
   color: white !important;
 }
 
+.p-datatable .p-datatable-tfoot {
+  background-color: var(--cui-body-bg);
+  border-top: 1px solid #c8c8c8 !important;
+  padding: 6px 0 6px 6px !important;
+}
+
 //--------------- MENUBAR CSS -----------------------
 .p-menubar-submenu {
   z-index: 3 !important;
