@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpMethodEnum } from "@app/appComponents/catalogs/enumCatalog";
 import { HttpManagerInstance } from "@app/appComponents/instances/webInstances/httpManagerInstance";
 import { generateDebugClassService } from "@app/appComponents/utils/webUtils/debugUtil";
-import { URL_AUTH_LOGIN, URL_AUTH_LOGOUT, URL_REFRESH_SESSION, URL_VALIDATE_SESSION } from "@app/appComponents/catalogs/uriCatalog";
+import { URL_API_USER_DATA_GET, URL_AUTH_LOGIN, URL_AUTH_LOGOUT, URL_REFRESH_SESSION, URL_VALIDATE_SESSION } from "@app/appComponents/catalogs/uriCatalog";
 
 @Injectable({
   providedIn: 'root'
@@ -51,4 +51,14 @@ export class AuthService {
 
     return this.httpManagerInstance.manageCallApiAuthPromise(debugClass, url, params, {}, HttpMethodEnum.POST);
   }
+
+  getUserDataService() {
+
+    let debugClass = generateDebugClassService("Get User Data");
+
+    let params = {};
+    let url = URL_API_USER_DATA_GET;
+
+    return this.httpManagerInstance.manageCallApiAuthPromise(debugClass, url, params, {}, HttpMethodEnum.POST);
+}
 }
