@@ -196,7 +196,8 @@ function viteConfig(enviroment, args) {
     server: {
       port: 3000,
       open: true,
-      host: 'localhost'
+      host: 'localhost',
+      hmr: true,
     },
   }
 }

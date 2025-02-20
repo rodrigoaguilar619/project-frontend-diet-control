@@ -29,3 +29,7 @@ bootstrapApplication(AppMainComponent, getLayoutConfig(getRoutes(template), cust
 if (import.meta.webpackHot) {
   import.meta.webpackHot.accept();
 }
+
+if (import.meta.hot) {
+  import.meta.hot.accept();
+}
