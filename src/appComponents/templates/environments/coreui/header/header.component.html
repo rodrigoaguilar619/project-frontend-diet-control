@@ -22,11 +22,21 @@
     <ul cDropdownMenu class="pt-0 w-auto" [ngStyle]="{'padding-bottom': '0'}">
       <li>
         <h2 cDropdownHeader class="bg-body-secondary text-body-secondary fw-semibold py-2 rounded-top">
+          Version:
+        </h2>
+      </li>
+      <li>
+        <a class="dropdown-item" [ngStyle]="itemStyle">
+          {{ appVersion }}
+        </a>
+      </li>
+      <li>
+        <h2 cDropdownHeader class="bg-body-secondary text-body-secondary fw-semibold py-2 rounded-top">
           User:
         </h2>
       </li>
       <li>
-        <a class="dropdown-item" [ngStyle]="itemStyle" (click)="$event.stopPropagation()">
+        <a class="dropdown-item" [ngStyle]="itemStyle">
           {{ userDataState.userName }}
         </a>
       </li>

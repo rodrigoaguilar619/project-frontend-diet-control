@@ -28,6 +28,7 @@ import { Observable } from 'rxjs';
 import { ILayout } from '@app/appComponents/@types/controller/reducers/ilayout';
 import { Store } from '@ngrx/store';
 import { IUserData } from '@app/appComponents/@types/controller/reducers/iuserData';
+import { _APP_VERSION_ } from '@app/appComponents/catalogs/constantCatalog';
 
 @Component({
   selector: 'app-header',
@@ -37,6 +38,7 @@ import { IUserData } from '@app/appComponents/@types/controller/reducers/iuserDa
 })
 export class HeaderLayoutComponent extends HeaderComponent {
 
+  appVersion = _APP_VERSION_;
   itemStyle = { "background-color": "transparent", "outline": "none", "color": "inherit" }
   $layout: Observable<ILayout>;
   $userDataState: Observable<IUserData>;
