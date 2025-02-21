@@ -79,6 +79,7 @@ function viteConfig(enviroment, args) {
 
   var distPath = pathVite.resolve(args.dirname, 'dist');
   var distEnvironmentPath = pathVite.join(distPath, 'dist_' + mode);
+  var packageJson = JSON.parse(fs.readFileSync(pathVite.resolve(args.dirname, 'package.json'), 'utf-8'));
 
   return {
     build: {
@@ -183,7 +184,7 @@ function viteConfig(enviroment, args) {
     ],
     define: {
       'import.meta.vitest': mode !== 'production',
-      'process.env': process.env,
+      'process.env': { ...process.env, APP_VERSION: packageJson.version },
     },
     css: {
       preprocessorOptions: {
