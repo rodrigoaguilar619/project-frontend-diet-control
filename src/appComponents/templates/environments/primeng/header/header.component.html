@@ -18,6 +18,8 @@
         <div class="dropdown" #dropdown>
           <div class="dropdown-content">
             <div class="dropdown-header dropdown-header-first">User:</div>
+            <a class="dropdown-item">{{ appVersion }}</a>
+            <div class="dropdown-header dropdown-header">User:</div>
             <a class="dropdown-item">{{ userDataState.userName }}</a>
             <div class="dropdown-header">Roles</div>
             @for (rol of userDataState.userRols; track rol) {

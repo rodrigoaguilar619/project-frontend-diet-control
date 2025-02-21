@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { ILayout } from '@app/appComponents/@types/controller/reducers/ilayout';
 import { IUserData } from '@app/appComponents/@types/controller/reducers/iuserData';
+import { _APP_VERSION_ } from '@app/appComponents/catalogs/constantCatalog';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ import { IUserData } from '@app/appComponents/@types/controller/reducers/iuserDa
 })
 export class HeaderLayoutComponent {
 
+  appVersion = _APP_VERSION_;
   $layout: Observable<ILayout>;
   $userDataState: Observable<IUserData>;
   @Input() layout: ILayout | undefined;
