@@ -10,6 +10,8 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import { AngularWebpackPlugin } from '@ngtools/webpack';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import webpack from 'webpack';
+import fsFile from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -77,6 +79,7 @@ function getCommonConfig(enviroment, args) {
  */
 function getCommonPlugins(enviroment, args) {
 
+    let packageJson = JSON.parse(fsFile.readFileSync(path.resolve(args.dirname, '../../../package.json'), 'utf-8'));
     let dotEnvFile;
 
     if (args.dotEnvFile)
@@ -87,6 +90,9 @@ function getCommonPlugins(enviroment, args) {
     return [
         new Dotenv({
             path: path.resolve(args.dirname, dotEnvFile), // Specify the path to your .env file
+        }),
+        new webpack.DefinePlugin({
+          'process.env.APP_VERSION': JSON.stringify(packageJson.version),
         }),
         new HtmlWebpackPlugin({
             title: args.htmlTitle,
