@@ -9,3 +9,4 @@ export const _APP_REDUX_IS_LOAD_LOGGER_: boolean = JSON.parse(process.env.APP_RE
 export const _APP_API_MOCK_IS_LOAD_: boolean = JSON.parse(process.env.APP_API_MOCK_IS_LOAD ?? "true");          //boolean to determine if load mock apis
 export const _APP_NAV_LOGOUT_ENABLED_: boolean = JSON.parse(process.env.APP_NAV_LOGOUT_ENABLED ?? "false");        //boolean to determine if logout is enabled and added option menu to nav
 export const _APP_SECURITY_ENABLED_: boolean = JSON.parse(process.env.APP_SECURITY_ENABLED ?? "false");          //boolean to determine if security is enabled
+export const _APP_VERSION_: string = process.env.APP_VERSION ?? "0.0.0";                                        //app version

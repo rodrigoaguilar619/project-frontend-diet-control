@@ -6,5 +6,52 @@
         <h6>{{layout.subTitle}}</h6>
       }
     </div>
+    <c-header-nav class="mx-0">
+      <ng-container *ngTemplateOutlet="userDropdown" />
+    </c-header-nav>
   </c-container>
 </ng-container>
+
+<ng-template #userDropdown>
+  <c-dropdown [popperOptions]="{ placement: 'bottom-start' }" variant="nav-item" [autoClose]="'outside'" [ngStyle]="{'width': '80px'}">
+    <button [caret]="false" cDropdownToggle class="py-0 pe-0" aria-label="Open user menu">
+      <div [ngStyle]="{'float': 'left', 'marginRight': '2px', 'scale': '0.9', 'padding-right': '2px'}"><i class="fa fa-user"></i></div>
+      <div [ngStyle]="{'float': 'left', 'marginRight': '2px'}">{{userDataState.userName}}</div>
+      <div [ngStyle]="{'float': 'right', 'scale': '0.7'}">▼</div>
+    </button>
+    <ul cDropdownMenu class="pt-0 w-auto" [ngStyle]="{'padding-bottom': '0'}">
+      <li>
+        <h2 cDropdownHeader class="bg-body-secondary text-body-secondary fw-semibold py-2 rounded-top">
+          Version:
+        </h2>
+      </li>
+      <li>
+        <a class="dropdown-item" [ngStyle]="itemStyle">
+          {{ appVersion }}
+        </a>
+      </li>
+      <li>
+        <h2 cDropdownHeader class="bg-body-secondary text-body-secondary fw-semibold py-2 rounded-top">
+          User:
+        </h2>
+      </li>
+      <li>
+        <a class="dropdown-item" [ngStyle]="itemStyle">
+          {{ userDataState.userName }}
+        </a>
+      </li>
+      <li>
+        <h2 cDropdownHeader class="bg-body-secondary text-body-secondary fw-semibold py-2 rounded-top">
+          Roles:
+        </h2>
+      </li>
+      @for (rol of userDataState.userRols; track rol) {
+        <li>
+          <a class="dropdown-item" [ngStyle]="itemStyle">
+            {{rol}}
+          </a>
+        </li>
+      }
+    </ul>
+  </c-dropdown>
+</ng-template>

@@ -2,9 +2,11 @@ import { ActionReducer } from "@ngrx/store";
 import { storeLogger } from "ngrx-store-logger";
 import { setLayoutReducer } from "@app/appComponents/controller/reducers/layout.reducer";
 import { _APP_ENVIRONMENT_ } from "@app/appComponents/catalogs/constantCatalog";
+import { setUserDataReducer } from "../controller/reducers/userData.reducer";
 
 export const libReducers = {
-    layout: setLayoutReducer
+    layout: setLayoutReducer,
+    userDataState: setUserDataReducer
 }
 
 export function logger(reducer: ActionReducer<any>): any {

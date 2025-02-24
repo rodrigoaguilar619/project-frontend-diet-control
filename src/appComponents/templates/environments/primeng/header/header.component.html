@@ -1,9 +1,32 @@
 <ng-container>
   <div class="header">
     <div class="header-content">
-      @if (layout !== undefined) {
+      <div [ngStyle]="{'width': '10%'}"></div>
+      <div [ngStyle]="{'width': '80%'}">
+        @if (layout !== undefined) {
         <h5>{{layout.title}}</h5>
         <h6>{{layout.subTitle}}</h6>
+        }
+      </div>
+      <div #userData class="header-content-data"
+          [ngStyle]="{'width': '10%', 'height': '10px', 'cursor': 'pointer'}" (click)="toggleDropdown()">
+        <div [ngStyle]="{ 'float': 'left', 'margin-right': '2px', 'transform': 'scale(0.9)' }"><i class="fa fa-user"></i></div>
+        <div [ngStyle]="{ 'float': 'left', 'margin-right': '2px' }">{{ userDataState.userName }}</div>
+        <div [ngStyle]="{ 'float': 'right', 'transform': 'scale(0.7)' }">▼</div>
+      </div>
+      @if (isDropdownVisible) {
+        <div class="dropdown" #dropdown>
+          <div class="dropdown-content">
+            <div class="dropdown-header dropdown-header-first">User:</div>
+            <a class="dropdown-item">{{ appVersion }}</a>
+            <div class="dropdown-header dropdown-header">User:</div>
+            <a class="dropdown-item">{{ userDataState.userName }}</a>
+            <div class="dropdown-header">Roles</div>
+            @for (rol of userDataState.userRols; track rol) {
+              <a class="dropdown-item">{{rol}}</a>
+            }
+          </div>
+        </div>
       }
     </div>
   </div>
