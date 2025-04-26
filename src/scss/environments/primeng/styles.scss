@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 // If you want to override variables do it here
-@import "variables";
+@use "variables";
 
 // Import styles with default layout.
 @import "simple-line-icons/css/simple-line-icons.css";
