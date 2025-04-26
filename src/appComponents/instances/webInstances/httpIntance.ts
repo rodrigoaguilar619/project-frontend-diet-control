@@ -1,48 +1,146 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { MockConfigI } from '@app/appComponents/@types/utils/axiosUtil';
+import { MockConfigI } from '@app/appComponents/@types/utils/httpUtil';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpInstance {
 
-  private axiosInstance = axios.create({
-    baseURL: '',
-  });
+    requestHandler(_url: string, options: RequestInit = {}): RequestInit {
+      const token = localStorage.getItem('token');
+      const username = localStorage.getItem('userName');
 
-  constructor() {
-    this.axiosInstance.interceptors.request.use(
-      request => this.requestHandler(request)
-    );
+      // Add Authorization header if token exists
+      const headers: any = options.headers || {};
+      if (token) {
+          headers['Authorization'] = `Bearer ${token}`;
+      }
+
+      if(!options.body) {
+          options.body = JSON.stringify({});
+      }
+
+      // Add username to body if it exists
+      if (username && options.body) {
+          const body = JSON.parse(options.body as string);
+          body.userName = username;
+          options.body = JSON.stringify(body);
+      }
+
+      return {
+          ...options,
+          headers,
+      };
+  };
+
+  async fetchInstance(endpoint: string, options: any = {}): Promise<any> {
+      const requestOptions = this.requestHandler(endpoint, options);
+
+      try {
+        const response: any = await fetch(`${endpoint}`, requestOptions);
+
+        console.log("test options", options);
+        const data = options.headers?.['Content-Type'] === 'application/json' ? await response.json() : await response.text();
+
+        if (!response.ok) {
+            const error: any = new Error(`Request failed with status ${response.status}`);
+            error.response = {
+                status: response.status,
+                data: data,
+                message: response.message
+            };
+
+            throw error;
+        }
+
+        return data;
+      } catch (error: any) {
+        console.log("test error", error);
+        if(error.response)
+          throw error;
+        throw new Error("Error on request");
+      }
   }
 
-  private requestHandler(request: any) {
-    const token = localStorage.getItem('token');
-    const username = localStorage.getItem('userName');
+  async fetchFluxInstance(endpoint: string, options: RequestInit = {}, onData?: (chunks: string[]) => void // Callback to process each emitted chunk
+  ): Promise<void> {
+      const requestOptions = this.requestHandler(endpoint, options);
+      const response = await fetch(`${endpoint}`, requestOptions);
 
-    if (token) {
-      request.headers.Authorization = `Bearer ${token}`;
-    }
+      if (!response.ok) {
+          const error = await response.text();
+          throw new Error(error || 'An error occurred');
+      }
 
-    if (username) {
-      request.data.userName = username;
-    }
+      if (!response.body) {
+          throw new Error('ReadableStream is not supported in this environment.');
+      }
 
-    return request;
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      try {
+          while (true) {
+              const { done, value } = await reader.read();
+
+              if (done) break;
+
+              const chunk = decoder.decode(value, { stream: true });
+
+              const chunks: any[] = [];
+
+              chunk.split('\n').forEach((line) => {
+
+                  if (line.trim() === '') return;
+
+                  const dataJson = JSON.parse(line);
+
+                  if(dataJson.statusCodeValue == 200)
+                      chunks.push(dataJson.body);
+                  else
+                      throw new Error(dataJson.body.message);
+              });
+
+              if (onData) {
+                  onData(chunks); // Process each emitted chunk
+              }
+          }
+      } finally {
+          reader.releaseLock();
+      }
   }
 
-  public initConfigMocks(mockConfigs: MockConfigI[]) {
-    const mock = new MockAdapter(this.axiosInstance);
+  initConfigMocks(mockConfigs: MockConfigI[]) {
 
-    mockConfigs.forEach((config: MockConfigI) => {
-      mock.onPost(config.url).reply(config.status, config.response);
-    });
-  }
+    const originalFetch = globalThis.fetch;
 
-  // Method to get the axios instance
-  public getAxiosInstance() {
-    return this.axiosInstance;
+    globalThis.fetch = async (url: RequestInfo | URL, options?: RequestInit): Promise<any> => {
+
+        let urlString = '';
+
+        if (typeof url === 'string') {
+        urlString = url;
+        } else if (url instanceof URL) {
+        urlString = url.toString();
+        } else if (url instanceof Request) {
+        urlString = url.url;
+        }
+
+        const config = mockConfigs.find((mockConfig) => urlString.endsWith(mockConfig.url) && options?.method === 'POST');
+
+        if (config) {
+            return {
+                ok: config.status >= 200 && config.status < 300,
+                status: config.status,
+                statusText: 'OK',
+                headers: new Headers({ 'Content-Type': config.headers?.['Content-Type'] || 'application/json' }),
+                json: async () => JSON.parse(config.response),
+                text: async () => config.response,
+            };
+        }
+
+        // If no mock config matches, fall back to the original fetch
+        return originalFetch(url, options);
+    };
   }
 }

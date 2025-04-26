@@ -3,4 +3,6 @@ export interface MockConfigI {
     url: string;
     status: number;
     response: any;
+    headers?: Record<string, string>;
+    body?: any;
   }
