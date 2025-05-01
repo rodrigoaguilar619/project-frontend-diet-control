@@ -22,11 +22,11 @@ export class FormInputColumnComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.valueFormControl === undefined) {
-      throw new Error('formControl is required');
+      throw new Error('[FormInputColumnComponent] valueFormControl input is required');
     }
 
     if (this.inputColumnProps === undefined) {
-      throw new Error('inputColumnProps is required');
+      throw new Error('[FormInputColumnComponent] inputColumnProps input is required');
     }
   }
 
