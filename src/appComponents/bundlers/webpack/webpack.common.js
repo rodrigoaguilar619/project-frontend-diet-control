@@ -47,7 +47,10 @@ function getCommonConfig(enviroment, args) {
             rules: [
                 {
                     test: /\.ts$/,
-                    loader: '@ngtools/webpack'
+                    loader: '@ngtools/webpack',
+                    exclude: [
+                      path.resolve(args.dirname, '../../../src/_tests')
+                    ],
                 },
                 {
                     test: /\.(sa|sc|c)ss$/,
