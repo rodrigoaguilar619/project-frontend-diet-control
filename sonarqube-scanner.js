@@ -40,7 +40,6 @@ const scannerConfig = {
   token: options.token,
   options: {
     "sonar.sources": "./src",
-    "sonar.coverage.exclusions": "src/**",
     "sonar.exclusions": "src/polyfills.ts",
   },
 };
