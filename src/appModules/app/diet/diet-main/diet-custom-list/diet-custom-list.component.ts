@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Component, Injector } from '@angular/core';
 import { IButtonOptions } from '@app/appComponents/@types/components/buttons/buttons';
 import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
@@ -163,13 +162,13 @@ export class DietCustomListComponent extends GenericParentComponent {
     let debugClass = generateDebugClassModule("init get diet custom module");
     debug(debugClass, "start");
 
-    return axios.all([this.dietService.getDietCustomListService()])
-        .then(axios.spread((dietCustomData) => {
+    return Promise.all([this.dietService.getDietCustomListService()])
+        .then(([dietCustomData]) => {
 
             debug(debugClass, "result", dietCustomData);
             this.foodListValues = dietCustomData.data.diets;
 
-        }))
+        })
         .catch((error) => {
             this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
         });
@@ -180,8 +179,8 @@ export class DietCustomListComponent extends GenericParentComponent {
     let debugClass = generateDebugClassModule("init get diets custom details module");
     debug(debugClass, "start");
 
-    return axios.all([this.dietService.getDietCustomDetailListService()])
-        .then(axios.spread((dietCustomDetailData) => {
+    return Promise.all([this.dietService.getDietCustomDetailListService()])
+        .then(([dietCustomDetailData]) => {
 
             debug(debugClass, "result", dietCustomDetailData);
             this.dietsCustomDetailListValues = this.normalizeArrayList(dietCustomDetailData.data.dietCustomDetailList);
@@ -199,7 +198,7 @@ export class DietCustomListComponent extends GenericParentComponent {
                 food[DIET_FOOD_COLUMNS_IDS.DESCRIPTION] = description + "...";
               });
             });
-        }))
+        })
         .catch((error) => {
             this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
         });
@@ -210,13 +209,13 @@ export class DietCustomListComponent extends GenericParentComponent {
     let debugClass = generateDebugClassModule("init delete diet custom module");
     debug(debugClass, "start");
 
-    return axios.all([this.dietService.deleteDietCustomService(idDietCustom)])
-        .then(axios.spread((dietCustomData) => {
+    return Promise.all([this.dietService.deleteDietCustomService(idDietCustom)])
+        .then(([dietCustomData]) => {
 
             debug(debugClass, "result", dietCustomData);
             this.foodListValues = dietCustomData.data.diets;
 
-        }))
+        })
         .catch((error) => {
             this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
         });

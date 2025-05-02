@@ -1,5 +1,4 @@
 import { Component, Injector } from '@angular/core';
-import axios from 'axios';
 import { IButtonOptions } from '@app/appComponents/@types/components/buttons/buttons';
 import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { ADMIN_RECIPE_COLUMN } from '@app/appModules/app/recipe/recipe-contants';
@@ -66,14 +65,14 @@ export class RecipeListComponent extends GenericParentComponent {
     debug(debugClass, "start");
 
     this.spinner.show();
-    axios.all([this.recipeService.getRecipeListService()])
-        .then(axios.spread((recipeListData) => {
+    Promise.all([this.recipeService.getRecipeListService()])
+        .then(([recipeListData]) => {
 
             debug(debugClass, "result", recipeListData);
             this.recipeListValues = recipeListData.data.recipes;
             this.spinner.hide();
 
-        }))
+        })
         .catch((error) => {
             this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
         });
@@ -113,14 +112,14 @@ export class RecipeListComponent extends GenericParentComponent {
     debug(debugClass, "start");
 
     this.spinner.show();
-    return axios.all([this.recipeService.deleteRecipeService(idRecipe)])
-        .then(axios.spread((recipeDeleteData) => {
+    return Promise.all([this.recipeService.deleteRecipeService(idRecipe)])
+        .then(([recipeDeleteData]) => {
 
             debug(debugClass, "result", recipeDeleteData);
             this.toastPrimeInstance.showSuccess("RECIPE DELETED", "RECIPE DELETED: " + idRecipe);
             this.spinner.hide();
 
-        }))
+        })
         .catch((error) => {
             this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
         });

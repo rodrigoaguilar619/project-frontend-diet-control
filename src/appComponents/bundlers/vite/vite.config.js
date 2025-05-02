@@ -20,7 +20,6 @@ const vendorMappings = [
   { key: '@fortawesome', label: 'vendor-fontawesome' },
   { key: 'ngx-scrollbar', label: 'vendor-ngx-scrollbar' },
   { key: 'moment', label: 'vendor-moment' },
-  { key: 'axios', label: 'vendor-axios' },
   { key: 'zone', label: 'vendor-zone' },
   { key: 'lodash', label: 'vendor-lodash' },
 ];

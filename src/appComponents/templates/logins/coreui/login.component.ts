@@ -2,7 +2,6 @@ import { Component, Input, OnInit, NgZone } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
 import { ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ButtonDirective, SpinnerModule } from '@coreui/angular';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-import axios from 'axios';
 import { HttpStatusCode } from '@angular/common/http';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IconModule, IconSetService, IconDirective } from '@coreui/icons-angular';
@@ -97,13 +96,13 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true;
     this.loadingText = "Verifying session...";
-    axios.all([this.authService.verifySessionService()])
-      .then(axios.spread((verifySessionData) => {
+    Promise.all([this.authService.verifySessionService()])
+      .then(([verifySessionData]) => {
 
         debug(debugClass, "result", verifySessionData);
         this.httpManagerInstance.redirectMainRoute();
 
-      }))
+      })
       .catch((error) => {
         this.manageSessionExpired(debugClass, error);
       })
@@ -120,8 +119,8 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.loadingText = "Logging in...";
     await this.pauseExecution(1);
-    axios.all([this.authService.loginService(this.loginForm.value.username, this.loginForm.value.password)])
-      .then(axios.spread((loginData) => {
+    Promise.all([this.authService.loginService(this.loginForm.value.username, this.loginForm.value.password)])
+      .then(([loginData]) => {
 
         debug(debugClass, "result", loginData);
         this.isShowMessage = false;
@@ -129,7 +128,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', loginData.data.token);
         this.router.navigate([_APP_ROUTE_START_]);
 
-      }))
+      })
       .catch((error) => {
         this.manageLoginError(debugClass, error);
       })

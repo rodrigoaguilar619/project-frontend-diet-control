@@ -39,7 +39,6 @@ export class HttpInstance {
       try {
         const response: any = await fetch(`${endpoint}`, requestOptions);
 
-        console.log("test options", options);
         const data = options.headers?.['Content-Type'] === 'application/json' ? await response.json() : await response.text();
 
         if (!response.ok) {
@@ -134,8 +133,8 @@ export class HttpInstance {
                 status: config.status,
                 statusText: 'OK',
                 headers: new Headers({ 'Content-Type': config.headers?.['Content-Type'] ?? 'application/json' }),
-                json: async () => JSON.parse(config.response),
-                text: async () => config.response,
+                json: async () => config.response,
+                text: async () => config.response.toString(),
             };
         }
 

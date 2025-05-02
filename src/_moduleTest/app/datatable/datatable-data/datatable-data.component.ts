@@ -1,5 +1,4 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import axios from 'axios';
 import { TableModule } from 'primeng/table';
 import { IButtonOptions } from '@app/appComponents/@types/components/buttons/buttons';
 import { DataTablePropsI } from '@app/appComponents/@types/components/dataTable/dataTable';
@@ -212,14 +211,14 @@ export class DataTableDataComponent extends GenericParentComponent implements On
         debug(debugClass, "start");
 
         this.spinner.show();
-        axios.all([this.dataTableService.getDataTableDataService(1, {})])
-            .then(axios.spread((dataTableData) => {
+        Promise.all([this.dataTableService.getDataTableDataService(1, {})])
+            .then(([dataTableData]) => {
 
                 debug(debugClass, "result", dataTableData);
                 this.values = dataTableData.data;
                 this.spinner.hide();
 
-            }))
+            })
             .catch((error) => {
                 this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
             });

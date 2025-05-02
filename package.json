@@ -39,8 +39,6 @@
     "@ng-select/ng-select": "^14.7.0",
     "@ngrx/store": "^19.1.0",
     "@primeng/themes": "^19.1.0",
-    "axios": "^1.9.0",
-    "axios-mock-adapter": "^2.1.0",
     "bootstrap": "^5.3.5",
     "dompurify": "^3.2.5",
     "moment": "^2.30.1",
