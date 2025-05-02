@@ -8,7 +8,6 @@ import { MaskDataTypeEnum, ModalTypeEnum } from '@app/appComponents/catalogs/enu
 import ModalClass from "@app/appComponents/classes/modalClass";
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
-import { _APP_TITLE_ } from '@app/appComponents/catalogs/constantCatalog';
 import { GenericParentComponent, DatatablePrimeBaseComponent, ModalPopupComponent } from '@app/appComponents/components/commonComponents.config';
 import { commonAppModules } from '@app/appComponents/components/commonModules.config';
 import { FormContainerComponent } from '@app/_moduleTest/app/forms/form-container/form-container.component';
@@ -137,7 +136,7 @@ export enum ModuleEnum {
 export class DataTableDataComponent extends GenericParentComponent implements OnInit {
 
 
-    constructor(injector: Injector, private dataTableService: DataTableService) {
+    constructor(injector: Injector, private readonly dataTableService: DataTableService) {
         super(injector);
 
         this.store.dispatch(setSubTitle({ subTitle: "Datatable Data " }));

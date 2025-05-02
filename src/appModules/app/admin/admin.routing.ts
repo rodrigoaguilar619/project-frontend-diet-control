@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { PrincipalDataComponent } from './principal-data/principal-data.component';
 import { SUB_PATHS } from '@app/appModules/catalogs/pathsCatalog';
 

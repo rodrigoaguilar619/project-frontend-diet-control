@@ -7,13 +7,13 @@ import { HttpManagerInstance } from '@app/appComponents/instances/webInstances/h
 import { Injector } from '@angular/core';
 
 // Mock classes
-export class MockStore {}
-export class MockRouter {}
-export class MockActivatedRoute {}
-export class MockDomSanitizer {}
-export class MockNgxSpinnerService {}
-export class MockToastPrimeInstance {}
-export class MockHttpManagerInstance {}
+export class MockStore { noop() {} }
+export class MockRouter { noop() {} }
+export class MockActivatedRoute { noop() {} }
+export class MockDomSanitizer { noop() {} }
+export class MockNgxSpinnerService { noop() {} }
+export class MockToastPrimeInstance { noop() {} }
+export class MockHttpManagerInstance { noop() {} }
 
 // Reusable Providers Array
 export const COMMON_TESTING_PROVIDERS = [

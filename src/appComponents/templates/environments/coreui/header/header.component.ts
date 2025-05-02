@@ -46,7 +46,7 @@ export class HeaderLayoutComponent extends HeaderComponent {
   @Input() userDataState: IUserData | undefined;
   @Input() sidebarId: string = 'sidebar1';
 
-  constructor(private store: Store<{ layout: ILayout, userDataState: IUserData }>) {
+  constructor(private readonly store: Store<{ layout: ILayout, userDataState: IUserData }>) {
     super();
 
     this.$layout = this.store.select('layout');

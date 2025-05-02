@@ -31,7 +31,7 @@ export class DietBaseRegisterComponent extends GenericParentComponent {
   public moduleEnum = ModuleDietBaseDataEnum;
   public modalClass: ModalClass = new ModalClass(false, ModalTypeEnum.POPUP);
 
-  constructor(injector: Injector, private dietService: DietService) {
+  constructor(injector: Injector, private readonly dietService: DietService) {
     super(injector);
     this.store.dispatch(setSubTitle({ subTitle: "Diet Base" }));
   }

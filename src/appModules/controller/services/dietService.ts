@@ -12,7 +12,7 @@ import { downloadFileFromBase64 } from "@app/appComponents/utils/dataUtils/fileU
 })
 export class DietService {
 
-  constructor(private httpManagerInstance: HttpManagerInstance) {
+  constructor(private readonly httpManagerInstance: HttpManagerInstance) {
   }
 
     getDietBaseService() {

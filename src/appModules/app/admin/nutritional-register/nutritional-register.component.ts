@@ -19,7 +19,7 @@ export class NutritionalRegisterComponent extends GenericCrudComponent {
   public formData = ADMIN_NUTRITIONAL_GOALS_REGISTER_DATA;
   public formGroup: FormGroup;
 
-  constructor(injector: Injector, private adminService: AdminService) {
+  constructor(injector: Injector, private readonly adminService: AdminService) {
 
     super(injector);
     this.formGroup = buildFormGroupFromContainers([this.formData]);

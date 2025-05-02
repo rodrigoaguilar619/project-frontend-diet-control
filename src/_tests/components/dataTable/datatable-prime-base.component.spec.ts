@@ -1,11 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DatatablePrimeBaseComponent } from '@app/appComponents/components/dataTable/datatable-prime-base/datatable-prime-base.component';
-import { provideNoopAnimations } from '@angular/platform-browser/animations';
-import { TableModule } from 'primeng/table';
-import ButtonsOptionsComponent from '@app/appComponents/components/buttons/buttons-options/buttons-options.component';
 import { IterableDiffers } from '@angular/core';
-import { table } from 'console';
-import { style } from '@angular/animations';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import ButtonsOptionsComponent from '@app/appComponents/components/buttons/buttons-options/buttons-options.component';
+import { DatatablePrimeBaseComponent } from '@app/appComponents/components/dataTable/datatable-prime-base/datatable-prime-base.component';
+import { TableModule } from 'primeng/table';
 
 describe('DatatablePrimeBaseComponent', () => {
   let component: DatatablePrimeBaseComponent;

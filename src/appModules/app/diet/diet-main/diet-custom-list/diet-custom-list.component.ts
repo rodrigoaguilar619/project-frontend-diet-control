@@ -66,7 +66,7 @@ export class DietCustomListComponent extends GenericParentComponent {
       title: "Delete diet custom"
     },]
 
-  constructor(injector: Injector, private dietService: DietService, private routingInstance: RoutingInstance) {
+  constructor(injector: Injector, private readonly dietService: DietService, private readonly routingInstance: RoutingInstance) {
     super(injector);
 
     this.store.dispatch(setSubTitle({ subTitle: "Diet custom list" }));

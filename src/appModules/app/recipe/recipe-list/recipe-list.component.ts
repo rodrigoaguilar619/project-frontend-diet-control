@@ -45,7 +45,7 @@ export class RecipeListComponent extends GenericParentComponent {
       title: "Delete recipe"
     }]
 
-  constructor(injector: Injector, private recipeService: RecipeService) {
+  constructor(injector: Injector, private readonly recipeService: RecipeService) {
     super(injector);
 
     this.store.dispatch(setSubTitle({ subTitle: "Recipe list" }));

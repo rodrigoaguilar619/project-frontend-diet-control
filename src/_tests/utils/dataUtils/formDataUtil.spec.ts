@@ -1,16 +1,16 @@
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ElementRef } from '@angular/core';
-import {
-  scrollToFirstInvalidControl,
-  validateForm,
-  buildFormGroup,
-  buildFormGroupFromContainers,
-  buildFormArrayFromContainer,
-  addFormArrayRow,
-  removeFormArrayRow,
-} from '@app/appComponents/utils/dataUtils/formDataUtil';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormInputColumnPropsI, FormInputContainerPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
 import { InputElementEnum } from '@app/appComponents/catalogs/enumCatalog';
+import {
+  addFormArrayRow,
+  buildFormArrayFromContainer,
+  buildFormGroup,
+  buildFormGroupFromContainers,
+  removeFormArrayRow,
+  scrollToFirstInvalidControl,
+  validateForm,
+} from '@app/appComponents/utils/dataUtils/formDataUtil';
 
 const formBuilder = new FormBuilder();
 

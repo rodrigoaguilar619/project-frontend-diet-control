@@ -15,7 +15,7 @@ import { setUserData } from "../controller/actions/userData.actions";
   })
   export class InitAppService {
 
-    constructor(private store: Store<{ layout: ILayout, userDataState: IUserData }>, private httpUtil: HttpInstance, private authService: AuthService) {
+    constructor(private readonly store: Store<{ layout: ILayout, userDataState: IUserData }>, private readonly httpUtil: HttpInstance, private readonly authService: AuthService) {
       }
 
       async init(navItems: any, mockConfigList?: any) {

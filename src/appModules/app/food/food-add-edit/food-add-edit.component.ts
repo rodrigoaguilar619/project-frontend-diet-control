@@ -22,7 +22,7 @@ export class FoodAddEditComponent extends GenericCrudComponent {
   public formData = ADMIN_FOOD_COLUMN_DATA;
   public formGroup: FormGroup;
 
-  constructor(injector: Injector, private foodService: FoodService) {
+  constructor(injector: Injector, private readonly foodService: FoodService) {
     super(injector);
 
     this.formGroup = buildFormGroupFromContainers([this.formData]);

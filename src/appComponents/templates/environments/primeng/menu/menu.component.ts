@@ -19,7 +19,7 @@ export class MenuLayoutComponent {
   @Input() layout: ILayout | undefined;
   menu: MenuItem[] | undefined;
 
-  constructor(private store: Store<{ layout: ILayout }>) {
+  constructor(private readonly store: Store<{ layout: ILayout }>) {
 
     this.$layout = this.store.select('layout');
 

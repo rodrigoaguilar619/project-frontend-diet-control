@@ -133,7 +133,7 @@ export class HttpInstance {
                 ok: config.status >= 200 && config.status < 300,
                 status: config.status,
                 statusText: 'OK',
-                headers: new Headers({ 'Content-Type': config.headers?.['Content-Type'] || 'application/json' }),
+                headers: new Headers({ 'Content-Type': config.headers?.['Content-Type'] ?? 'application/json' }),
                 json: async () => JSON.parse(config.response),
                 text: async () => config.response,
             };

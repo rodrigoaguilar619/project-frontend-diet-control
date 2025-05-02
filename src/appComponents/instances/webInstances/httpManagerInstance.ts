@@ -13,7 +13,7 @@ import { HttpInstance } from './httpIntance';
 })
 export class HttpManagerInstance {
 
-  constructor(private router: Router, private httpUtil: HttpInstance, private toastPrimeInstance: ToastPrimeInstance) {
+  constructor(private readonly router: Router, private readonly httpUtil: HttpInstance,private readonly toastPrimeInstance: ToastPrimeInstance) {
   }
 
   normalizeError(error: any) {

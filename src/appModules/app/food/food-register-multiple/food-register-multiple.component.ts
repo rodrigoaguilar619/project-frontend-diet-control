@@ -20,7 +20,7 @@ export class FoodRegisterMultipleComponent extends GenericParentComponent {
   public formData = ADMIN_FOOD_COLUMN_DATA;
   public formArray: FormArray;
 
-  constructor(injector: Injector, private foodService: FoodService) {
+  constructor(injector: Injector, private readonly foodService: FoodService) {
     super(injector);
 
     this.formArray = buildFormArrayFromContainer(this.formData);

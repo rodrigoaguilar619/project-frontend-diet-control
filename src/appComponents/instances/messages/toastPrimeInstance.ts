@@ -7,7 +7,7 @@ import { MessageService } from "primeng/api";
 })
 export class ToastPrimeInstance {
 
-    constructor(private messageService: MessageService, private spinner: NgxSpinnerService) {
+    constructor(private readonly messageService: MessageService, private readonly spinner: NgxSpinnerService) {
 
     }
 
@@ -18,7 +18,7 @@ export class ToastPrimeInstance {
     showError(title: string, detail: string, error: any) {
 
         this.spinner.hide();
-        
+
         if (error.status !== undefined)
             title += " " + error.status;
 

@@ -10,7 +10,7 @@ describe('FormInputValidatorComponent', () => {
 
   describe('ngOnInit', () => {
     it('should throw error if valueFormControl is undefined', () => {
-      expect(() => component.ngOnInit()).toThrowError('formControl is requireds');
+      expect(() => component.ngOnInit()).toThrow('formControl is requireds');
     });
 
     it('should not throw error if valueFormControl is defined', () => {

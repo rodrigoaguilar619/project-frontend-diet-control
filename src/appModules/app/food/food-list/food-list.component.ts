@@ -32,7 +32,7 @@ export class FoodListComponent extends GenericParentComponent {
   public moduleEnum = ModulePrincipalDataEnum;
   public idFoodEdit?: number;
 
-  constructor(injector: Injector, private foodService: FoodService) {
+  constructor(injector: Injector, private readonly foodService: FoodService) {
     super(injector);
 
     this.store.dispatch(setSubTitle({ subTitle: "Module food list" }));

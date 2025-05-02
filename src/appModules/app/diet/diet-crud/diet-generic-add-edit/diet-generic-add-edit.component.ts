@@ -215,7 +215,7 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
           DIET_FOOD_REGISTER_DATA_IDS.COST_PROTEIN
         ];
 
-        let foodColumnValue: any = this.foodColumnsIds[key as keyof typeof this.foodColumnsIds];
+        let foodColumnValue: any = this.foodColumnsIds[key];
 
         if (foodColumnValue !== DIET_FOOD_REGISTER_DATA_IDS.UNIT && !ignoreKeys.includes(key)) {
           formGroup.controls[foodColumnValue].setValue(this.getValueTotal(food[foodColumnValue], portions));

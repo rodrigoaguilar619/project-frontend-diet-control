@@ -30,7 +30,7 @@ export class PrincipalDataComponent extends GenericParentComponent {
   public modalClass: ModalClass = new ModalClass(false, ModalTypeEnum.POPUP);
   public moduleEnum = ModulePrincipalDataEnum;
 
-  constructor(injector: Injector, private adminService: AdminService) {
+  constructor(injector: Injector, private readonly adminService: AdminService) {
     super(injector);
 
     this.store.dispatch(setSubTitle({ subTitle: "Principal page" }));

@@ -30,7 +30,7 @@ describe('ModalPopupComponent', () => {
 
   describe('ngOnInit', () => {
     it('should throw error if modalType is undefined', () => {
-      expect(() => component.ngOnInit()).toThrowError('Modal type not defined');
+      expect(() => component.ngOnInit()).toThrow('Modal type not defined');
     });
 
     it('should configure and not open if isShowPopUp false', () => {

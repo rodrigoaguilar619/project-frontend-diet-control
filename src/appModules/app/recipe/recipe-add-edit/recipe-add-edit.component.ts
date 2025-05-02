@@ -21,7 +21,7 @@ export class RecipeAddEditComponent extends GenericCrudComponent {
   public formData = RECIPE_REGISTER_DATA;
   public formGroup: FormGroup;
 
-  constructor(injector: Injector, private recipeService: RecipeService) {
+  constructor(injector: Injector, private readonly recipeService: RecipeService) {
     super(injector);
 
     this.formGroup = buildFormGroupFromContainers([this.formData]);

@@ -10,7 +10,7 @@ import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUti
 })
 export class LogoutLayoutComponent extends GenericParentComponent {
 
-  constructor(injector: Injector, private authService: AuthService) {
+  constructor(injector: Injector, private readonly authService: AuthService) {
     super(injector);
     this.initLogout();
   }

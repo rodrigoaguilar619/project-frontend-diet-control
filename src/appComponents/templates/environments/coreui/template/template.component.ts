@@ -60,7 +60,7 @@ export class TemplateComponent {
   imgSpinner = new URL('src/assets/img/spinners/spinning-loading-3.gif', import.meta.url).href;
 
 
-  constructor(private store: Store<{ layout: ILayout }>) {
+  constructor(private readonly store: Store<{ layout: ILayout }>) {
 
     this.$layout = this.store.select('layout');
 

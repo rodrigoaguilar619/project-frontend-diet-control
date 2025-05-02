@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormInputElementComponent } from '@app/appComponents/components/forms/form-input-element/form-input-element.component';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { InputElementEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { DatePickerModule } from 'primeng/datepicker';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FormInputElementComponent } from '@app/appComponents/components/forms/form-input-element/form-input-element.component';
 
 describe('FormInputElementComponent', () => {
   let component: FormInputElementComponent;
@@ -35,12 +35,12 @@ describe('FormInputElementComponent', () => {
   });
 
   it('should throw error if valueFormControl is missing', () => {
-    expect(() => fixture.detectChanges()).toThrowError('formControl is required');
+    expect(() => fixture.detectChanges()).toThrow('formControl is required');
   });
 
   it('should throw error if inputProperties is missing', () => {
     component.valueFormControl = new FormControl('');
-    expect(() => fixture.detectChanges()).toThrowError('inputProperties is required');
+    expect(() => fixture.detectChanges()).toThrow('inputProperties is required');
   });
 
   it('should disable formControl if inputProperties.isReadOnly is true', () => {

@@ -11,7 +11,7 @@ import { INavData } from "@coreui/angular";
   export function transformNav(inputNav: AppMenusPropsDataI[]): INavData[] {
     const transformItem = (navItem: AppMenusPropsDataI): INavData => {
       const transformedItem: INavData = {
-        name: navItem.text || '',
+        name: navItem.text ?? '',
         url: navItem.url,
         icon: navItem.icon ?? 'nav-icon-bullet',
         attributes: setAttributeUrl(navItem.isOpenExternal),

@@ -10,6 +10,7 @@ import Nora from '@primeng/themes/lara';
 import { libReducers, metaReducers } from '@app/appComponents/configApp/commonImport';
 import { _APP_ENVIRONMENT_ } from '@app/appComponents/catalogs/constantCatalog';
 import { SidebarNavHelper } from '@coreui/angular';
+import { provideHttpClient } from '@angular/common/http';
 
 const pluginServices = [MessageService];
 
@@ -17,6 +18,7 @@ export function getLayoutConfig(appRoutes: Routes, customReducers: any): Applica
   return {
     providers: [
       ...pluginServices,
+      provideHttpClient(),
       provideRouter(appRoutes, withHashLocation()),
       importProvidersFrom(TableModule, SidebarNavHelper),
       provideStore({...libReducers, ...customReducers}, {metaReducers}),

@@ -23,7 +23,7 @@ export class HeaderLayoutComponent {
   @ViewChild('dropdown') dropdown: ElementRef | undefined;
   @ViewChild('userData') userData: ElementRef | undefined;
 
-  constructor(private store: Store<{ layout: ILayout, userDataState: IUserData }>) {
+  constructor(private readonly store: Store<{ layout: ILayout, userDataState: IUserData }>) {
 
     this.$layout = this.store.select('layout');
     this.$userDataState = this.store.select('userDataState');

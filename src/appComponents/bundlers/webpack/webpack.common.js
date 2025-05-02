@@ -1,4 +1,4 @@
-import path from 'path';
+import path, { dirname } from 'path';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -8,7 +8,6 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import ScriptExtHtmlWebpackPlugin from "script-ext-html-webpack-plugin";
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import { AngularWebpackPlugin } from '@ngtools/webpack';
-import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import webpack from 'webpack';
 import fsFile from 'fs';

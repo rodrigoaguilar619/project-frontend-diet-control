@@ -1,10 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, NgZone } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
 import { ContainerComponent, RowComponent, ColComponent, CardGroupComponent, TextColorDirective, CardComponent, CardBodyComponent, FormDirective, InputGroupComponent, InputGroupTextDirective, FormControlDirective, ButtonDirective, SpinnerModule } from '@coreui/angular';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import axios from 'axios';
 import { HttpStatusCode } from '@angular/common/http';
-import { NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IconModule, IconSetService, IconDirective } from '@coreui/icons-angular';
 import { cilLockLocked, cilUser } from '@coreui/icons';
@@ -38,8 +37,9 @@ export class LoginComponent implements OnInit {
   @Input() isLoading: boolean = false;
   @Input() loadingText: string = 'Loading...';
 
-  constructor(private authService: AuthService, private httpManagerInstance: HttpManagerInstance, public iconSet: IconSetService, private fb: FormBuilder,
-    private router: Router, private route: ActivatedRoute, private zone: NgZone) {
+  constructor(private readonly authService: AuthService, private readonly httpManagerInstance: HttpManagerInstance,
+    public iconSet: IconSetService, private readonly fb: FormBuilder, private readonly router: Router,
+    private readonly route: ActivatedRoute, private readonly zone: NgZone) {
     iconSet.icons = { cilUser, cilLockLocked };
 
     this.loginForm = this.fb.group({

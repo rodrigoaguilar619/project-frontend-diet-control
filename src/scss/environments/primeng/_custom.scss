@@ -1,7 +1,6 @@
 // ----------------- HEADER -------------------------------------
 
 .header {
-  //position: fixed;
   top: 0;
   width: 100%;
   background-color: #f8f9fa; /* Light background color */
@@ -9,7 +8,6 @@
   padding: 10px 20px;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  //z-index: 1000; /* Ensure it stays on top of other elements */
 }
 
 .header-content {

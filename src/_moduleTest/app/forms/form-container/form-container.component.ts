@@ -1,13 +1,12 @@
 import { Component, Injector, Input, SimpleChanges } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormInputContainerPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
-import { GenericParentComponent } from '@app/appComponents/components/commonComponents.config';
+import { GenericParentComponent,  ButtonSubmitComponent, FormInputContainerComponent } from '@app/appComponents/components/commonComponents.config';
 import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
 import { ValidatorsCustom } from '@app/appComponents/controller/validators/validatorsCustom';
 import { InputElementEnum, InputMaskEnum } from '@app/appComponents/catalogs/enumCatalog';
 import { buildFormGroupFromContainers } from '@app/appComponents/utils/dataUtils/formDataUtil';
 import { setValidatorCustomToContainer } from '@app/appComponents/utils/validatorUtils/validatorUtil';
-import { ButtonSubmitComponent, FormInputContainerComponent } from '@app/appComponents/components/commonComponents.config';
 import { commonAppModules } from '@app/appComponents/components/commonModules.config';
 
 @Component({
