@@ -1,6 +1,5 @@
 import { Component, Injector, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import axios from 'axios';
 import { DietGenericAddEditComponent } from '@app/appModules/app/diet/diet-crud/diet-generic-add-edit/diet-generic-add-edit.component';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { buildFormGroupFromContainers, validateForm } from '@app/appComponents/utils/dataUtils/formDataUtil';
@@ -121,9 +120,9 @@ export class DietCustomAddEditComponent extends DietGenericAddEditComponent {
 
       this.getCatalogs()
           .then(() => {
-              return axios.all([this.dietService.getDietBaseService(), this.adminService.getNutritionalGoalService()]);
+              return Promise.all([this.dietService.getDietBaseService(), this.adminService.getNutritionalGoalService()]);
           })
-          .then(axios.spread((dietBaseData, nutritionalGoalData) => {
+          .then(([dietBaseData, nutritionalGoalData]) => {
             this.subTotalDietBase = dietBaseData.data.diet;
 
             this.totalDietCustomRegistered = dietBaseData.data.diet;
@@ -138,7 +137,7 @@ export class DietCustomAddEditComponent extends DietGenericAddEditComponent {
             this.buildTotalsResume();
 
             this.spinner.hide();
-          }))
+          })
           .catch((error) => {
               this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
           });
@@ -216,8 +215,8 @@ export class DietCustomAddEditComponent extends DietGenericAddEditComponent {
     }
 
     this.spinner.show();
-    axios.all([this.dietService.addEditDietCustomService(this.idDietCustom == null, this.formGroupRecipe.controls[DIET_CUSTOM_RECIPE_DATA_IDS.ID].value, this.formArray.value)])
-      .then(axios.spread((dietBaseRegisterData) => {
+    Promise.all([this.dietService.addEditDietCustomService(this.idDietCustom == null, this.formGroupRecipe.controls[DIET_CUSTOM_RECIPE_DATA_IDS.ID].value, this.formArray.value)])
+      .then(([dietBaseRegisterData]) => {
 
         debug(debugClass, "result", dietBaseRegisterData);
         this.toastPrimeInstance.showSuccess("DIET CUSTOM DATA", "Diet custom registered successfully");
@@ -227,7 +226,7 @@ export class DietCustomAddEditComponent extends DietGenericAddEditComponent {
 
         this.spinner.hide();
 
-      }))
+      })
       .catch((error) => {
         this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
       });

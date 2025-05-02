@@ -39,6 +39,6 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
-    "types": ["node", "webpack-env"],
+    "types": ["node", "webpack-env", "jest"],
   }
 }

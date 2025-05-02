@@ -9,7 +9,7 @@ import { API_RECIPE_ADD, API_RECIPE_DELETE, API_RECIPE_EDIT, API_RECIPE_GET, API
 })
 export class RecipeService {
 
-  constructor(private httpManagerInstance: HttpManagerInstance) {
+  constructor(private readonly httpManagerInstance: HttpManagerInstance) {
   }
 
   getRecipeListService() {

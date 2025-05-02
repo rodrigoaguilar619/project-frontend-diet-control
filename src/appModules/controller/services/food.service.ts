@@ -9,7 +9,7 @@ import { HttpMethodEnum } from '@app/appComponents/catalogs/enumCatalog';
 })
 export class FoodService {
 
-  constructor(private httpManagerInstance: HttpManagerInstance) {
+  constructor(private readonly httpManagerInstance: HttpManagerInstance) {
   }
 
   getFoodService(idFood: number) {

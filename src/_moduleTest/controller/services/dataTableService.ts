@@ -9,7 +9,7 @@ import { generateDebugClassService } from "@app/appComponents/utils/webUtils/deb
 })
 export class DataTableService {
 
-    constructor(private httpManagerInstance: HttpManagerInstance) {
+    constructor(private readonly httpManagerInstance: HttpManagerInstance) {
     }
 
     getDataTableDataService(paramId: number, filterData?: Record<string, any>) {

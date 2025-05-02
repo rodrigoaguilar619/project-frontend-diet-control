@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import axios from "axios";
 import { API_DIET_BASE_GET, API_DIET_BASE_REGISTER, API_DIET_CUSTOM_ADD, API_DIET_CUSTOM_DELETE, API_DIET_CUSTOM_EDIT,
   API_DIET_CUSTOM_GET, API_DIET_CUSTOM_LIST_GET, API_DIET_CUSTOM_DETAIL_LIST_GET, API_DIET_REPORT_FILE } from "@app/appModules/catalogs/uriCatalog";
 import { HttpManagerInstance } from "@app/appComponents/instances/webInstances/httpManagerInstance";
@@ -12,7 +11,7 @@ import { downloadFileFromBase64 } from "@app/appComponents/utils/dataUtils/fileU
 })
 export class DietService {
 
-  constructor(private httpManagerInstance: HttpManagerInstance) {
+  constructor(private readonly httpManagerInstance: HttpManagerInstance) {
   }
 
     getDietBaseService() {
@@ -101,13 +100,13 @@ export class DietService {
       let debugClass = generateDebugClassModule("init download diet custom report module");
       debug(debugClass, "start");
 
-      return axios.all([this.getReportDietService(id)])
-          .then(axios.spread((dietCustomReportData) => {
+      return Promise.all([this.getReportDietService(id)])
+          .then(([dietCustomReportData]) => {
 
               debug(debugClass, "result", dietCustomReportData);
               downloadFileFromBase64(dietCustomReportData.data.file.fileBase64, "diet_report_" + id, "pdf");
 
-          }))
+          })
           .catch((error) => {
               this.httpManagerInstance.manageAlertModuleError(componentType, debugClass, error);
           });

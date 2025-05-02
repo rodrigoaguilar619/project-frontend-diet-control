@@ -1,5 +1,4 @@
 import { Component, Injector } from '@angular/core';
-import axios from 'axios';
 import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { AdminService } from '@app/appModules/controller/services/admin.service';
 import { ADMIN_NUTRITIONAL_GOALS_COLUMNS } from '@app/appModules/app/admin/admin.constants';
@@ -30,7 +29,7 @@ export class PrincipalDataComponent extends GenericParentComponent {
   public modalClass: ModalClass = new ModalClass(false, ModalTypeEnum.POPUP);
   public moduleEnum = ModulePrincipalDataEnum;
 
-  constructor(injector: Injector, private adminService: AdminService) {
+  constructor(injector: Injector, private readonly adminService: AdminService) {
     super(injector);
 
     this.store.dispatch(setSubTitle({ subTitle: "Principal page" }));
@@ -50,14 +49,14 @@ export class PrincipalDataComponent extends GenericParentComponent {
     debug(debugClass, "start");
 
     this.spinner.show();
-    axios.all([this.adminService.getNutritionalGoalService()])
-        .then(axios.spread((nutritionalGoalData) => {
+    Promise.all([this.adminService.getNutritionalGoalService()])
+        .then(([nutritionalGoalData]) => {
 
             debug(debugClass, "result", nutritionalGoalData);
             this.nutritionalGoalsValues = [nutritionalGoalData.data.nutritionGoal];
             this.spinner.hide();
 
-        }))
+        })
         .catch((error) => {
             this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
         });

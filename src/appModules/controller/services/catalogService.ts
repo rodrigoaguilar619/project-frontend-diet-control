@@ -9,7 +9,7 @@ import { API_CATALOG_GET_ALL, API_CATALOG_RECIPE_GET } from "@app/appModules/cat
 })
 export class CatalogService {
 
-    constructor(private httpManagerInstance: HttpManagerInstance) {
+    constructor(private readonly httpManagerInstance: HttpManagerInstance) {
     }
 
     getCatalogService(catalogName: any) {

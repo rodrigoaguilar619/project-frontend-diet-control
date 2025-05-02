@@ -1,7 +1,7 @@
-@import "variables";
+@use "variables";
 
-@import "custom";
-@import "../../plugins/bootstrap.scss";
-@import "../../plugins/primeng.scss";
-@import "../../plugins/formControl.scss";
-@import "../../plugins/selectng.scss";
+@use "custom";
+@use "../../plugins/bootstrap.scss";
+@use "../../plugins/primeng.scss";
+@use "../../plugins/formControl.scss";
+@use "../../plugins/selectng.scss";

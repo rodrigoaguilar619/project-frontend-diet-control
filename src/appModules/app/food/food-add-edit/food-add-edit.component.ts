@@ -1,5 +1,4 @@
 import { Component, Injector, Input } from '@angular/core';
-import axios from 'axios';
 import { ADMIN_FOOD_COLUMN_DATA } from '@app/appModules/app/food/food-constants';
 import { GenericCrudComponent } from '@app/appComponents/components/_generic/generic-parent/generic-crud/generic-crud.component';
 import { FoodService } from '@app/appModules/controller/services/food.service';
@@ -22,7 +21,7 @@ export class FoodAddEditComponent extends GenericCrudComponent {
   public formData = ADMIN_FOOD_COLUMN_DATA;
   public formGroup: FormGroup;
 
-  constructor(injector: Injector, private foodService: FoodService) {
+  constructor(injector: Injector, private readonly foodService: FoodService) {
     super(injector);
 
     this.formGroup = buildFormGroupFromContainers([this.formData]);
@@ -46,8 +45,8 @@ export class FoodAddEditComponent extends GenericCrudComponent {
       return;
 
     this.spinner.show();
-    axios.all([this.foodService.addEditFoodService(this.formGroup.value)])
-      .then(axios.spread((foodAddEditData) => {
+    Promise.all([this.foodService.addEditFoodService(this.formGroup.value)])
+      .then(([foodAddEditData]) => {
 
         debug(debugClass, "result", foodAddEditData);
         this.toastPrimeInstance.showSuccess("FOOD " + (this.idFood === undefined ? "REGISTER" : "EDIT"), "Food " + (this.idFood === undefined ? "registered" : "edited"));
@@ -57,7 +56,7 @@ export class FoodAddEditComponent extends GenericCrudComponent {
 
         this.spinner.hide();
 
-      }))
+      })
       .catch((error) => {
         this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
       });
@@ -69,8 +68,8 @@ export class FoodAddEditComponent extends GenericCrudComponent {
     debug(debugClass, "start");
 
     this.spinner.show();
-    axios.all([this.foodService.getFoodService(idFood)])
-      .then(axios.spread((foodData) => {
+    Promise.all([this.foodService.getFoodService(idFood)])
+      .then(([foodData]) => {
 
         debug(debugClass, "result", foodData);
         if (foodData.data.food !== null) {
@@ -79,7 +78,7 @@ export class FoodAddEditComponent extends GenericCrudComponent {
 
         this.spinner.hide();
 
-      }))
+      })
       .catch((error) => {
         this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
       });

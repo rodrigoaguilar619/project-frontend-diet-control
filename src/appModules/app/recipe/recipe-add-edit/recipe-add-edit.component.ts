@@ -1,6 +1,5 @@
 import { Component, Injector, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import axios from 'axios';
 import { GenericCrudComponent } from '@app/appComponents/components/_generic/generic-parent/generic-crud/generic-crud.component';
 import { buildFormGroupFromContainers } from '@app/appComponents/utils/dataUtils/formDataUtil';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
@@ -21,7 +20,7 @@ export class RecipeAddEditComponent extends GenericCrudComponent {
   public formData = RECIPE_REGISTER_DATA;
   public formGroup: FormGroup;
 
-  constructor(injector: Injector, private recipeService: RecipeService) {
+  constructor(injector: Injector, private readonly recipeService: RecipeService) {
     super(injector);
 
     this.formGroup = buildFormGroupFromContainers([this.formData]);
@@ -43,8 +42,8 @@ export class RecipeAddEditComponent extends GenericCrudComponent {
       return;
 
     this.spinner.show();
-    axios.all([this.recipeService.addEditRecipeService(this.formGroup.value)])
-      .then(axios.spread((recipeAddEditData) => {
+    Promise.all([this.recipeService.addEditRecipeService(this.formGroup.value)])
+      .then(([recipeAddEditData]) => {
 
         debug(debugClass, "result", recipeAddEditData);
         this.toastPrimeInstance.showSuccess("RECIPE " + (this.idRecipe === undefined ? "REGISTER" : "EDIT"), "Recipe " + (this.idRecipe === undefined ? "registered" : "edited"));
@@ -54,7 +53,7 @@ export class RecipeAddEditComponent extends GenericCrudComponent {
 
         this.spinner.hide();
 
-      }))
+      })
       .catch((error) => {
         this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
       });
@@ -66,8 +65,8 @@ export class RecipeAddEditComponent extends GenericCrudComponent {
     debug(debugClass, "start");
 
     this.spinner.show();
-    axios.all([this.recipeService.getRecipeService(idRecipe)])
-      .then(axios.spread((recipeData) => {
+    Promise.all([this.recipeService.getRecipeService(idRecipe)])
+      .then(([recipeData]) => {
 
         debug(debugClass, "result", recipeData);
         if (recipeData.data.food !== null) {
@@ -76,7 +75,7 @@ export class RecipeAddEditComponent extends GenericCrudComponent {
 
         this.spinner.hide();
 
-      }))
+      })
       .catch((error) => {
         this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
       });

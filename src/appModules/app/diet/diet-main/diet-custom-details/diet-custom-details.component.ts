@@ -33,7 +33,7 @@ export class DietCustomDetailsComponent extends GenericParentComponent {
   public foodColumns = DIET_FOOD_COLUMNS;
   public dataTableFoodSectionsProperties = { header: false, footer: false, search: false, pagination: false }
 
-  constructor(injector: Injector, private dietService: DietService) {
+  constructor(injector: Injector, private readonly dietService: DietService) {
     super(injector);
 
     this.params = this.routerActive.snapshot.queryParams;

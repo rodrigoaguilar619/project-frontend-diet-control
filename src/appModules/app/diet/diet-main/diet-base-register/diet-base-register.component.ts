@@ -1,5 +1,4 @@
 import { Component, Injector } from '@angular/core';
-import axios from 'axios';
 import { DIET_FOOD_TOTALS_RESUME_COLUMNS } from '@app/appModules/app/diet/diet.contants';
 import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { setSubTitle } from '@app/appComponents/controller/actions/layout.actions';
@@ -31,7 +30,7 @@ export class DietBaseRegisterComponent extends GenericParentComponent {
   public moduleEnum = ModuleDietBaseDataEnum;
   public modalClass: ModalClass = new ModalClass(false, ModalTypeEnum.POPUP);
 
-  constructor(injector: Injector, private dietService: DietService) {
+  constructor(injector: Injector, private readonly dietService: DietService) {
     super(injector);
     this.store.dispatch(setSubTitle({ subTitle: "Diet Base" }));
   }
@@ -46,15 +45,15 @@ export class DietBaseRegisterComponent extends GenericParentComponent {
     debug(debugClass, "start");
 
     this.spinner.show();
-    axios.all([this.dietService.getDietBaseService()])
-        .then(axios.spread((dietBaseData) => {
+    Promise.all([this.dietService.getDietBaseService()])
+        .then(([dietBaseData]) => {
 
             debug(debugClass, "result", dietBaseData);
             this.foodListValues = dietBaseData.data.foods;
             this.foodResumeValues = [{...dietBaseData.data.diet}];
             this.spinner.hide();
 
-        }))
+        })
         .catch((error) => {
             this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
         });

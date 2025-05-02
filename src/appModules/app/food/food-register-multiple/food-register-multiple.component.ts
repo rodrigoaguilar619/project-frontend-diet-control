@@ -1,5 +1,4 @@
 import { Component, Injector } from '@angular/core';
-import axios from 'axios';
 import { FoodService } from '@app/appModules/controller/services/food.service';
 import { ADMIN_FOOD_COLUMN_DATA } from '@app/appModules/app/food/food-constants';
 import { FormArray, FormGroup } from '@angular/forms';
@@ -20,7 +19,7 @@ export class FoodRegisterMultipleComponent extends GenericParentComponent {
   public formData = ADMIN_FOOD_COLUMN_DATA;
   public formArray: FormArray;
 
-  constructor(injector: Injector, private foodService: FoodService) {
+  constructor(injector: Injector, private readonly foodService: FoodService) {
     super(injector);
 
     this.formArray = buildFormArrayFromContainer(this.formData);
@@ -40,8 +39,8 @@ export class FoodRegisterMultipleComponent extends GenericParentComponent {
       return;
 
     this.spinner.show();
-    axios.all([this.foodService.registerFoodsService(this.formArray.value)])
-      .then(axios.spread((registerFoodMultipleData) => {
+    Promise.all([this.foodService.registerFoodsService(this.formArray.value)])
+      .then(([registerFoodMultipleData]) => {
 
         debug(debugClass, "result", registerFoodMultipleData);
         this.toastPrimeInstance.showSuccess("FOOD REGISTER MULTIPLE", "Registered foods successfully");
@@ -51,7 +50,7 @@ export class FoodRegisterMultipleComponent extends GenericParentComponent {
 
         this.spinner.hide();
 
-      }))
+      })
       .catch((error) => {
         this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
       });

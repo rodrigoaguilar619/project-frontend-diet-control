@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import DietBaseRegisterComponent from './diet-main/diet-base-register/diet-base-register.component';
 import { SUB_PATHS } from '@app/appModules/catalogs/pathsCatalog';
 import DietCustomListComponent from './diet-main/diet-custom-list/diet-custom-list.component';

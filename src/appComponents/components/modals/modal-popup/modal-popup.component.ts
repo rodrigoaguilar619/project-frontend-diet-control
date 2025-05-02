@@ -21,7 +21,7 @@ export class ModalPopupComponent implements OnInit {
 
   public modalTypeEnum = ModalTypeEnum;
 
-  constructor(private config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(private readonly config: NgbModalConfig, private readonly modalService: NgbModal) {
 
     this.configModal();
   }

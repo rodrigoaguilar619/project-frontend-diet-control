@@ -9,7 +9,7 @@ import { generateDebugClassModule } from '@app/appComponents/utils/webUtils/debu
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private httpManagerInstance: HttpManagerInstance) {}
+  constructor(private readonly authService: AuthService, private readonly httpManagerInstance: HttpManagerInstance) {}
 
   async canActivate(): Promise<boolean> {
 

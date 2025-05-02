@@ -9,7 +9,7 @@ import { URL_API_USER_DATA_GET, URL_AUTH_LOGIN, URL_AUTH_LOGOUT, URL_REFRESH_SES
 })
 export class AuthService {
 
-  constructor(private httpManagerInstance: HttpManagerInstance) {
+  constructor(private readonly httpManagerInstance: HttpManagerInstance) {
   }
 
   loginService(username: string, password: string) {

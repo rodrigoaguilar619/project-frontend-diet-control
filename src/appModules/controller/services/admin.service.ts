@@ -9,7 +9,7 @@ import { generateDebugClassService } from "@app/appComponents/utils/webUtils/deb
 })
 export class AdminService {
 
-    constructor(private httpManagerInstance: HttpManagerInstance) {
+    constructor(private readonly httpManagerInstance: HttpManagerInstance) {
     }
 
     getNutritionalGoalService() {

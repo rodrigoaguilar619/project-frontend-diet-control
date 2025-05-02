@@ -13,7 +13,7 @@ import { mockApiConfigList } from '@app/_moduleTest/config/mock/mockApiConfig';
 })
 export class AppTestComponent implements OnInit {
 
-  constructor(private initAppService: InitAppService){}
+  constructor(private readonly initAppService: InitAppService){}
 
   ngOnInit() {
     this.initAppService.init(navItems, mockApiConfigList);

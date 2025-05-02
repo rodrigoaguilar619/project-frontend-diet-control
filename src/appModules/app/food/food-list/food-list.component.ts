@@ -1,5 +1,4 @@
 import { Component, Injector } from '@angular/core';
-import axios from 'axios';
 import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { FoodService } from '@app/appModules/controller/services/food.service';
 import { FOOD_LIST_COLUMNS } from '@app/appModules/app/food/food-constants';
@@ -32,7 +31,7 @@ export class FoodListComponent extends GenericParentComponent {
   public moduleEnum = ModulePrincipalDataEnum;
   public idFoodEdit?: number;
 
-  constructor(injector: Injector, private foodService: FoodService) {
+  constructor(injector: Injector, private readonly foodService: FoodService) {
     super(injector);
 
     this.store.dispatch(setSubTitle({ subTitle: "Module food list" }));
@@ -95,14 +94,14 @@ export class FoodListComponent extends GenericParentComponent {
     debug(debugClass, "start");
 
     this.spinner.show();
-    axios.all([this.foodService.getFoodListService()])
-        .then(axios.spread((foodListData) => {
+    Promise.all([this.foodService.getFoodListService()])
+        .then(([foodListData]) => {
 
             debug(debugClass, "result", foodListData);
             this.foodListValues = foodListData.data.foods;
             this.spinner.hide();
 
-        }))
+        })
         .catch((error) => {
             this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
         });
@@ -114,14 +113,14 @@ export class FoodListComponent extends GenericParentComponent {
     debug(debugClass, "start");
 
     this.spinner.show();
-    return axios.all([this.foodService.deleteFoodService(idFood)])
-        .then(axios.spread((foodDeleteData) => {
+    return Promise.all([this.foodService.deleteFoodService(idFood)])
+        .then(([foodDeleteData]) => {
 
             debug(debugClass, "result", foodDeleteData);
             this.toastPrimeInstance.showSuccess("FOOD DELETED", "FOOD DELETED: " + idFood);
             this.spinner.hide();
 
-        }))
+        })
         .catch((error) => {
             this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
         });

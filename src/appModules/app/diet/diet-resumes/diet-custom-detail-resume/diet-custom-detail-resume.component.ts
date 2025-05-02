@@ -52,7 +52,7 @@ export class DietCustomDetailResumeComponent extends GenericParentComponent {
     }
   ]
 
-  constructor(injector: Injector, private dietService: DietService) {
+  constructor(injector: Injector, private readonly dietService: DietService) {
     super(injector);
   }
 

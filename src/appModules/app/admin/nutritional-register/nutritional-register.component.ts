@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import axios from 'axios';
 import { GenericCrudComponent } from '@app/appComponents/components/_generic/generic-parent/generic-crud/generic-crud.component';
 import { ADMIN_NUTRITIONAL_GOALS_REGISTER_DATA } from '@app/appModules/app/admin/admin.constants';
 import { AdminService } from '@app/appModules/controller/services/admin.service';
@@ -19,7 +18,7 @@ export class NutritionalRegisterComponent extends GenericCrudComponent {
   public formData = ADMIN_NUTRITIONAL_GOALS_REGISTER_DATA;
   public formGroup: FormGroup;
 
-  constructor(injector: Injector, private adminService: AdminService) {
+  constructor(injector: Injector, private readonly adminService: AdminService) {
 
     super(injector);
     this.formGroup = buildFormGroupFromContainers([this.formData]);
@@ -39,8 +38,8 @@ export class NutritionalRegisterComponent extends GenericCrudComponent {
       return;
 
     this.spinner.show();
-    axios.all([this.adminService.registerNutritionalGoalsService(this.formGroup.value)])
-      .then(axios.spread((nutritionalGoalData) => {
+    Promise.all([this.adminService.registerNutritionalGoalsService(this.formGroup.value)])
+      .then(([nutritionalGoalData]) => {
 
         debug(debugClass, "result", nutritionalGoalData);
         this.toastPrimeInstance.showSuccess("NUTRITIONAL GOALS", "Nutritional goals registered");
@@ -50,7 +49,7 @@ export class NutritionalRegisterComponent extends GenericCrudComponent {
 
         this.spinner.hide();
 
-      }))
+      })
       .catch((error) => {
         this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
       });
@@ -62,8 +61,8 @@ export class NutritionalRegisterComponent extends GenericCrudComponent {
     debug(debugClass, "start");
 
     this.spinner.show();
-    axios.all([this.adminService.getNutritionalGoalService()])
-      .then(axios.spread((nutritionalGoalData) => {
+    Promise.all([this.adminService.getNutritionalGoalService()])
+      .then(([nutritionalGoalData]) => {
 
         debug(debugClass, "result", nutritionalGoalData);
         if (nutritionalGoalData.data.nutritionGoal !== null) {
@@ -72,7 +71,7 @@ export class NutritionalRegisterComponent extends GenericCrudComponent {
 
         this.spinner.hide();
 
-      }))
+      })
       .catch((error) => {
         this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
       });

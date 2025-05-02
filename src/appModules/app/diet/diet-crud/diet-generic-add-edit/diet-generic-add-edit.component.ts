@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
-import axios from 'axios';
 import { FormInputColumnPropsI } from '@app/appComponents/@types/components/formInputs/formInputs';
 import { InputElementSelectPropsI } from '@app/appComponents/@types/components/inputs/inputElement';
 import { GenericCrudComponent } from '@app/appComponents/components/_generic/generic-parent/generic-crud/generic-crud.component';
@@ -100,8 +99,8 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
 
   getCatalogs(): Promise<void> {
 
-    return axios.all([this.dietService.getDietBaseService(), this.catalogService.getCatalogService(catalogEnum.FOOD), this.catalogService.getCatalogRecipeService()])
-    .then(axios.spread((dietBaseData, catalogFoodData, catalogRecipeData) => {
+    return Promise.all([this.dietService.getDietBaseService(), this.catalogService.getCatalogService(catalogEnum.FOOD), this.catalogService.getCatalogRecipeService()])
+    .then(([dietBaseData, catalogFoodData, catalogRecipeData]) => {
 
       this.foodListValues = dietBaseData.data.foods;
       this.foodResumeValues = [{...dietBaseData.data.diet}];
@@ -117,7 +116,7 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
           (column.inputProps as InputElementSelectPropsI).options = catalogFoodData.data.catalogs;
         }
       });
-    }));
+    });
 
   }
 
@@ -215,7 +214,7 @@ export class DietGenericAddEditComponent extends GenericCrudComponent {
           DIET_FOOD_REGISTER_DATA_IDS.COST_PROTEIN
         ];
 
-        let foodColumnValue: any = this.foodColumnsIds[key as keyof typeof this.foodColumnsIds];
+        let foodColumnValue: any = this.foodColumnsIds[key];
 
         if (foodColumnValue !== DIET_FOOD_REGISTER_DATA_IDS.UNIT && !ignoreKeys.includes(key)) {
           formGroup.controls[foodColumnValue].setValue(this.getValueTotal(food[foodColumnValue], portions));

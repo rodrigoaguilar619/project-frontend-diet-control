@@ -9,19 +9,28 @@ import customHtmlPlugin from './customVitePluginHtml.js';
 import fs from 'fs';
 import checker from 'vite-plugin-checker';
 
+const vendorMappings = [
+  { key: 'primeng-table', label: 'vendor-primeng-table' },
+  { key: 'primeng-datepicker', label: 'vendor-primeng-datepicker' },
+  { key: 'primeng', label: 'vendor-primeng' },
+  { key: '@ng-select', label: 'vendor-ng-select' },
+  { key: '@coreui', label: 'vendor-coreui' },
+  { key: 'forms', label: 'vendor-forms' },
+  { key: 'db', label: 'vendor-db' },
+  { key: '@fortawesome', label: 'vendor-fontawesome' },
+  { key: 'ngx-scrollbar', label: 'vendor-ngx-scrollbar' },
+  { key: 'moment', label: 'vendor-moment' },
+  { key: 'zone', label: 'vendor-zone' },
+  { key: 'lodash', label: 'vendor-lodash' },
+];
+
 function removeDir(dirPath) {
   if (fs.existsSync(dirPath)) {
     fs.readdirSync(dirPath).forEach(function (file) {
-      var curPath = pathVite.join(dirPath, file);
-      if (fs.lstatSync(curPath).isDirectory()) {
-        //removeDir(curPath); // Recursively delete subfolders
-      }
-      else {
+      let curPath = pathVite.join(dirPath, file);
+      if (!fs.lstatSync(curPath).isDirectory())
         removeFile(dirPath, file); // Delete files
-      }
     });
-    /*fs.rmdirSync(dirPath); // Remove the now-empty folder
-    console.log("Deleted folder: ".concat(dirPath));*/
   }
 }
 function removeFile(distPath, fileName) {
@@ -36,7 +45,7 @@ function removeFile(distPath, fileName) {
   }
 }
 function copyFiles(publicHtmlPath, localHtmlPath) {
-  var localDir = pathVite.dirname(localHtmlPath);
+  let localDir = pathVite.dirname(localHtmlPath);
   if (!fs.existsSync(localDir)) {
     fs.mkdirSync(localDir, { recursive: true });
   }
@@ -51,8 +60,8 @@ function updateIndexHtml(oldPath, newPath, buildFilesPath) {
       return;
     }
 
-    let regex = new RegExp("..\/" + buildFilesPath, "g");
-    var updatedData = data.replace(regex, buildFilesPath);
+    let regex = new RegExp("../" + buildFilesPath, "g");
+    let updatedData = data.replace(regex, buildFilesPath);
 
     fs.writeFile(newPath, updatedData, 'utf8', function (err) {
       if (err) {
@@ -68,25 +77,24 @@ function viteConfig(enviroment, args) {
 
   console.log("Vite is running in ".concat(enviroment, " mode"));
 
-  var mode = enviroment;
-  var isProduction = mode === 'production';
-  var buildFilesPath = "bundles";
-  var removeWarning = true;
-  //var dirNameLibs = pathVite.resolve(__dirname, '../../../');
+  let mode = enviroment;
+  let isProduction = mode === 'production';
+  let buildFilesPath = "bundles";
+  let removeWarning = true;
 
-  var envFilePath = pathVite.resolve(args.dirname, "./config/env/.env.".concat(mode));
+  let envFilePath = pathVite.resolve(args.dirname, "./config/env/.env.".concat(mode));
   dotenv.config({ path: envFilePath });
 
-  var distPath = pathVite.resolve(args.dirname, 'dist');
-  var distEnvironmentPath = pathVite.join(distPath, 'dist_' + mode);
-  var packageJson = JSON.parse(fs.readFileSync(pathVite.resolve(args.dirname, 'package.json'), 'utf-8'));
+  let distPath = pathVite.resolve(args.dirname, 'dist');
+  let distEnvironmentPath = pathVite.join(distPath, 'dist_' + mode);
+  let packageJson = JSON.parse(fs.readFileSync(pathVite.resolve(args.dirname, 'package.json'), 'utf-8'));
 
   return {
     build: {
       target: ['es2020'],
       outDir: distEnvironmentPath,
       assetsDir: buildFilesPath,
-      sourcemap: isProduction ? false : true,
+      sourcemap: !isProduction,
       minify: isProduction ? 'esbuild' : false,
       rollupOptions: {
         output: {
@@ -103,34 +111,8 @@ function viteConfig(enviroment, args) {
           },
           manualChunks: function (id) {
             if (id.includes('node_modules')) {
-              if (id.includes('primeng-table'))
-                return 'vendor-primeng-table';
-              if (id.includes('primeng-datepicker'))
-                return 'vendor-primeng-datepicker';
-              if (id.includes('primeng'))
-                return 'vendor-primeng';
-              if (id.includes('@ng-select'))
-                return 'vendor-ng-select';
-              if (id.includes('@coreui'))
-                return 'vendor-coreui';
-              if (id.includes('forms'))
-                return 'vendor-forms';
-              if (id.includes('db'))
-                return 'vendor-db';
-              if (id.includes('@fortawesome'))
-                return 'vendor-fontawesome';
-              if (id.includes('ngx-scrollbar'))
-                return 'vendor-ngx-scrollbar';
-              if (id.includes('moment'))
-                return 'vendor-moment';
-              if (id.includes('axios'))
-                return 'vendor-axios';
-              if (id.includes('zone'))
-                return 'vendor-zone';
-              if (id.includes('lodash'))
-                return 'vendor-lodash';
-
-              return 'vendor'; // Other vendor libraries
+              const match = vendorMappings.find(mapping => id.includes(mapping.key));
+              return match ? match.label : 'vendor';
             }
 
             return null;
@@ -172,9 +154,9 @@ function viteConfig(enviroment, args) {
         name: 'rename-index-html',
         closeBundle: function () {
           console.log("test close bundle");
-          var distPath = pathVite.resolve(args.dirname, distEnvironmentPath);
-          var oldPath = pathVite.join(distPath, 'public/indexVite.html');
-          var newPath = pathVite.join(distPath, 'index.html');
+          let distPath = pathVite.resolve(args.dirname, distEnvironmentPath);
+          let oldPath = pathVite.join(distPath, 'public/indexVite.html');
+          let newPath = pathVite.join(distPath, 'index.html');
           updateIndexHtml(oldPath, newPath, buildFilesPath);
           removeDir(pathVite.join(distPath, 'public'));
           removeFile(distPath, 'indexWebpack.html');

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Component, Injector } from '@angular/core';
 import { GenericParentComponent } from '@app/appComponents/components/_generic/generic-parent/generic-parent.component';
 import { AuthService } from '@app/appComponents/controller/services/auth.service';
@@ -10,7 +9,7 @@ import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUti
 })
 export class LogoutLayoutComponent extends GenericParentComponent {
 
-  constructor(injector: Injector, private authService: AuthService) {
+  constructor(injector: Injector, private readonly authService: AuthService) {
     super(injector);
     this.initLogout();
   }
@@ -25,15 +24,15 @@ export class LogoutLayoutComponent extends GenericParentComponent {
     debug(debugClass, "start");
 
     this.spinner.show();
-    axios.all([this.authService.logoutService()])
-        .then(axios.spread((logoutData) => {
+    Promise.all([this.authService.logoutService()])
+        .then(([logoutData]) => {
 
             debug(debugClass, "result", logoutData);
 
             localStorage.removeItem('userName');
             localStorage.removeItem('token');;
 
-        }))
+        })
         .finally(() => {
             this.spinner.hide();
             this.httpManagerInstance.redirectLogout();

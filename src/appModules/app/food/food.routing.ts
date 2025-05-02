@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import FoodListComponent from './food-list/food-list.component';
 import { SUB_PATHS } from '@app/appModules/catalogs/pathsCatalog';
 

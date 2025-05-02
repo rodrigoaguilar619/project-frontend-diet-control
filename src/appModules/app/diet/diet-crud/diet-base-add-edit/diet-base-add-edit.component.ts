@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import axios from 'axios';
 import { buildFormGroupFromContainers, validateForm } from '@app/appComponents/utils/dataUtils/formDataUtil';
 import { debug, generateDebugClassModule } from '@app/appComponents/utils/webUtils/debugUtil';
 import { DIET_ADD_EDIT_TOTALS_COLUMNS_ONE, DIET_ADD_EDIT_TOTALS_COLUMNS_TWO } from '@app/appModules/app/diet/diet.contants';
@@ -77,8 +76,8 @@ export class DietBaseAddEditComponent extends DietGenericAddEditComponent {
       }
 
       this.spinner.show();
-      axios.all([this.dietService.registerDietBaseService(this.formGroupRecipe.controls["idRecipe"].value, this.formArray.value)])
-        .then(axios.spread((dietBaseRegisterData) => {
+      Promise.all([this.dietService.registerDietBaseService(this.formGroupRecipe.controls["idRecipe"].value, this.formArray.value)])
+        .then(([dietBaseRegisterData]) => {
 
           debug(debugClass, "result", dietBaseRegisterData);
           this.toastPrimeInstance.showSuccess("DIET BASE DATA", "Diet base registered successfully");
@@ -88,7 +87,7 @@ export class DietBaseAddEditComponent extends DietGenericAddEditComponent {
 
           this.spinner.hide();
 
-        }))
+        })
         .catch((error) => {
           this.httpManagerInstance.manageAlertModuleError(this.componentType, debugClass, error);
         });

@@ -23,15 +23,18 @@ export class FormInputContainerComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.formGroup === undefined) {
-      throw new Error('formGroup is required');
+      throw new Error('[FormInputContainerComponent] formGroup input is required');
     }
 
     if (this.inputContainer === undefined) {
-      throw new Error('inputContainer is required');
+      throw new Error('[FormInputContainerComponent] inputContainer input is required');
     }
   }
 
-  castFormControl(formControl: AbstractControl) {
+  castFormControl(formControl: AbstractControl | null | undefined): FormControl {
+    if (!formControl) {
+      throw new Error('[FormInputContainerComponent] Missing FormControl when casting');
+    }
     return formControl as FormControl;
   }
 

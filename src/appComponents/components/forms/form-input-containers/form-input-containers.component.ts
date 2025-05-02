@@ -20,11 +20,11 @@ export class FormInputContainersComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.formGroup === undefined) {
-      throw new Error('formGroup is required');
+      throw new Error('[FormInputContainersComponent] formGroup input is required');
     }
 
     if (this.inputContainers === undefined) {
-      throw new Error('inputContainers is required');
+      throw new Error('[FormInputContainersComponent] inputContainers input is required');
     }
   }
 

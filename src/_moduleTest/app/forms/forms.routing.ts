@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { FormContainerComponent } from './form-container/form-container.component';
 import { FormElementsComponent } from './form-elements/form-elements.component';
 import { FormContainersComponent } from './form-containers/form-containers.component';

@@ -13,10 +13,19 @@ import { HttpInstance } from './httpIntance';
 })
 export class HttpManagerInstance {
 
-  private axiosInstance: any;
+  constructor(private readonly router: Router, private readonly httpUtil: HttpInstance,private readonly toastPrimeInstance: ToastPrimeInstance) {
+  }
 
-  constructor(private router: Router, private httpUtil: HttpInstance, private toastPrimeInstance: ToastPrimeInstance) {
-    this.axiosInstance = this.httpUtil.getAxiosInstance();
+  normalizeError(error: any) {
+
+      let normalizedError: Error & { response?: any };
+
+      if (error instanceof Error)
+          normalizedError = error;
+      else
+          normalizedError = new Error("Unknown error");
+
+      return normalizedError;
   }
 
   /**
@@ -29,25 +38,22 @@ export class HttpManagerInstance {
  * @param {HttpMethodEnum} httpMethod - the HTTP method for the API call
  * @return {Promise<any>} a Promise that resolves to the response data or rejects with an error
  */
-  manageCallApiAuthPromise(debugClass: DebugClass, url: string, params: Record<string, any>, config: Record<string, any>, httpMethod: HttpMethodEnum) {
+  manageCallApiAuthPromise(debugClass: DebugClass, url: string, params: Record<string, any>, headers: Record<string, any>, httpMethod: HttpMethodEnum) {
 
     debug(debugClass, "start", { url: url, params });
+    headers['Content-Type'] = 'application/json';
 
-    const axiosMethod = httpMethod === HttpMethodEnum.POST ? this.axiosInstance.post : this.axiosInstance.get;
+    return this.httpUtil.fetchInstance(url, {method: httpMethod, headers: headers, body: JSON.stringify(params)})
+        .then((data) => {
 
-    return axiosMethod(url, params, config)
-      .then(({ data }: any) => {
-        return Promise.resolve(data);
-      })
-      .catch((error: any) => {
-
-        if (!(error instanceof Error)) {
-          error = new Error(error);
-        }
-
-        return Promise.reject(error);
-      });
-  }
+            debug(debugClass, "result fetch", data);
+            return Promise.resolve(data);
+        })
+        .catch((error) => {
+            debugError(debugClass, error);
+            return Promise.reject(this.normalizeError(error));
+        });
+}
 
   /**
   * Manages error handling for the alert module.
